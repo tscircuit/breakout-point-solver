@@ -3,14 +3,32 @@ import type { Boundary } from "lib/types"
 
 type BoundaryEdge = "left" | "right" | "bottom" | "top"
 
+const BOUNDARY_POINT_DISTANCE_TOLERANCE = 1e-6
+
+const isInsideRequiredSpacing = ({
+  candidate,
+  usedPoint,
+  boundaryPointSpacing,
+}: {
+  candidate: Point
+  usedPoint: Point
+  boundaryPointSpacing: number
+}) =>
+  distance(usedPoint, candidate) <
+  boundaryPointSpacing - BOUNDARY_POINT_DISTANCE_TOLERANCE
+
 const getBoundaryEdge = (
   point: Point,
   boundary: Boundary,
 ): BoundaryEdge | null => {
-  if (Math.abs(point.x - boundary.left) < 1e-6) return "left"
-  if (Math.abs(point.x - boundary.right) < 1e-6) return "right"
-  if (Math.abs(point.y - boundary.bottom) < 1e-6) return "bottom"
-  if (Math.abs(point.y - boundary.top) < 1e-6) return "top"
+  if (Math.abs(point.x - boundary.left) < BOUNDARY_POINT_DISTANCE_TOLERANCE)
+    return "left"
+  if (Math.abs(point.x - boundary.right) < BOUNDARY_POINT_DISTANCE_TOLERANCE)
+    return "right"
+  if (Math.abs(point.y - boundary.bottom) < BOUNDARY_POINT_DISTANCE_TOLERANCE)
+    return "bottom"
+  if (Math.abs(point.y - boundary.top) < BOUNDARY_POINT_DISTANCE_TOLERANCE)
+    return "top"
   return null
 }
 
@@ -54,8 +72,12 @@ export const getAvailableBreakoutBoundaryPoint = ({
   if (boundaryPointSpacing <= 0) return idealPoint
 
   const hasConflict = (candidate: Point) =>
-    usedBoundaryPoints.some(
-      (usedPoint) => distance(usedPoint, candidate) < boundaryPointSpacing,
+    usedBoundaryPoints.some((usedPoint) =>
+      isInsideRequiredSpacing({
+        candidate,
+        usedPoint,
+        boundaryPointSpacing,
+      }),
     )
 
   if (!hasConflict(idealPoint)) return idealPoint
