@@ -1,7 +1,5 @@
-export {
-  BreakoutSolver,
-  getBoundaryIntersection,
-} from "./BreakoutSolver"
+export { BreakoutSolver } from "./BreakoutSolver"
+export { getBreakoutBoundaryIntersection } from "./boundary/get-breakout-boundary-intersection"
 
 export type {
   Boundary,

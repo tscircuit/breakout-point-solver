@@ -1,17 +1,13 @@
 import { BaseSolver } from "@tscircuit/solver-utils"
-import {
-  distance,
-  getSegmentIntersection,
-  type Point,
-} from "@tscircuit/math-utils"
+import type { Point } from "@tscircuit/math-utils"
 import type { GraphicsObject } from "graphics-debug"
 import type {
-  Boundary,
   BreakoutSolverInput,
   BreakoutSolverOutput,
   BreakoutSolverOutputPoint,
   BreakoutTrace,
 } from "./types"
+import { getBreakoutBoundaryIntersection } from "./boundary/get-breakout-boundary-intersection"
 
 const getOutsideTarget = (trace: BreakoutTrace): Point | null => {
   if (trace.outsidePorts.length === 0) return null
@@ -28,44 +24,6 @@ const getOutsideTarget = (trace: BreakoutTrace): Point | null => {
     x: total.x / trace.outsidePorts.length,
     y: total.y / trace.outsidePorts.length,
   }
-}
-
-export const getBoundaryIntersection = ({
-  from,
-  to,
-  boundary,
-}: {
-  from: Point
-  to: Point
-  boundary: Boundary
-}): Point | null => {
-  if (from.x === to.x && from.y === to.y) return null
-
-  const boundarySegments: Array<[Point, Point]> = [
-    [
-      { x: boundary.left, y: boundary.bottom },
-      { x: boundary.right, y: boundary.bottom },
-    ],
-    [
-      { x: boundary.right, y: boundary.bottom },
-      { x: boundary.right, y: boundary.top },
-    ],
-    [
-      { x: boundary.right, y: boundary.top },
-      { x: boundary.left, y: boundary.top },
-    ],
-    [
-      { x: boundary.left, y: boundary.top },
-      { x: boundary.left, y: boundary.bottom },
-    ],
-  ]
-
-  const candidates = boundarySegments
-    .map(([start, end]) => getSegmentIntersection(from, to, start, end))
-    .filter((point): point is Point => point !== null)
-
-  candidates.sort((a, b) => distance(from, a) - distance(from, b))
-  return candidates[0] ?? null
 }
 
 export class BreakoutSolver extends BaseSolver {
@@ -85,7 +43,7 @@ export class BreakoutSolver extends BaseSolver {
       if (!outsideTarget) continue
 
       for (const insidePort of trace.insidePorts) {
-        const boundaryPoint = getBoundaryIntersection({
+        const boundaryPoint = getBreakoutBoundaryIntersection({
           from: insidePort.position,
           to: outsideTarget,
           boundary: this.input.boundary,
