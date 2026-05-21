@@ -8,6 +8,7 @@ import type {
   BreakoutTrace,
 } from "./types"
 import { getBreakoutBoundaryIntersection } from "./boundary/get-breakout-boundary-intersection"
+import { getAvailableBreakoutBoundaryPoint } from "./boundary/get-available-breakout-boundary-point"
 
 const getOutsideTarget = (trace: BreakoutTrace): Point | null => {
   if (trace.outsidePorts.length === 0) return null
@@ -43,10 +44,22 @@ export class BreakoutPointSolver extends BaseSolver {
       if (!outsideTarget) continue
 
       for (const insidePort of trace.insidePorts) {
-        const boundaryPoint = getBreakoutBoundaryIntersection({
+        const idealBoundaryPoint = getBreakoutBoundaryIntersection({
           from: insidePort.position,
           to: outsideTarget,
           boundary: this.input.boundary,
+        })
+        if (!idealBoundaryPoint) continue
+
+        const usedBoundaryPoints = [
+          ...(this.input.usedBoundaryPoints ?? []),
+          ...breakoutPoints,
+        ]
+        const boundaryPoint = getAvailableBreakoutBoundaryPoint({
+          idealPoint: idealBoundaryPoint,
+          boundary: this.input.boundary,
+          usedBoundaryPoints,
+          boundaryPointSpacing: this.input.boundaryPointSpacing ?? 0,
         })
         if (!boundaryPoint) continue
 
@@ -81,7 +94,7 @@ export class BreakoutPointSolver extends BaseSolver {
     }
 
     return {
-      title: "BreakoutPointSolver",
+      title: "BreakoutPointSolver - generated breakout points",
       rects: [
         {
           center,
@@ -110,37 +123,64 @@ export class BreakoutPointSolver extends BaseSolver {
           label: pad.label ?? "pad",
         })),
       ],
-      lines: this.input.traces.flatMap((trace) => {
-        const outsideTarget = getOutsideTarget(trace)
-        if (!outsideTarget) return []
+      lines: this.input.traces.flatMap((trace) =>
+        trace.insidePorts.flatMap((insidePort) => {
+          const outsideTarget = getOutsideTarget(trace)
+          if (!outsideTarget) return []
 
-        return trace.insidePorts.map((insidePort) => ({
-          points: [insidePort.position, outsideTarget],
-          strokeColor: "#777777",
-          strokeDash: "0.15 0.15",
-          label: trace.sourceTraceId,
-        }))
-      }),
+          const breakoutPoint = this.output.breakoutPoints.find(
+            (point) =>
+              point.sourceTraceId === trace.sourceTraceId &&
+              point.sourcePortId === insidePort.sourcePortId,
+          )
+          if (!breakoutPoint) return []
+
+          return [
+            {
+              points: [
+                insidePort.position,
+                { x: breakoutPoint.x, y: breakoutPoint.y },
+              ],
+              strokeColor: "#7e8794",
+              label: `breakout segment ${trace.sourceTraceId}`,
+            },
+            {
+              points: [
+                { x: breakoutPoint.x, y: breakoutPoint.y },
+                outsideTarget,
+              ],
+              strokeColor: "#7e8794",
+              strokeDash: "0.15 0.15",
+              label: `target guide ${trace.sourceTraceId}`,
+            },
+          ]
+        }),
+      ),
       points: [
         ...this.input.traces.flatMap((trace) =>
           trace.insidePorts.map((port) => ({
             ...port.position,
             color: "#1b5e20",
-            label: port.sourcePortId,
+            label: `inside pad ${port.sourcePortId}`,
           })),
         ),
         ...this.input.traces.flatMap((trace) =>
           trace.outsidePorts.map((port) => ({
             ...port.position,
             color: "#6a1b9a",
-            label: port.sourcePortId,
+            label: `outside target ${port.sourcePortId}`,
           })),
         ),
         ...this.output.breakoutPoints.map((point) => ({
           x: point.x,
           y: point.y,
           color: "#0d47a1",
-          label: `breakout ${point.sourcePortId}`,
+          label: `selected breakout ${point.sourcePortId}`,
+        })),
+        ...(this.input.usedBoundaryPoints ?? []).map((point) => ({
+          ...point,
+          color: "#ef6c00",
+          label: "pre-existing breakout point",
         })),
       ],
     }

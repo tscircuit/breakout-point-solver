@@ -1,4 +1,5 @@
 export { BreakoutPointSolver } from "./BreakoutPointSolver"
+export { getAvailableBreakoutBoundaryPoint } from "./boundary/get-available-breakout-boundary-point"
 export { getBreakoutBoundaryIntersection } from "./boundary/get-breakout-boundary-intersection"
 
 export type {

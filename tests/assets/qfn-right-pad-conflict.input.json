@@ -5,6 +5,13 @@
     "bottom": -4,
     "top": 4
   },
+  "usedBoundaryPoints": [
+    {
+      "x": 5,
+      "y": 0.6931818181818179
+    }
+  ],
+  "boundaryPointSpacing": 0.5,
   "visualComponents": [
     {
       "center": {

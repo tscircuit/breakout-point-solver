@@ -54,13 +54,6 @@
       "label": "QFN pad"
     }
   ],
-  "expectedBoundaryPoints": [
-    {
-      "sourcePortId": "source_port_inside_left",
-      "x": -5,
-      "y": 1.034090909090909
-    }
-  ],
   "traces": [
     {
       "sourceTraceId": "source_trace_left",

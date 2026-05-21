@@ -1,0 +1,382 @@
+{
+  "boundary": {
+    "left": -5,
+    "right": 5,
+    "bottom": -4,
+    "top": 4
+  },
+  "usedBoundaryPoints": [
+    {
+      "x": 5,
+      "y": 0.5
+    },
+    {
+      "x": -5,
+      "y": -0.5
+    },
+    {
+      "x": 0.5,
+      "y": 4
+    },
+    {
+      "x": -0.5,
+      "y": -4
+    }
+  ],
+  "boundaryPointSpacing": 0.5,
+  "visualComponents": [
+    {
+      "center": {
+        "x": 0,
+        "y": 0
+      },
+      "width": 3.2,
+      "height": 3.2,
+      "label": "QFN chip body"
+    }
+  ],
+  "visualPads": [
+    {
+      "center": { "x": 1.6, "y": -1.2 },
+      "width": 0.65,
+      "height": 0.32,
+      "ccwRotationDegrees": 180,
+      "label": "QFN pad"
+    },
+    {
+      "center": { "x": 1.6, "y": -0.4 },
+      "width": 0.65,
+      "height": 0.32,
+      "ccwRotationDegrees": 180,
+      "label": "QFN pad"
+    },
+    {
+      "center": { "x": 1.6, "y": 0.4 },
+      "width": 0.65,
+      "height": 0.32,
+      "ccwRotationDegrees": 180,
+      "label": "QFN pad"
+    },
+    {
+      "center": { "x": 1.6, "y": 1.2 },
+      "width": 0.65,
+      "height": 0.32,
+      "ccwRotationDegrees": 180,
+      "label": "QFN pad"
+    },
+    {
+      "center": { "x": -1.6, "y": -1.2 },
+      "width": 0.65,
+      "height": 0.32,
+      "label": "QFN pad"
+    },
+    {
+      "center": { "x": -1.6, "y": -0.4 },
+      "width": 0.65,
+      "height": 0.32,
+      "label": "QFN pad"
+    },
+    {
+      "center": { "x": -1.6, "y": 0.4 },
+      "width": 0.65,
+      "height": 0.32,
+      "label": "QFN pad"
+    },
+    {
+      "center": { "x": -1.6, "y": 1.2 },
+      "width": 0.65,
+      "height": 0.32,
+      "label": "QFN pad"
+    },
+    {
+      "center": { "x": -1.2, "y": 1.6 },
+      "width": 0.32,
+      "height": 0.65,
+      "label": "QFN pad"
+    },
+    {
+      "center": { "x": -0.4, "y": 1.6 },
+      "width": 0.32,
+      "height": 0.65,
+      "label": "QFN pad"
+    },
+    {
+      "center": { "x": 0.4, "y": 1.6 },
+      "width": 0.32,
+      "height": 0.65,
+      "label": "QFN pad"
+    },
+    {
+      "center": { "x": 1.2, "y": 1.6 },
+      "width": 0.32,
+      "height": 0.65,
+      "label": "QFN pad"
+    },
+    {
+      "center": { "x": -1.2, "y": -1.6 },
+      "width": 0.32,
+      "height": 0.65,
+      "label": "QFN pad"
+    },
+    {
+      "center": { "x": -0.4, "y": -1.6 },
+      "width": 0.32,
+      "height": 0.65,
+      "label": "QFN pad"
+    },
+    {
+      "center": { "x": 0.4, "y": -1.6 },
+      "width": 0.32,
+      "height": 0.65,
+      "label": "QFN pad"
+    },
+    {
+      "center": { "x": 1.2, "y": -1.6 },
+      "width": 0.32,
+      "height": 0.65,
+      "label": "QFN pad"
+    }
+  ],
+  "traces": [
+    {
+      "sourceTraceId": "source_trace_right_1",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_right_1",
+          "position": { "x": 1.6, "y": -1.2 }
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_outside_right_1",
+          "position": { "x": 8.4, "y": -1.8 }
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_right_2",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_right_2",
+          "position": { "x": 1.6, "y": -0.4 }
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_outside_right_2",
+          "position": { "x": 8.4, "y": -0.6 }
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_right_3",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_right_3",
+          "position": { "x": 1.6, "y": 0.4 }
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_outside_right_3",
+          "position": { "x": 8.4, "y": 0.6 }
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_right_4",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_right_4",
+          "position": { "x": 1.6, "y": 1.2 }
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_outside_right_4",
+          "position": { "x": 8.4, "y": 1.8 }
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_left_1",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_left_1",
+          "position": { "x": -1.6, "y": -1.2 }
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_outside_left_1",
+          "position": { "x": -8.4, "y": -1.8 }
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_left_2",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_left_2",
+          "position": { "x": -1.6, "y": -0.4 }
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_outside_left_2",
+          "position": { "x": -8.4, "y": -0.6 }
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_left_3",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_left_3",
+          "position": { "x": -1.6, "y": 0.4 }
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_outside_left_3",
+          "position": { "x": -8.4, "y": 0.6 }
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_left_4",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_left_4",
+          "position": { "x": -1.6, "y": 1.2 }
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_outside_left_4",
+          "position": { "x": -8.4, "y": 1.8 }
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_top_1",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_top_1",
+          "position": { "x": -1.2, "y": 1.6 }
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_outside_top_1",
+          "position": { "x": -1.8, "y": 6.4 }
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_top_2",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_top_2",
+          "position": { "x": -0.4, "y": 1.6 }
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_outside_top_2",
+          "position": { "x": -0.6, "y": 6.4 }
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_top_3",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_top_3",
+          "position": { "x": 0.4, "y": 1.6 }
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_outside_top_3",
+          "position": { "x": 0.6, "y": 6.4 }
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_top_4",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_top_4",
+          "position": { "x": 1.2, "y": 1.6 }
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_outside_top_4",
+          "position": { "x": 1.8, "y": 6.4 }
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_bottom_1",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_bottom_1",
+          "position": { "x": -1.2, "y": -1.6 }
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_outside_bottom_1",
+          "position": { "x": -1.8, "y": -6.4 }
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_bottom_2",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_bottom_2",
+          "position": { "x": -0.4, "y": -1.6 }
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_outside_bottom_2",
+          "position": { "x": -0.6, "y": -6.4 }
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_bottom_3",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_bottom_3",
+          "position": { "x": 0.4, "y": -1.6 }
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_outside_bottom_3",
+          "position": { "x": 0.6, "y": -6.4 }
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_bottom_4",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_bottom_4",
+          "position": { "x": 1.2, "y": -1.6 }
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_outside_bottom_4",
+          "position": { "x": 1.8, "y": -6.4 }
+        }
+      ]
+    }
+  ]
+}
