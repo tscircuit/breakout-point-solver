@@ -1,0 +1,42 @@
+{
+  "boundary": {
+    "left": -5,
+    "right": 5,
+    "bottom": -4,
+    "top": 4
+  },
+  "boundaryPointSpacing": 0.5,
+  "outsideCopperClearance": 0.2,
+  "pointClearanceConstraints": [],
+  "outsidePortObstacles": [],
+  "expectedBoundaryPoints": [
+    {
+      "sourcePortId": "source_port_inside_1",
+      "x": 5,
+      "y": 1
+    }
+  ],
+  "traces": [
+    {
+      "sourceTraceId": "source_trace_1",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_inside_1",
+          "position": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_outside_1",
+          "position": {
+            "x": 10,
+            "y": 2
+          }
+        }
+      ]
+    }
+  ]
+}
