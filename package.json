@@ -1,5 +1,5 @@
 {
-  "name": "breakout-solver",
+  "name": "breakout-point-solver",
   "main": "dist/index.js",
   "type": "module",
   "private": true,

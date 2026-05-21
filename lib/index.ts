@@ -1,12 +1,12 @@
-export { BreakoutSolver } from "./BreakoutSolver"
+export { BreakoutPointSolver } from "./BreakoutPointSolver"
 export { getBreakoutBoundaryIntersection } from "./boundary/get-breakout-boundary-intersection"
 
 export type {
   Boundary,
   BreakoutPort,
-  BreakoutSolverInput,
-  BreakoutSolverOutput,
-  BreakoutSolverOutputPoint,
+  BreakoutPointSolverInput,
+  BreakoutPointSolverOutput,
+  BreakoutPointSolverOutputPoint,
   BreakoutTrace,
   BreakoutVisualRect,
   Point,

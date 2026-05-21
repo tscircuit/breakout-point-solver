@@ -19,69 +19,65 @@
   "visualPads": [
     {
       "center": {
-        "x": 1.2,
+        "x": -1.2,
         "y": -0.9
       },
       "width": 0.55,
       "height": 0.35,
-      "ccwRotationDegrees": 180,
       "label": "QFN pad"
     },
     {
       "center": {
-        "x": 1.2,
+        "x": -1.2,
         "y": -0.3
       },
       "width": 0.55,
       "height": 0.35,
-      "ccwRotationDegrees": 180,
       "label": "QFN pad"
     },
     {
       "center": {
-        "x": 1.2,
+        "x": -1.2,
         "y": 0.3
       },
       "width": 0.55,
       "height": 0.35,
-      "ccwRotationDegrees": 180,
       "label": "QFN pad"
     },
     {
       "center": {
-        "x": 1.2,
+        "x": -1.2,
         "y": 0.9
       },
       "width": 0.55,
       "height": 0.35,
-      "ccwRotationDegrees": 180,
       "label": "QFN pad"
     }
   ],
   "expectedBoundaryPoints": [
     {
-      "sourcePortId": "source_port_inside_1",
-      "x": 5,
-      "y": 0.6931818181818179
+      "sourcePortId": "source_port_inside_left",
+      "x": -5,
+      "y": 1.034090909090909
     }
   ],
   "traces": [
     {
-      "sourceTraceId": "source_trace_1",
+      "sourceTraceId": "source_trace_left",
       "insidePorts": [
         {
-          "sourcePortId": "source_port_inside_1",
+          "sourcePortId": "source_port_inside_left",
           "position": {
-            "x": 1.2,
-            "y": -0.3
+            "x": -1.2,
+            "y": 0.3
           }
         }
       ],
       "outsidePorts": [
         {
-          "sourcePortId": "source_port_outside_1",
+          "sourcePortId": "source_port_outside_left",
           "position": {
-            "x": 10,
+            "x": -10,
             "y": 2
           }
         }
