@@ -28,20 +28,20 @@ export interface BreakoutVisualRect {
   label?: string
 }
 
-export interface BreakoutSolverInput {
+export interface BreakoutPointSolverInput {
   boundary: Boundary
   traces: BreakoutTrace[]
   visualComponents?: BreakoutVisualRect[]
   visualPads?: BreakoutVisualRect[]
 }
 
-export interface BreakoutSolverOutputPoint {
+export interface BreakoutPointSolverOutputPoint {
   sourcePortId: string
   sourceTraceId: string
   x: number
   y: number
 }
 
-export interface BreakoutSolverOutput {
-  breakoutPoints: BreakoutSolverOutputPoint[]
+export interface BreakoutPointSolverOutput {
+  breakoutPoints: BreakoutPointSolverOutputPoint[]
 }

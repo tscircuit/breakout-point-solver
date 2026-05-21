@@ -2,9 +2,9 @@ import { BaseSolver } from "@tscircuit/solver-utils"
 import type { Point } from "@tscircuit/math-utils"
 import type { GraphicsObject } from "graphics-debug"
 import type {
-  BreakoutSolverInput,
-  BreakoutSolverOutput,
-  BreakoutSolverOutputPoint,
+  BreakoutPointSolverInput,
+  BreakoutPointSolverOutput,
+  BreakoutPointSolverOutputPoint,
   BreakoutTrace,
 } from "./types"
 import { getBreakoutBoundaryIntersection } from "./boundary/get-breakout-boundary-intersection"
@@ -26,17 +26,17 @@ const getOutsideTarget = (trace: BreakoutTrace): Point | null => {
   }
 }
 
-export class BreakoutSolver extends BaseSolver {
-  private input: BreakoutSolverInput
-  private output: BreakoutSolverOutput = { breakoutPoints: [] }
+export class BreakoutPointSolver extends BaseSolver {
+  private input: BreakoutPointSolverInput
+  private output: BreakoutPointSolverOutput = { breakoutPoints: [] }
 
-  constructor(input: BreakoutSolverInput) {
+  constructor(input: BreakoutPointSolverInput) {
     super()
     this.input = input
   }
 
   override _step() {
-    const breakoutPoints: BreakoutSolverOutputPoint[] = []
+    const breakoutPoints: BreakoutPointSolverOutputPoint[] = []
 
     for (const trace of this.input.traces) {
       const outsideTarget = getOutsideTarget(trace)
@@ -67,7 +67,7 @@ export class BreakoutSolver extends BaseSolver {
     return [this.input]
   }
 
-  override getOutput(): BreakoutSolverOutput {
+  override getOutput(): BreakoutPointSolverOutput {
     return this.output
   }
 
@@ -81,7 +81,7 @@ export class BreakoutSolver extends BaseSolver {
     }
 
     return {
-      title: "BreakoutSolver",
+      title: "BreakoutPointSolver",
       rects: [
         {
           center,
