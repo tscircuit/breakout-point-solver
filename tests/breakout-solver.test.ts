@@ -23,7 +23,7 @@ test("solves simple two-port breakout", () => {
         sourcePortId: "source_port_inside_1",
         sourceTraceId: "source_trace_1",
         x: 5,
-        y: 1,
+        y: 0.6931818181818179,
       },
     ],
   })

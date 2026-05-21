@@ -133,6 +133,24 @@ export class BreakoutSolver extends BaseSolver {
           stroke: "#315fba",
           label: "breakout boundary",
         },
+        ...(this.input.visualComponents ?? []).map((component) => ({
+          center: component.center,
+          width: component.width,
+          height: component.height,
+          ccwRotationDegrees: component.ccwRotationDegrees,
+          fill: "rgba(255, 245, 170, 0.65)",
+          stroke: "#7a5b00",
+          label: component.label ?? "component",
+        })),
+        ...(this.input.visualPads ?? []).map((pad) => ({
+          center: pad.center,
+          width: pad.width,
+          height: pad.height,
+          ccwRotationDegrees: pad.ccwRotationDegrees,
+          fill: "rgba(170, 120, 40, 0.75)",
+          stroke: "#4e342e",
+          label: pad.label ?? "pad",
+        })),
       ],
       lines: this.input.traces.flatMap((trace) => {
         const outsideTarget = getOutsideTarget(trace)

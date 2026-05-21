@@ -9,11 +9,34 @@
   "outsideCopperClearance": 0.2,
   "pointClearanceConstraints": [],
   "outsidePortObstacles": [],
+  "visualComponents": [
+    {
+      "center": {
+        "x": 0,
+        "y": 0
+      },
+      "width": 2.4,
+      "height": 2.4,
+      "label": "QFN chip body"
+    }
+  ],
+  "visualPads": [
+    {
+      "center": {
+        "x": 1.2,
+        "y": -0.3
+      },
+      "width": 0.55,
+      "height": 0.35,
+      "ccwRotationDegrees": 180,
+      "label": "QFN pad"
+    }
+  ],
   "expectedBoundaryPoints": [
     {
       "sourcePortId": "source_port_inside_1",
       "x": 5,
-      "y": 1
+      "y": 0.6931818181818179
     }
   ],
   "traces": [
@@ -23,8 +46,8 @@
         {
           "sourcePortId": "source_port_inside_1",
           "position": {
-            "x": 0,
-            "y": 0
+            "x": 1.2,
+            "y": -0.3
           }
         }
       ],

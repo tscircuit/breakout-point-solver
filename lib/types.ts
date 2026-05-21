@@ -20,9 +20,19 @@ export interface BreakoutTrace {
   outsidePorts: BreakoutPort[]
 }
 
+export interface BreakoutVisualRect {
+  center: Point
+  width: number
+  height: number
+  ccwRotationDegrees?: number
+  label?: string
+}
+
 export interface BreakoutSolverInput {
   boundary: Boundary
   traces: BreakoutTrace[]
+  visualComponents?: BreakoutVisualRect[]
+  visualPads?: BreakoutVisualRect[]
 }
 
 export interface BreakoutSolverOutputPoint {
