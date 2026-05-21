@@ -31,6 +31,8 @@ export interface BreakoutVisualRect {
 export interface BreakoutPointSolverInput {
   boundary: Boundary
   traces: BreakoutTrace[]
+  usedBoundaryPoints?: Point[]
+  boundaryPointSpacing?: number
   visualComponents?: BreakoutVisualRect[]
   visualPads?: BreakoutVisualRect[]
 }
