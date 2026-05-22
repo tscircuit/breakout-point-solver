@@ -1,5 +1,5 @@
 {
-  "name": "breakout-point-solver",
+  "name": "@tscircuit/breakout-point-solver",
   "main": "dist/index.js",
   "type": "module",
   "private": true,
