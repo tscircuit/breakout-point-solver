@@ -1,5 +1,6 @@
 import { distance, type Point } from "@tscircuit/math-utils"
-import type { Boundary } from "lib/types"
+import type { Boundary, BreakoutObstacleRect } from "lib/types"
+import { doesBreakoutSegmentIntersectObstacles } from "lib/obstacle/breakout-obstacle-collisions"
 
 type BoundaryEdge = "left" | "right" | "bottom" | "top"
 
@@ -58,40 +59,168 @@ const getBoundaryEdgeCandidates = ({
   return candidates
 }
 
+const getBoundaryCandidateSearchStep = ({
+  boundary,
+  boundaryPointSpacing,
+  boundaryCandidateSearchStep,
+}: {
+  boundary: Boundary
+  boundaryPointSpacing: number
+  boundaryCandidateSearchStep?: number
+}) => {
+  if (boundaryCandidateSearchStep !== undefined) {
+    return boundaryCandidateSearchStep
+  }
+  if (boundaryPointSpacing > 0) return boundaryPointSpacing
+
+  return (
+    Math.min(boundary.right - boundary.left, boundary.top - boundary.bottom) /
+    40
+  )
+}
+
+const hasBoundarySpacingConflict = ({
+  candidate,
+  usedBoundaryPoints,
+  boundaryPointSpacing,
+}: {
+  candidate: Point
+  usedBoundaryPoints: Point[]
+  boundaryPointSpacing: number
+}) => {
+  for (const usedPoint of usedBoundaryPoints) {
+    if (
+      isInsideRequiredSpacing({
+        candidate,
+        usedPoint,
+        boundaryPointSpacing,
+      })
+    ) {
+      return true
+    }
+  }
+
+  return false
+}
+
+const isBoundaryCandidateBlocked = ({
+  candidate,
+  routeFrom,
+  obstacles,
+  sourcePortId,
+}: {
+  candidate: Point
+  routeFrom?: Point
+  obstacles?: BreakoutObstacleRect[]
+  sourcePortId?: string
+}) => {
+  if (!routeFrom || !obstacles || !sourcePortId) return false
+
+  return doesBreakoutSegmentIntersectObstacles({
+    from: routeFrom,
+    to: candidate,
+    obstacles,
+    sourcePortId,
+  })
+}
+
+const isCandidateAvailable = ({
+  candidate,
+  usedBoundaryPoints,
+  boundaryPointSpacing,
+  routeFrom,
+  obstacles,
+  sourcePortId,
+}: {
+  candidate: Point
+  usedBoundaryPoints: Point[]
+  boundaryPointSpacing: number
+  routeFrom?: Point
+  obstacles?: BreakoutObstacleRect[]
+  sourcePortId?: string
+}) => {
+  if (
+    hasBoundarySpacingConflict({
+      candidate,
+      usedBoundaryPoints,
+      boundaryPointSpacing,
+    })
+  ) {
+    return false
+  }
+
+  return !isBoundaryCandidateBlocked({
+    candidate,
+    routeFrom,
+    obstacles,
+    sourcePortId,
+  })
+}
+
 export const getAvailableBreakoutBoundaryPoint = ({
   idealPoint,
   boundary,
   usedBoundaryPoints,
   boundaryPointSpacing,
+  boundaryCandidateSearchStep,
+  routeFrom,
+  obstacles,
+  sourcePortId,
 }: {
   idealPoint: Point
   boundary: Boundary
   usedBoundaryPoints: Point[]
   boundaryPointSpacing: number
+  boundaryCandidateSearchStep?: number
+  routeFrom?: Point
+  obstacles?: BreakoutObstacleRect[]
+  sourcePortId?: string
 }): Point | null => {
-  if (boundaryPointSpacing <= 0) return idealPoint
-
-  const hasConflict = (candidate: Point) =>
-    usedBoundaryPoints.some((usedPoint) =>
-      isInsideRequiredSpacing({
-        candidate,
-        usedPoint,
-        boundaryPointSpacing,
-      }),
-    )
-
-  if (!hasConflict(idealPoint)) return idealPoint
+  if (
+    isCandidateAvailable({
+      candidate: idealPoint,
+      usedBoundaryPoints,
+      boundaryPointSpacing,
+      routeFrom,
+      obstacles,
+      sourcePortId,
+    })
+  ) {
+    return idealPoint
+  }
 
   const edge = getBoundaryEdge(idealPoint, boundary)
   if (!edge) return null
 
+  const step = getBoundaryCandidateSearchStep({
+    boundary,
+    boundaryPointSpacing,
+    boundaryCandidateSearchStep,
+  })
+  if (step <= 0) return null
+
   const candidates = getBoundaryEdgeCandidates({
     edge,
     boundary,
-    step: boundaryPointSpacing,
+    step,
   })
 
   candidates.sort((a, b) => distance(a, idealPoint) - distance(b, idealPoint))
 
-  return candidates.find((candidate) => !hasConflict(candidate)) ?? null
+  for (const candidate of candidates) {
+    if (
+      isCandidateAvailable({
+        candidate,
+        usedBoundaryPoints,
+        boundaryPointSpacing,
+        routeFrom,
+        obstacles,
+        sourcePortId,
+      })
+    ) {
+      return candidate
+    }
+  }
+
+  return null
 }

@@ -28,11 +28,24 @@ export interface BreakoutVisualRect {
   label?: string
 }
 
+export interface BreakoutObstacleRect {
+  center: Point
+  width: number
+  height: number
+  ccwRotationDegrees?: number
+  clearance?: number
+  sourcePortIds?: string[]
+  kind?: "pad" | "component" | "keepout" | "trace" | "congestion"
+  label?: string
+}
+
 export interface BreakoutPointSolverInput {
   boundary: Boundary
   traces: BreakoutTrace[]
   usedBoundaryPoints?: Point[]
   boundaryPointSpacing?: number
+  boundaryCandidateSearchStep?: number
+  obstacles?: BreakoutObstacleRect[]
   visualComponents?: BreakoutVisualRect[]
   visualPads?: BreakoutVisualRect[]
 }
