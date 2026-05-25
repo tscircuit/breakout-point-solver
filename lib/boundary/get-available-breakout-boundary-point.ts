@@ -62,15 +62,10 @@ const getBoundaryEdgeCandidates = ({
 const getBoundaryCandidateSearchStep = ({
   boundary,
   boundaryPointSpacing,
-  boundaryCandidateSearchStep,
 }: {
   boundary: Boundary
   boundaryPointSpacing: number
-  boundaryCandidateSearchStep?: number
 }) => {
-  if (boundaryCandidateSearchStep !== undefined) {
-    return boundaryCandidateSearchStep
-  }
   if (boundaryPointSpacing > 0) return boundaryPointSpacing
 
   return (
@@ -162,7 +157,6 @@ export const getAvailableBreakoutBoundaryPoint = ({
   boundary,
   usedBoundaryPoints,
   boundaryPointSpacing,
-  boundaryCandidateSearchStep,
   routeFrom,
   obstacles,
   sourcePortId,
@@ -171,7 +165,6 @@ export const getAvailableBreakoutBoundaryPoint = ({
   boundary: Boundary
   usedBoundaryPoints: Point[]
   boundaryPointSpacing: number
-  boundaryCandidateSearchStep?: number
   routeFrom?: Point
   obstacles?: BreakoutObstacleRect[]
   sourcePortId?: string
@@ -195,7 +188,6 @@ export const getAvailableBreakoutBoundaryPoint = ({
   const step = getBoundaryCandidateSearchStep({
     boundary,
     boundaryPointSpacing,
-    boundaryCandidateSearchStep,
   })
   if (step <= 0) return null
 

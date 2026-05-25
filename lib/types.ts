@@ -44,7 +44,6 @@ export interface BreakoutPointSolverInput {
   traces: BreakoutTrace[]
   usedBoundaryPoints?: Point[]
   boundaryPointSpacing?: number
-  boundaryCandidateSearchStep?: number
   obstacles?: BreakoutObstacleRect[]
   visualComponents?: BreakoutVisualRect[]
   visualPads?: BreakoutVisualRect[]

@@ -60,7 +60,6 @@ export class BreakoutPointSolver extends BaseSolver {
           boundary: this.input.boundary,
           usedBoundaryPoints,
           boundaryPointSpacing: this.input.boundaryPointSpacing ?? 0,
-          boundaryCandidateSearchStep: this.input.boundaryCandidateSearchStep,
           routeFrom: insidePort.position,
           obstacles: this.input.obstacles,
           sourcePortId: insidePort.sourcePortId,
