@@ -19,6 +19,8 @@ test("solves dense breakout points around many obstacles", () => {
           {
             sourcePortId: "source_port_right_1",
             position: { x: 1.6, y: -1.2 },
+            width: 0.55,
+            height: 0.32,
           },
         ],
         outsidePorts: [
@@ -31,7 +33,12 @@ test("solves dense breakout points around many obstacles", () => {
       {
         sourceTraceId: "source_trace_right_2",
         insidePorts: [
-          { sourcePortId: "source_port_right_3", position: { x: 1.6, y: 0.4 } },
+          {
+            sourcePortId: "source_port_right_3",
+            position: { x: 1.6, y: 0.4 },
+            width: 0.55,
+            height: 0.32,
+          },
         ],
         outsidePorts: [
           {
@@ -46,6 +53,8 @@ test("solves dense breakout points around many obstacles", () => {
           {
             sourcePortId: "source_port_left_1",
             position: { x: -1.6, y: -1.2 },
+            width: 0.55,
+            height: 0.32,
           },
         ],
         outsidePorts: [
@@ -58,7 +67,12 @@ test("solves dense breakout points around many obstacles", () => {
       {
         sourceTraceId: "source_trace_left_2",
         insidePorts: [
-          { sourcePortId: "source_port_left_4", position: { x: -1.6, y: 1.2 } },
+          {
+            sourcePortId: "source_port_left_4",
+            position: { x: -1.6, y: 1.2 },
+            width: 0.55,
+            height: 0.32,
+          },
         ],
         outsidePorts: [
           {
@@ -70,7 +84,12 @@ test("solves dense breakout points around many obstacles", () => {
       {
         sourceTraceId: "source_trace_top_1",
         insidePorts: [
-          { sourcePortId: "source_port_top_1", position: { x: -1.2, y: 1.6 } },
+          {
+            sourcePortId: "source_port_top_1",
+            position: { x: -1.2, y: 1.6 },
+            width: 0.32,
+            height: 0.55,
+          },
         ],
         outsidePorts: [
           {
@@ -82,7 +101,12 @@ test("solves dense breakout points around many obstacles", () => {
       {
         sourceTraceId: "source_trace_top_2",
         insidePorts: [
-          { sourcePortId: "source_port_top_4", position: { x: 1.2, y: 1.6 } },
+          {
+            sourcePortId: "source_port_top_4",
+            position: { x: 1.2, y: 1.6 },
+            width: 0.32,
+            height: 0.55,
+          },
         ],
         outsidePorts: [
           {
@@ -97,6 +121,8 @@ test("solves dense breakout points around many obstacles", () => {
           {
             sourcePortId: "source_port_bottom_1",
             position: { x: -1.2, y: -1.6 },
+            width: 0.32,
+            height: 0.55,
           },
         ],
         outsidePorts: [
@@ -112,6 +138,8 @@ test("solves dense breakout points around many obstacles", () => {
           {
             sourcePortId: "source_port_bottom_4",
             position: { x: 1.2, y: -1.6 },
+            width: 0.32,
+            height: 0.55,
           },
         ],
         outsidePorts: [

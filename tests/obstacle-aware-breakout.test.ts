@@ -16,6 +16,8 @@ test("solves multiple breakout points around pads and keepout obstacles", () => 
           {
             sourcePortId: "source_port_right_1",
             position: { x: 1.4, y: -1.05 },
+            width: 0.55,
+            height: 0.32,
           },
         ],
         outsidePorts: [
@@ -31,6 +33,8 @@ test("solves multiple breakout points around pads and keepout obstacles", () => 
           {
             sourcePortId: "source_port_right_2",
             position: { x: 1.4, y: 1.05 },
+            width: 0.55,
+            height: 0.32,
           },
         ],
         outsidePorts: [
@@ -46,6 +50,8 @@ test("solves multiple breakout points around pads and keepout obstacles", () => 
           {
             sourcePortId: "source_port_top",
             position: { x: -0.35, y: 1.4 },
+            width: 0.32,
+            height: 0.55,
           },
         ],
         outsidePorts: [
@@ -61,6 +67,8 @@ test("solves multiple breakout points around pads and keepout obstacles", () => 
           {
             sourcePortId: "source_port_bottom",
             position: { x: 0.35, y: -1.4 },
+            width: 0.32,
+            height: 0.55,
           },
         ],
         outsidePorts: [
@@ -146,6 +154,8 @@ test("ignores obstacle connected to the inside source port", () => {
           {
             sourcePortId: "source_port_inside_1",
             position: { x: 0, y: 0 },
+            width: 0.55,
+            height: 0.32,
           },
         ],
         outsidePorts: [
