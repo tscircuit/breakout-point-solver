@@ -4,6 +4,7 @@ export { getBreakoutBoundaryIntersection } from "./boundary/get-breakout-boundar
 export {
   doesBreakoutSegmentIntersectObstacle,
   doesBreakoutSegmentIntersectObstacles,
+  isBreakoutObstacleIgnoredForLayer,
   isBreakoutObstacleIgnoredForSourcePort,
 } from "./obstacle/breakout-obstacle-collisions"
 
@@ -14,4 +15,5 @@ export type {
   BreakoutPointSolverOutput,
   BreakoutPointSolverOutputPoint,
   BreakoutTrace,
+  PcbLayer,
 } from "./types"

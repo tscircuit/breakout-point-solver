@@ -1,11 +1,14 @@
 import type { Bounds, Point } from "@tscircuit/math-utils"
 
+export type PcbLayer = "top" | "bottom"
+
 export interface BreakoutPort {
   sourcePortId: string
   position: Point
   width?: number
   height?: number
   ccwRotationDegrees?: number
+  layer?: PcbLayer
   label?: string
 }
 
@@ -22,6 +25,7 @@ export interface BreakoutObstacleRect {
   ccwRotationDegrees?: number
   clearance?: number
   sourcePortIds?: string[]
+  layer?: PcbLayer
   label?: string
 }
 
@@ -38,6 +42,7 @@ export interface BreakoutPointSolverOutputPoint {
   sourceTraceId: string
   x: number
   y: number
+  layer?: PcbLayer
 }
 
 export interface BreakoutPointSolverOutput {

@@ -1,5 +1,5 @@
 import { distance, type Bounds, type Point } from "@tscircuit/math-utils"
-import type { BreakoutObstacleRect } from "lib/types"
+import type { BreakoutObstacleRect, PcbLayer } from "lib/types"
 import { doesBreakoutSegmentIntersectObstacles } from "lib/obstacle/breakout-obstacle-collisions"
 
 type BoundsEdge = "left" | "right" | "bottom" | "top"
@@ -97,11 +97,13 @@ const isBoundaryCandidateBlocked = ({
   routeFrom,
   obstacles,
   sourcePortId,
+  layer,
 }: {
   candidate: Point
   routeFrom?: Point
   obstacles?: BreakoutObstacleRect[]
   sourcePortId?: string
+  layer?: PcbLayer
 }) => {
   if (!routeFrom || !obstacles || !sourcePortId) return false
 
@@ -110,6 +112,7 @@ const isBoundaryCandidateBlocked = ({
     to: candidate,
     obstacles,
     sourcePortId,
+    layer,
   })
 }
 
@@ -120,6 +123,7 @@ const isCandidateAvailable = ({
   routeFrom,
   obstacles,
   sourcePortId,
+  layer,
 }: {
   candidate: Point
   usedBoundaryPoints: Point[]
@@ -127,6 +131,7 @@ const isCandidateAvailable = ({
   routeFrom?: Point
   obstacles?: BreakoutObstacleRect[]
   sourcePortId?: string
+  layer?: PcbLayer
 }) => {
   if (
     hasBoundarySpacingConflict({
@@ -143,6 +148,7 @@ const isCandidateAvailable = ({
     routeFrom,
     obstacles,
     sourcePortId,
+    layer,
   })
 }
 
@@ -154,6 +160,7 @@ export const getAvailableBreakoutBoundaryPoint = ({
   routeFrom,
   obstacles,
   sourcePortId,
+  layer,
 }: {
   idealPoint: Point
   bounds: Bounds
@@ -162,6 +169,7 @@ export const getAvailableBreakoutBoundaryPoint = ({
   routeFrom?: Point
   obstacles?: BreakoutObstacleRect[]
   sourcePortId?: string
+  layer?: PcbLayer
 }): Point | null => {
   if (
     isCandidateAvailable({
@@ -171,6 +179,7 @@ export const getAvailableBreakoutBoundaryPoint = ({
       routeFrom,
       obstacles,
       sourcePortId,
+      layer,
     })
   ) {
     return idealPoint
@@ -202,6 +211,7 @@ export const getAvailableBreakoutBoundaryPoint = ({
         routeFrom,
         obstacles,
         sourcePortId,
+        layer,
       })
     ) {
       return candidate

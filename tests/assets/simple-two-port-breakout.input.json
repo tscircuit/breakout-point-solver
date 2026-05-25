@@ -18,7 +18,8 @@
           "width": 0.55,
           "height": 0.35,
           "ccwRotationDegrees": 180,
-          "label": "QFN pad"
+          "label": "QFN pad",
+          "layer": "top"
         }
       ],
       "outsidePorts": [
@@ -27,7 +28,8 @@
           "position": {
             "x": 10,
             "y": 2
-          }
+          },
+          "layer": "top"
         }
       ]
     }

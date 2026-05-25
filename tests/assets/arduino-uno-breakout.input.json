@@ -18,7 +18,8 @@
           },
           "width": 1.6500093999999998,
           "height": 0.45001179999999996,
-          "label": "PD0"
+          "label": "PD0",
+          "layer": "top"
         }
       ],
       "outsidePorts": [
@@ -30,7 +31,8 @@
           },
           "width": 1.5,
           "height": 1.5,
-          "label": "D0"
+          "label": "D0",
+          "layer": "top"
         }
       ]
     },
@@ -45,7 +47,8 @@
           },
           "width": 1.6500093999999998,
           "height": 0.45001179999999996,
-          "label": "PD1"
+          "label": "PD1",
+          "layer": "top"
         }
       ],
       "outsidePorts": [
@@ -57,7 +60,8 @@
           },
           "width": 1.5,
           "height": 1.5,
-          "label": "D1"
+          "label": "D1",
+          "layer": "top"
         }
       ]
     },
@@ -72,7 +76,8 @@
           },
           "width": 1.6500093999999998,
           "height": 0.45001179999999996,
-          "label": "PD2"
+          "label": "PD2",
+          "layer": "top"
         }
       ],
       "outsidePorts": [
@@ -84,7 +89,8 @@
           },
           "width": 1.5,
           "height": 1.5,
-          "label": "D2"
+          "label": "D2",
+          "layer": "top"
         }
       ]
     },
@@ -99,7 +105,8 @@
           },
           "width": 0.45001179999999996,
           "height": 1.6500093999999998,
-          "label": "PD3"
+          "label": "PD3",
+          "layer": "top"
         }
       ],
       "outsidePorts": [
@@ -111,7 +118,8 @@
           },
           "width": 1.5,
           "height": 1.5,
-          "label": "D3"
+          "label": "D3",
+          "layer": "top"
         }
       ]
     },
@@ -126,7 +134,8 @@
           },
           "width": 0.45001179999999996,
           "height": 1.6500093999999998,
-          "label": "PD4"
+          "label": "PD4",
+          "layer": "top"
         }
       ],
       "outsidePorts": [
@@ -138,7 +147,8 @@
           },
           "width": 1.5,
           "height": 1.5,
-          "label": "D4"
+          "label": "D4",
+          "layer": "top"
         }
       ]
     },
@@ -153,7 +163,8 @@
           },
           "width": 1.6500093999999998,
           "height": 0.45001179999999996,
-          "label": "PD5"
+          "label": "PD5",
+          "layer": "top"
         }
       ],
       "outsidePorts": [
@@ -165,7 +176,8 @@
           },
           "width": 1.5,
           "height": 1.5,
-          "label": "D5"
+          "label": "D5",
+          "layer": "top"
         }
       ]
     },
@@ -180,7 +192,8 @@
           },
           "width": 1.6500093999999998,
           "height": 0.45001179999999996,
-          "label": "PD6"
+          "label": "PD6",
+          "layer": "top"
         }
       ],
       "outsidePorts": [
@@ -192,7 +205,8 @@
           },
           "width": 1.5,
           "height": 1.5,
-          "label": "D6"
+          "label": "D6",
+          "layer": "top"
         }
       ]
     },
@@ -207,7 +221,8 @@
           },
           "width": 1.6500093999999998,
           "height": 0.45001179999999996,
-          "label": "PD7"
+          "label": "PD7",
+          "layer": "top"
         }
       ],
       "outsidePorts": [
@@ -219,7 +234,8 @@
           },
           "width": 1.5,
           "height": 1.5,
-          "label": "D7"
+          "label": "D7",
+          "layer": "top"
         }
       ]
     },
@@ -234,7 +250,8 @@
           },
           "width": 1.6500093999999998,
           "height": 0.45001179999999996,
-          "label": "PB0"
+          "label": "PB0",
+          "layer": "top"
         }
       ],
       "outsidePorts": [
@@ -246,7 +263,8 @@
           },
           "width": 1.5,
           "height": 1.5,
-          "label": "D8"
+          "label": "D8",
+          "layer": "top"
         }
       ]
     },
@@ -261,7 +279,8 @@
           },
           "width": 1.6500093999999998,
           "height": 0.45001179999999996,
-          "label": "PB1"
+          "label": "PB1",
+          "layer": "top"
         }
       ],
       "outsidePorts": [
@@ -273,7 +292,8 @@
           },
           "width": 1.5,
           "height": 1.5,
-          "label": "D9"
+          "label": "D9",
+          "layer": "top"
         }
       ]
     },
@@ -288,7 +308,8 @@
           },
           "width": 1.6500093999999998,
           "height": 0.45001179999999996,
-          "label": "PB2"
+          "label": "PB2",
+          "layer": "top"
         }
       ],
       "outsidePorts": [
@@ -300,7 +321,8 @@
           },
           "width": 1.5,
           "height": 1.5,
-          "label": "D10"
+          "label": "D10",
+          "layer": "top"
         }
       ]
     },
@@ -315,7 +337,8 @@
           },
           "width": 1.6500093999999998,
           "height": 0.45001179999999996,
-          "label": "PB3"
+          "label": "PB3",
+          "layer": "top"
         }
       ],
       "outsidePorts": [
@@ -327,7 +350,8 @@
           },
           "width": 1.5,
           "height": 1.5,
-          "label": "D11"
+          "label": "D11",
+          "layer": "top"
         }
       ]
     },
@@ -342,7 +366,8 @@
           },
           "width": 1.6500093999999998,
           "height": 0.45001179999999996,
-          "label": "PB4"
+          "label": "PB4",
+          "layer": "top"
         }
       ],
       "outsidePorts": [
@@ -354,7 +379,8 @@
           },
           "width": 1.5,
           "height": 1.5,
-          "label": "D12"
+          "label": "D12",
+          "layer": "top"
         }
       ]
     },
@@ -369,7 +395,8 @@
           },
           "width": 0.45001179999999996,
           "height": 1.6500093999999998,
-          "label": "PB5"
+          "label": "PB5",
+          "layer": "top"
         }
       ],
       "outsidePorts": [
@@ -381,7 +408,8 @@
           },
           "width": 1.5,
           "height": 1.5,
-          "label": "D13"
+          "label": "D13",
+          "layer": "top"
         }
       ]
     },
@@ -396,7 +424,8 @@
           },
           "width": 0.45001179999999996,
           "height": 1.6500093999999998,
-          "label": "PC0"
+          "label": "PC0",
+          "layer": "top"
         }
       ],
       "outsidePorts": [
@@ -408,7 +437,8 @@
           },
           "width": 1.5,
           "height": 1.5,
-          "label": "A0"
+          "label": "A0",
+          "layer": "top"
         }
       ]
     },
@@ -423,7 +453,8 @@
           },
           "width": 0.45001179999999996,
           "height": 1.6500093999999998,
-          "label": "PC1"
+          "label": "PC1",
+          "layer": "top"
         }
       ],
       "outsidePorts": [
@@ -435,7 +466,8 @@
           },
           "width": 1.5,
           "height": 1.5,
-          "label": "A1"
+          "label": "A1",
+          "layer": "top"
         }
       ]
     },
@@ -450,7 +482,8 @@
           },
           "width": 1.6500093999999998,
           "height": 0.45001179999999996,
-          "label": "PC2"
+          "label": "PC2",
+          "layer": "top"
         }
       ],
       "outsidePorts": [
@@ -462,7 +495,8 @@
           },
           "width": 1.5,
           "height": 1.5,
-          "label": "A2"
+          "label": "A2",
+          "layer": "top"
         }
       ]
     },
@@ -477,7 +511,8 @@
           },
           "width": 1.6500093999999998,
           "height": 0.45001179999999996,
-          "label": "PC3"
+          "label": "PC3",
+          "layer": "top"
         }
       ],
       "outsidePorts": [
@@ -489,7 +524,8 @@
           },
           "width": 1.5,
           "height": 1.5,
-          "label": "A3"
+          "label": "A3",
+          "layer": "top"
         }
       ]
     },
@@ -504,7 +540,8 @@
           },
           "width": 1.6500093999999998,
           "height": 0.45001179999999996,
-          "label": "PC4"
+          "label": "PC4",
+          "layer": "top"
         }
       ],
       "outsidePorts": [
@@ -516,7 +553,8 @@
           },
           "width": 1.5,
           "height": 1.5,
-          "label": "A4"
+          "label": "A4",
+          "layer": "top"
         }
       ]
     },
@@ -531,7 +569,8 @@
           },
           "width": 1.6500093999999998,
           "height": 0.45001179999999996,
-          "label": "PC5"
+          "label": "PC5",
+          "layer": "top"
         }
       ],
       "outsidePorts": [
@@ -543,7 +582,8 @@
           },
           "width": 1.5,
           "height": 1.5,
-          "label": "A5"
+          "label": "A5",
+          "layer": "top"
         }
       ]
     },
@@ -558,7 +598,8 @@
           },
           "width": 1.6500093999999998,
           "height": 0.45001179999999996,
-          "label": "PC6"
+          "label": "PC6",
+          "layer": "top"
         }
       ],
       "outsidePorts": [
@@ -570,7 +611,8 @@
           },
           "width": 1.5,
           "height": 1.5,
-          "label": "RESET"
+          "label": "RESET",
+          "layer": "top"
         }
       ]
     },
@@ -585,7 +627,8 @@
           },
           "width": 0.45001179999999996,
           "height": 1.6500093999999998,
-          "label": "AREF"
+          "label": "AREF",
+          "layer": "top"
         }
       ],
       "outsidePorts": [
@@ -597,7 +640,8 @@
           },
           "width": 1.5,
           "height": 1.5,
-          "label": "AREF"
+          "label": "AREF",
+          "layer": "top"
         }
       ]
     }
@@ -611,7 +655,8 @@
       "width": 6.959917500000007,
       "height": 14.939848200000107,
       "clearance": 0.15,
-      "label": "pcb_component_5"
+      "label": "pcb_component_5",
+      "layer": "top"
     },
     {
       "center": {
@@ -621,7 +666,8 @@
       "width": 9.449993799999987,
       "height": 7.489977400000189,
       "clearance": 0.15,
-      "label": "pcb_component_6"
+      "label": "pcb_component_6",
+      "layer": "top"
     },
     {
       "center": {
@@ -631,7 +677,8 @@
       "width": 5.449874800000117,
       "height": 1.6800068,
       "clearance": 0.15,
-      "label": "pcb_component_7"
+      "label": "pcb_component_7",
+      "layer": "top"
     },
     {
       "center": {
@@ -641,7 +688,8 @@
       "width": 8.397595599999967,
       "height": 5.699937799999947,
       "clearance": 0.15,
-      "label": "pcb_component_8"
+      "label": "pcb_component_8",
+      "layer": "top"
     },
     {
       "center": {
@@ -651,7 +699,8 @@
       "width": 8.359914699999923,
       "height": 5.699937799999947,
       "clearance": 0.15,
-      "label": "pcb_component_9"
+      "label": "pcb_component_9",
+      "layer": "top"
     },
     {
       "center": {
@@ -661,7 +710,8 @@
       "width": 1.5600000000000023,
       "height": 0.6400000000000001,
       "clearance": 0.15,
-      "label": "pcb_component_10"
+      "label": "pcb_component_10",
+      "layer": "top"
     },
     {
       "center": {
@@ -671,7 +721,8 @@
       "width": 2.850000000000005,
       "height": 1.3999999999999986,
       "clearance": 0.15,
-      "label": "pcb_component_11"
+      "label": "pcb_component_11",
+      "layer": "top"
     },
     {
       "center": {
@@ -681,7 +732,8 @@
       "width": 2.8500000000000014,
       "height": 1.3999999999999986,
       "clearance": 0.15,
-      "label": "pcb_component_12"
+      "label": "pcb_component_12",
+      "layer": "top"
     },
     {
       "center": {
@@ -691,7 +743,8 @@
       "width": 2.849999999999998,
       "height": 1.3999999999999986,
       "clearance": 0.15,
-      "label": "pcb_component_13"
+      "label": "pcb_component_13",
+      "layer": "top"
     },
     {
       "center": {
@@ -701,7 +754,8 @@
       "width": 2.8499999999999996,
       "height": 1.3999999999999986,
       "clearance": 0.15,
-      "label": "pcb_component_14"
+      "label": "pcb_component_14",
+      "layer": "top"
     },
     {
       "center": {
@@ -711,7 +765,8 @@
       "width": 3.6001451999999006,
       "height": 2.9500575999999654,
       "clearance": 0.15,
-      "label": "pcb_component_16"
+      "label": "pcb_component_16",
+      "layer": "top"
     },
     {
       "center": {
@@ -721,7 +776,8 @@
       "width": 1.5600000000000023,
       "height": 0.6400000000000006,
       "clearance": 0.15,
-      "label": "pcb_component_17"
+      "label": "pcb_component_17",
+      "layer": "top"
     },
     {
       "center": {
@@ -731,7 +787,8 @@
       "width": 1.5600000000000023,
       "height": 0.6400000000000006,
       "clearance": 0.15,
-      "label": "pcb_component_18"
+      "label": "pcb_component_18",
+      "layer": "top"
     },
     {
       "center": {
@@ -741,7 +798,8 @@
       "width": 1.5600000000000023,
       "height": 0.6399999999999999,
       "clearance": 0.15,
-      "label": "pcb_component_19"
+      "label": "pcb_component_19",
+      "layer": "top"
     },
     {
       "center": {
@@ -751,7 +809,8 @@
       "width": 1.5600000000000023,
       "height": 0.6399999999999999,
       "clearance": 0.15,
-      "label": "pcb_component_20"
+      "label": "pcb_component_20",
+      "layer": "top"
     },
     {
       "center": {
@@ -761,7 +820,8 @@
       "width": 1.5600000000000023,
       "height": 0.6399999999999997,
       "clearance": 0.15,
-      "label": "pcb_component_21"
+      "label": "pcb_component_21",
+      "layer": "top"
     },
     {
       "center": {
@@ -771,7 +831,8 @@
       "width": 1.5600000000000023,
       "height": 0.6399999999999997,
       "clearance": 0.15,
-      "label": "pcb_component_22"
+      "label": "pcb_component_22",
+      "layer": "top"
     },
     {
       "center": {
@@ -781,7 +842,8 @@
       "width": 1.5600000000000023,
       "height": 0.6400000000000006,
       "clearance": 0.15,
-      "label": "pcb_component_23"
+      "label": "pcb_component_23",
+      "layer": "top"
     },
     {
       "center": {
@@ -791,7 +853,8 @@
       "width": 1.5600000000000023,
       "height": 0.6400000000000006,
       "clearance": 0.15,
-      "label": "pcb_component_24"
+      "label": "pcb_component_24",
+      "layer": "top"
     },
     {
       "center": {
@@ -801,7 +864,8 @@
       "width": 2.4499999999999957,
       "height": 0.9499999999999993,
       "clearance": 0.15,
-      "label": "pcb_component_25"
+      "label": "pcb_component_25",
+      "layer": "top"
     },
     {
       "center": {
@@ -811,7 +875,8 @@
       "width": 1.5600000000000023,
       "height": 0.6400000000000006,
       "clearance": 0.15,
-      "label": "pcb_component_26"
+      "label": "pcb_component_26",
+      "layer": "top"
     },
     {
       "center": {
@@ -821,7 +886,8 @@
       "width": 2.450000000000003,
       "height": 0.9499999999999993,
       "clearance": 0.15,
-      "label": "pcb_component_27"
+      "label": "pcb_component_27",
+      "layer": "top"
     }
   ]
 }

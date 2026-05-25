@@ -1,9 +1,10 @@
 import { expect, test } from "bun:test"
 import { BreakoutPointSolver } from "lib/index"
+import type { BreakoutPointSolverInput } from "lib/types"
 import fixture from "./assets/simple-two-port-breakout.input.json"
 
 test("solves right-side QFN pad breakout point placement", () => {
-  const solver = new BreakoutPointSolver(fixture)
+  const solver = new BreakoutPointSolver(fixture as BreakoutPointSolverInput)
 
   solver.solve()
 
@@ -14,6 +15,7 @@ test("solves right-side QFN pad breakout point placement", () => {
         sourceTraceId: "source_trace_1",
         x: 5,
         y: 0.6931818181818179,
+        layer: "top",
       },
     ],
   })

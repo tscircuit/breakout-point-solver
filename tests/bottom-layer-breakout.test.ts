@@ -1,9 +1,9 @@
 import { expect, test } from "bun:test"
 import { BreakoutPointSolver } from "lib/index"
 import type { BreakoutPointSolverInput } from "lib/types"
-import fixture from "./assets/qfn-right-pad-conflict.input.json"
+import fixture from "./assets/bottom-layer-breakout.input.json"
 
-test("moves right-side QFN breakout point away from used boundary point", () => {
+test("solves bottom-layer breakout while ignoring top-layer obstacles", () => {
   const solver = new BreakoutPointSolver(fixture as BreakoutPointSolverInput)
 
   solver.solve()
@@ -11,11 +11,11 @@ test("moves right-side QFN breakout point away from used boundary point", () => 
   expect(solver.getOutput()).toEqual({
     breakoutPoints: [
       {
-        sourcePortId: "source_port_inside_1",
-        sourceTraceId: "source_trace_1",
+        sourcePortId: "source_port_bottom_inside",
+        sourceTraceId: "source_trace_bottom",
         x: 5,
-        y: 0,
-        layer: "top",
+        y: -3,
+        layer: "bottom",
       },
     ],
   })

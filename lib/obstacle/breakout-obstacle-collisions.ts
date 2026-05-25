@@ -1,5 +1,5 @@
 import { doesSegmentIntersectRect, type Point } from "@tscircuit/math-utils"
-import type { BreakoutObstacleRect } from "lib/types"
+import type { BreakoutObstacleRect, PcbLayer } from "lib/types"
 
 const degreesToRadians = (degrees: number) => (degrees * Math.PI) / 180
 
@@ -52,6 +52,17 @@ export const isBreakoutObstacleIgnoredForSourcePort = ({
   return obstacle.sourcePortIds.includes(sourcePortId)
 }
 
+export const isBreakoutObstacleIgnoredForLayer = ({
+  obstacle,
+  layer,
+}: {
+  obstacle: BreakoutObstacleRect
+  layer?: PcbLayer
+}) => {
+  if (!obstacle.layer || !layer) return false
+  return obstacle.layer !== layer
+}
+
 export const doesBreakoutSegmentIntersectObstacle = ({
   from,
   to,
@@ -72,17 +83,23 @@ export const doesBreakoutSegmentIntersectObstacles = ({
   to,
   obstacles,
   sourcePortId,
+  layer,
 }: {
   from: Point
   to: Point
   obstacles: BreakoutObstacleRect[]
   sourcePortId: string
+  layer?: PcbLayer
 }) => {
   for (const obstacle of obstacles) {
     if (
       isBreakoutObstacleIgnoredForSourcePort({
         obstacle,
         sourcePortId,
+      }) ||
+      isBreakoutObstacleIgnoredForLayer({
+        obstacle,
+        layer,
       })
     ) {
       continue

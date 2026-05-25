@@ -17,7 +17,8 @@
           },
           "width": 0.35,
           "height": 0.55,
-          "label": "QFN pad"
+          "label": "QFN pad",
+          "layer": "top"
         }
       ],
       "outsidePorts": [
@@ -26,7 +27,8 @@
           "position": {
             "x": 2,
             "y": 10
-          }
+          },
+          "layer": "top"
         }
       ]
     }
