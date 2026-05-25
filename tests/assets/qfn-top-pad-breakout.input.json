@@ -5,55 +5,6 @@
     "minY": -4,
     "maxY": 4
   },
-  "visualComponents": [
-    {
-      "center": {
-        "x": 0,
-        "y": 0
-      },
-      "width": 2.4,
-      "height": 2.4,
-      "label": "QFN chip body"
-    }
-  ],
-  "visualPads": [
-    {
-      "center": {
-        "x": -0.9,
-        "y": 1.2
-      },
-      "width": 0.35,
-      "height": 0.55,
-      "label": "QFN pad"
-    },
-    {
-      "center": {
-        "x": -0.3,
-        "y": 1.2
-      },
-      "width": 0.35,
-      "height": 0.55,
-      "label": "QFN pad"
-    },
-    {
-      "center": {
-        "x": 0.3,
-        "y": 1.2
-      },
-      "width": 0.35,
-      "height": 0.55,
-      "label": "QFN pad"
-    },
-    {
-      "center": {
-        "x": 0.9,
-        "y": 1.2
-      },
-      "width": 0.35,
-      "height": 0.55,
-      "label": "QFN pad"
-    }
-  ],
   "traces": [
     {
       "sourceTraceId": "source_trace_top",
@@ -63,7 +14,10 @@
           "position": {
             "x": 0.3,
             "y": 1.2
-          }
+          },
+          "width": 0.35,
+          "height": 0.55,
+          "label": "QFN pad"
         }
       ],
       "outsidePorts": [

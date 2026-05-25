@@ -5,10 +5,37 @@ import type {
   BreakoutPointSolverInput,
   BreakoutPointSolverOutput,
   BreakoutPointSolverOutputPoint,
+  BreakoutPort,
   BreakoutTrace,
 } from "./types"
 import { getBreakoutBoundaryIntersection } from "./boundary/get-breakout-boundary-intersection"
 import { getAvailableBreakoutBoundaryPoint } from "./boundary/get-available-breakout-boundary-point"
+
+type GraphicsRect = NonNullable<GraphicsObject["rects"]>[number]
+
+const getPortPadRect = ({
+  port,
+  fill,
+  stroke,
+  fallbackLabel,
+}: {
+  port: BreakoutPort
+  fill: string
+  stroke: string
+  fallbackLabel: string
+}): GraphicsRect | null => {
+  if (port.width === undefined || port.height === undefined) return null
+
+  return {
+    center: port.position,
+    width: port.width,
+    height: port.height,
+    ccwRotationDegrees: port.ccwRotationDegrees,
+    fill,
+    stroke,
+    label: port.label ?? fallbackLabel,
+  }
+}
 
 const getOutsideTarget = (trace: BreakoutTrace): Point | null => {
   if (trace.outsidePorts.length === 0) return null
@@ -107,24 +134,28 @@ export class BreakoutPointSolver extends BaseSolver {
           stroke: "#315fba",
           label: "breakout bounds",
         },
-        ...(this.input.visualComponents ?? []).map((component) => ({
-          center: component.center,
-          width: component.width,
-          height: component.height,
-          ccwRotationDegrees: component.ccwRotationDegrees,
-          fill: "rgba(255, 245, 170, 0.65)",
-          stroke: "#7a5b00",
-          label: component.label ?? "component",
-        })),
-        ...(this.input.visualPads ?? []).map((pad) => ({
-          center: pad.center,
-          width: pad.width,
-          height: pad.height,
-          ccwRotationDegrees: pad.ccwRotationDegrees,
-          fill: "rgba(170, 120, 40, 0.75)",
-          stroke: "#4e342e",
-          label: pad.label ?? "pad",
-        })),
+        ...this.input.traces.flatMap((trace) =>
+          trace.insidePorts.flatMap((port) => {
+            const rect = getPortPadRect({
+              port,
+              fill: "rgba(46, 125, 50, 0.28)",
+              stroke: "#1b5e20",
+              fallbackLabel: `inside pad ${port.sourcePortId}`,
+            })
+            return rect ? [rect] : []
+          }),
+        ),
+        ...this.input.traces.flatMap((trace) =>
+          trace.outsidePorts.flatMap((port) => {
+            const rect = getPortPadRect({
+              port,
+              fill: "rgba(106, 27, 154, 0.2)",
+              stroke: "#6a1b9a",
+              fallbackLabel: `outside pad ${port.sourcePortId}`,
+            })
+            return rect ? [rect] : []
+          }),
+        ),
         ...(this.input.obstacles ?? []).map((obstacle) => ({
           center: obstacle.center,
           width: obstacle.width + (obstacle.clearance ?? 0) * 2,

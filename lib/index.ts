@@ -14,5 +14,4 @@ export type {
   BreakoutPointSolverOutput,
   BreakoutPointSolverOutputPoint,
   BreakoutTrace,
-  BreakoutVisualRect,
 } from "./types"

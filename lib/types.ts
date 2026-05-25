@@ -3,20 +3,16 @@ import type { Bounds, Point } from "@tscircuit/math-utils"
 export interface BreakoutPort {
   sourcePortId: string
   position: Point
+  width?: number
+  height?: number
+  ccwRotationDegrees?: number
+  label?: string
 }
 
 export interface BreakoutTrace {
   sourceTraceId: string
   insidePorts: BreakoutPort[]
   outsidePorts: BreakoutPort[]
-}
-
-export interface BreakoutVisualRect {
-  center: Point
-  width: number
-  height: number
-  ccwRotationDegrees?: number
-  label?: string
 }
 
 export interface BreakoutObstacleRect {
@@ -35,8 +31,6 @@ export interface BreakoutPointSolverInput {
   usedBoundaryPoints?: Point[]
   boundaryPointSpacing?: number
   obstacles?: BreakoutObstacleRect[]
-  visualComponents?: BreakoutVisualRect[]
-  visualPads?: BreakoutVisualRect[]
 }
 
 export interface BreakoutPointSolverOutputPoint {
