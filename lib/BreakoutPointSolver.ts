@@ -47,7 +47,7 @@ export class BreakoutPointSolver extends BaseSolver {
         const idealBoundaryPoint = getBreakoutBoundaryIntersection({
           from: insidePort.position,
           to: outsideTarget,
-          boundary: this.input.boundary,
+          bounds: this.input.bounds,
         })
         if (!idealBoundaryPoint) continue
 
@@ -57,7 +57,7 @@ export class BreakoutPointSolver extends BaseSolver {
         ]
         const boundaryPoint = getAvailableBreakoutBoundaryPoint({
           idealPoint: idealBoundaryPoint,
-          boundary: this.input.boundary,
+          bounds: this.input.bounds,
           usedBoundaryPoints,
           boundaryPointSpacing: this.input.boundaryPointSpacing ?? 0,
           routeFrom: insidePort.position,
@@ -88,12 +88,12 @@ export class BreakoutPointSolver extends BaseSolver {
   }
 
   override visualize(): GraphicsObject {
-    const { boundary } = this.input
-    const width = boundary.right - boundary.left
-    const height = boundary.top - boundary.bottom
+    const { bounds } = this.input
+    const width = bounds.maxX - bounds.minX
+    const height = bounds.maxY - bounds.minY
     const center = {
-      x: boundary.left + width / 2,
-      y: boundary.bottom + height / 2,
+      x: bounds.minX + width / 2,
+      y: bounds.minY + height / 2,
     }
 
     return {
@@ -105,7 +105,7 @@ export class BreakoutPointSolver extends BaseSolver {
           height,
           fill: "rgba(210, 225, 255, 0.25)",
           stroke: "#315fba",
-          label: "breakout boundary",
+          label: "breakout bounds",
         },
         ...(this.input.visualComponents ?? []).map((component) => ({
           center: component.center,

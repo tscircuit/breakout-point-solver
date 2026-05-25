@@ -3,7 +3,7 @@ import { BreakoutPointSolver } from "lib/index"
 
 test("solves multiple breakout points around pads and keepout obstacles", () => {
   const solver = new BreakoutPointSolver({
-    boundary: { left: -5, right: 5, bottom: -4, top: 4 },
+    bounds: { minX: -5, maxX: 5, minY: -4, maxY: 4 },
     boundaryPointSpacing: 0.5,
     usedBoundaryPoints: [
       { x: 5, y: -0.5 },
@@ -247,7 +247,7 @@ test("solves multiple breakout points around pads and keepout obstacles", () => 
 
 test("ignores obstacle connected to the inside source port", () => {
   const solver = new BreakoutPointSolver({
-    boundary: { left: -5, right: 5, bottom: -4, top: 4 },
+    bounds: { minX: -5, maxX: 5, minY: -4, maxY: 4 },
     boundaryPointSpacing: 0.5,
     traces: [
       {

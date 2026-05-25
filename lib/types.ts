@@ -1,13 +1,4 @@
-import type { Point } from "@tscircuit/math-utils"
-
-export type { Point }
-
-export interface Boundary {
-  left: number
-  right: number
-  bottom: number
-  top: number
-}
+import type { Bounds, Point } from "@tscircuit/math-utils"
 
 export interface BreakoutPort {
   sourcePortId: string
@@ -40,7 +31,7 @@ export interface BreakoutObstacleRect {
 }
 
 export interface BreakoutPointSolverInput {
-  boundary: Boundary
+  bounds: Bounds
   traces: BreakoutTrace[]
   usedBoundaryPoints?: Point[]
   boundaryPointSpacing?: number

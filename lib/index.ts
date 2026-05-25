@@ -8,7 +8,6 @@ export {
 } from "./obstacle/breakout-obstacle-collisions"
 
 export type {
-  Boundary,
   BreakoutObstacleRect,
   BreakoutPort,
   BreakoutPointSolverInput,
@@ -16,5 +15,4 @@ export type {
   BreakoutPointSolverOutputPoint,
   BreakoutTrace,
   BreakoutVisualRect,
-  Point,
 } from "./types"

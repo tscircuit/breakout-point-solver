@@ -3,7 +3,7 @@ import { BreakoutPointSolver } from "lib/index"
 
 test("solves dense breakout points around many obstacles", () => {
   const solver = new BreakoutPointSolver({
-    boundary: { left: -6, right: 6, bottom: -5, top: 5 },
+    bounds: { minX: -6, maxX: 6, minY: -5, maxY: 5 },
     boundaryPointSpacing: 0.5,
     usedBoundaryPoints: [
       { x: 6, y: -1 },

@@ -6,7 +6,7 @@ test("gets ray intersection with breakout boundary", () => {
     getBreakoutBoundaryIntersection({
       from: { x: 0, y: 0 },
       to: { x: 10, y: 2 },
-      boundary: { left: -5, right: 5, bottom: -4, top: 4 },
+      bounds: { minX: -5, maxX: 5, minY: -4, maxY: 4 },
     }),
   ).toEqual({ x: 5, y: 1 })
 })
