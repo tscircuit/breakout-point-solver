@@ -132,7 +132,7 @@ export class BreakoutPointSolver extends BaseSolver {
           ccwRotationDegrees: obstacle.ccwRotationDegrees,
           fill: "rgba(220, 38, 38, 0.22)",
           stroke: "#b91c1c",
-          label: obstacle.label ?? obstacle.kind ?? "obstacle",
+          label: obstacle.label ?? "obstacle",
         })),
       ],
       lines: this.input.traces.flatMap((trace) =>

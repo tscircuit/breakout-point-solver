@@ -479,7 +479,6 @@
       "width": 6.959917500000007,
       "height": 14.939848200000107,
       "clearance": 0.15,
-      "kind": "component",
       "label": "pcb_component_5"
     },
     {
@@ -490,7 +489,6 @@
       "width": 9.449993799999987,
       "height": 7.489977400000189,
       "clearance": 0.15,
-      "kind": "component",
       "label": "pcb_component_6"
     },
     {
@@ -501,7 +499,6 @@
       "width": 5.449874800000117,
       "height": 1.6800068,
       "clearance": 0.15,
-      "kind": "component",
       "label": "pcb_component_7"
     },
     {
@@ -512,7 +509,6 @@
       "width": 8.397595599999967,
       "height": 5.699937799999947,
       "clearance": 0.15,
-      "kind": "component",
       "label": "pcb_component_8"
     },
     {
@@ -523,7 +519,6 @@
       "width": 8.359914699999923,
       "height": 5.699937799999947,
       "clearance": 0.15,
-      "kind": "component",
       "label": "pcb_component_9"
     },
     {
@@ -534,7 +529,6 @@
       "width": 1.5600000000000023,
       "height": 0.6400000000000001,
       "clearance": 0.15,
-      "kind": "component",
       "label": "pcb_component_10"
     },
     {
@@ -545,7 +539,6 @@
       "width": 2.850000000000005,
       "height": 1.3999999999999986,
       "clearance": 0.15,
-      "kind": "component",
       "label": "pcb_component_11"
     },
     {
@@ -556,7 +549,6 @@
       "width": 2.8500000000000014,
       "height": 1.3999999999999986,
       "clearance": 0.15,
-      "kind": "component",
       "label": "pcb_component_12"
     },
     {
@@ -567,7 +559,6 @@
       "width": 2.849999999999998,
       "height": 1.3999999999999986,
       "clearance": 0.15,
-      "kind": "component",
       "label": "pcb_component_13"
     },
     {
@@ -578,7 +569,6 @@
       "width": 2.8499999999999996,
       "height": 1.3999999999999986,
       "clearance": 0.15,
-      "kind": "component",
       "label": "pcb_component_14"
     },
     {
@@ -589,7 +579,6 @@
       "width": 3.6001451999999006,
       "height": 2.9500575999999654,
       "clearance": 0.15,
-      "kind": "component",
       "label": "pcb_component_16"
     },
     {
@@ -600,7 +589,6 @@
       "width": 1.5600000000000023,
       "height": 0.6400000000000006,
       "clearance": 0.15,
-      "kind": "component",
       "label": "pcb_component_17"
     },
     {
@@ -611,7 +599,6 @@
       "width": 1.5600000000000023,
       "height": 0.6400000000000006,
       "clearance": 0.15,
-      "kind": "component",
       "label": "pcb_component_18"
     },
     {
@@ -622,7 +609,6 @@
       "width": 1.5600000000000023,
       "height": 0.6399999999999999,
       "clearance": 0.15,
-      "kind": "component",
       "label": "pcb_component_19"
     },
     {
@@ -633,7 +619,6 @@
       "width": 1.5600000000000023,
       "height": 0.6399999999999999,
       "clearance": 0.15,
-      "kind": "component",
       "label": "pcb_component_20"
     },
     {
@@ -644,7 +629,6 @@
       "width": 1.5600000000000023,
       "height": 0.6399999999999997,
       "clearance": 0.15,
-      "kind": "component",
       "label": "pcb_component_21"
     },
     {
@@ -655,7 +639,6 @@
       "width": 1.5600000000000023,
       "height": 0.6399999999999997,
       "clearance": 0.15,
-      "kind": "component",
       "label": "pcb_component_22"
     },
     {
@@ -666,7 +649,6 @@
       "width": 1.5600000000000023,
       "height": 0.6400000000000006,
       "clearance": 0.15,
-      "kind": "component",
       "label": "pcb_component_23"
     },
     {
@@ -677,7 +659,6 @@
       "width": 1.5600000000000023,
       "height": 0.6400000000000006,
       "clearance": 0.15,
-      "kind": "component",
       "label": "pcb_component_24"
     },
     {
@@ -688,7 +669,6 @@
       "width": 2.4499999999999957,
       "height": 0.9499999999999993,
       "clearance": 0.15,
-      "kind": "component",
       "label": "pcb_component_25"
     },
     {
@@ -699,7 +679,6 @@
       "width": 1.5600000000000023,
       "height": 0.6400000000000006,
       "clearance": 0.15,
-      "kind": "component",
       "label": "pcb_component_26"
     },
     {
@@ -710,7 +689,6 @@
       "width": 2.450000000000003,
       "height": 0.9499999999999993,
       "clearance": 0.15,
-      "kind": "component",
       "label": "pcb_component_27"
     }
   ],

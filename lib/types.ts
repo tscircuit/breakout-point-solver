@@ -26,7 +26,6 @@ export interface BreakoutObstacleRect {
   ccwRotationDegrees?: number
   clearance?: number
   sourcePortIds?: string[]
-  kind?: "pad" | "component" | "keepout" | "trace" | "congestion"
   label?: string
 }
 
