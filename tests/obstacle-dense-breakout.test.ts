@@ -1,0 +1,366 @@
+import { expect, test } from "bun:test"
+import { BreakoutPointSolver } from "lib/index"
+
+test("solves dense breakout points around many obstacles", () => {
+  const solver = new BreakoutPointSolver({
+    boundary: { left: -6, right: 6, bottom: -5, top: 5 },
+    boundaryPointSpacing: 0.5,
+    usedBoundaryPoints: [
+      { x: 6, y: -1 },
+      { x: 6, y: 1 },
+      { x: -6, y: 0.5 },
+      { x: -1, y: 5 },
+      { x: 1, y: -5 },
+    ],
+    visualComponents: [
+      {
+        center: { x: 0, y: 0 },
+        width: 3.2,
+        height: 3.2,
+        label: "QFN body",
+      },
+    ],
+    visualPads: [
+      {
+        center: { x: 1.6, y: -1.2 },
+        width: 0.55,
+        height: 0.32,
+        label: "right pad 1",
+      },
+      {
+        center: { x: 1.6, y: -0.4 },
+        width: 0.55,
+        height: 0.32,
+        label: "right pad 2",
+      },
+      {
+        center: { x: 1.6, y: 0.4 },
+        width: 0.55,
+        height: 0.32,
+        label: "right pad 3",
+      },
+      {
+        center: { x: 1.6, y: 1.2 },
+        width: 0.55,
+        height: 0.32,
+        label: "right pad 4",
+      },
+      {
+        center: { x: -1.6, y: -1.2 },
+        width: 0.55,
+        height: 0.32,
+        label: "left pad 1",
+      },
+      {
+        center: { x: -1.6, y: -0.4 },
+        width: 0.55,
+        height: 0.32,
+        label: "left pad 2",
+      },
+      {
+        center: { x: -1.6, y: 0.4 },
+        width: 0.55,
+        height: 0.32,
+        label: "left pad 3",
+      },
+      {
+        center: { x: -1.6, y: 1.2 },
+        width: 0.55,
+        height: 0.32,
+        label: "left pad 4",
+      },
+      {
+        center: { x: -1.2, y: 1.6 },
+        width: 0.32,
+        height: 0.55,
+        label: "top pad 1",
+      },
+      {
+        center: { x: -0.4, y: 1.6 },
+        width: 0.32,
+        height: 0.55,
+        label: "top pad 2",
+      },
+      {
+        center: { x: 0.4, y: 1.6 },
+        width: 0.32,
+        height: 0.55,
+        label: "top pad 3",
+      },
+      {
+        center: { x: 1.2, y: 1.6 },
+        width: 0.32,
+        height: 0.55,
+        label: "top pad 4",
+      },
+      {
+        center: { x: -1.2, y: -1.6 },
+        width: 0.32,
+        height: 0.55,
+        label: "bottom pad 1",
+      },
+      {
+        center: { x: -0.4, y: -1.6 },
+        width: 0.32,
+        height: 0.55,
+        label: "bottom pad 2",
+      },
+      {
+        center: { x: 0.4, y: -1.6 },
+        width: 0.32,
+        height: 0.55,
+        label: "bottom pad 3",
+      },
+      {
+        center: { x: 1.2, y: -1.6 },
+        width: 0.32,
+        height: 0.55,
+        label: "bottom pad 4",
+      },
+    ],
+    traces: [
+      {
+        sourceTraceId: "source_trace_right_1",
+        insidePorts: [
+          {
+            sourcePortId: "source_port_right_1",
+            position: { x: 1.6, y: -1.2 },
+          },
+        ],
+        outsidePorts: [
+          {
+            sourcePortId: "source_port_header_right_1",
+            position: { x: 11, y: -1.8 },
+          },
+        ],
+      },
+      {
+        sourceTraceId: "source_trace_right_2",
+        insidePorts: [
+          { sourcePortId: "source_port_right_3", position: { x: 1.6, y: 0.4 } },
+        ],
+        outsidePorts: [
+          {
+            sourcePortId: "source_port_header_right_2",
+            position: { x: 11, y: 1.2 },
+          },
+        ],
+      },
+      {
+        sourceTraceId: "source_trace_left_1",
+        insidePorts: [
+          {
+            sourcePortId: "source_port_left_1",
+            position: { x: -1.6, y: -1.2 },
+          },
+        ],
+        outsidePorts: [
+          {
+            sourcePortId: "source_port_header_left_1",
+            position: { x: -11, y: -1.6 },
+          },
+        ],
+      },
+      {
+        sourceTraceId: "source_trace_left_2",
+        insidePorts: [
+          { sourcePortId: "source_port_left_4", position: { x: -1.6, y: 1.2 } },
+        ],
+        outsidePorts: [
+          {
+            sourcePortId: "source_port_header_left_2",
+            position: { x: -11, y: 1.5 },
+          },
+        ],
+      },
+      {
+        sourceTraceId: "source_trace_top_1",
+        insidePorts: [
+          { sourcePortId: "source_port_top_1", position: { x: -1.2, y: 1.6 } },
+        ],
+        outsidePorts: [
+          {
+            sourcePortId: "source_port_header_top_1",
+            position: { x: -2.2, y: 10 },
+          },
+        ],
+      },
+      {
+        sourceTraceId: "source_trace_top_2",
+        insidePorts: [
+          { sourcePortId: "source_port_top_4", position: { x: 1.2, y: 1.6 } },
+        ],
+        outsidePorts: [
+          {
+            sourcePortId: "source_port_header_top_2",
+            position: { x: 2.4, y: 10 },
+          },
+        ],
+      },
+      {
+        sourceTraceId: "source_trace_bottom_1",
+        insidePorts: [
+          {
+            sourcePortId: "source_port_bottom_1",
+            position: { x: -1.2, y: -1.6 },
+          },
+        ],
+        outsidePorts: [
+          {
+            sourcePortId: "source_port_header_bottom_1",
+            position: { x: -2.4, y: -10 },
+          },
+        ],
+      },
+      {
+        sourceTraceId: "source_trace_bottom_2",
+        insidePorts: [
+          {
+            sourcePortId: "source_port_bottom_4",
+            position: { x: 1.2, y: -1.6 },
+          },
+        ],
+        outsidePorts: [
+          {
+            sourcePortId: "source_port_header_bottom_2",
+            position: { x: 2.4, y: -10 },
+          },
+        ],
+      },
+    ],
+    obstacles: [
+      {
+        center: { x: 3.2, y: -0.35 },
+        width: 1.1,
+        height: 0.9,
+        clearance: 0.1,
+        kind: "keepout",
+        label: "right lower keepout",
+      },
+      {
+        center: { x: 3.5, y: 0.9 },
+        width: 0.9,
+        height: 1.7,
+        ccwRotationDegrees: 30,
+        kind: "component",
+        label: "right rotated body",
+      },
+      {
+        center: { x: -3.2, y: -1.2 },
+        width: 1.1,
+        height: 1.1,
+        kind: "keepout",
+        label: "left lower keepout",
+      },
+      {
+        center: { x: -3.4, y: 1.3 },
+        width: 0.9,
+        height: 1.5,
+        ccwRotationDegrees: -25,
+        kind: "component",
+        label: "left rotated body",
+      },
+      {
+        center: { x: -1.6, y: 3.2 },
+        width: 1.4,
+        height: 1.1,
+        kind: "keepout",
+        label: "top left keepout",
+      },
+      {
+        center: { x: 1.8, y: 3.2 },
+        width: 1.2,
+        height: 1.2,
+        kind: "keepout",
+        label: "top right keepout",
+      },
+      {
+        center: { x: -1.8, y: -3.2 },
+        width: 1.2,
+        height: 1.2,
+        ccwRotationDegrees: 20,
+        kind: "component",
+        label: "bottom left rotated body",
+      },
+      {
+        center: { x: 1.8, y: -3.2 },
+        width: 1.2,
+        height: 1.2,
+        kind: "keepout",
+        label: "bottom right keepout",
+      },
+      {
+        center: { x: 1.6, y: 0.4 },
+        width: 0.8,
+        height: 0.8,
+        kind: "pad",
+        sourcePortIds: ["source_port_right_3"],
+        label: "right self pad",
+      },
+      {
+        center: { x: -1.2, y: -1.6 },
+        width: 0.8,
+        height: 0.8,
+        kind: "pad",
+        sourcePortIds: ["source_port_bottom_1"],
+        label: "bottom self pad",
+      },
+    ],
+  })
+
+  solver.solve()
+
+  expect(solver.getOutput()).toEqual({
+    breakoutPoints: [
+      {
+        sourcePortId: "source_port_right_1",
+        sourceTraceId: "source_trace_right_1",
+        x: 6,
+        y: -1.5,
+      },
+      {
+        sourcePortId: "source_port_right_3",
+        sourceTraceId: "source_trace_right_2",
+        x: 6,
+        y: 4.5,
+      },
+      {
+        sourcePortId: "source_port_left_1",
+        sourceTraceId: "source_trace_left_1",
+        x: -6,
+        y: 1.5,
+      },
+      {
+        sourcePortId: "source_port_left_4",
+        sourceTraceId: "source_trace_left_2",
+        x: -6,
+        y: -1,
+      },
+      {
+        sourcePortId: "source_port_top_1",
+        sourceTraceId: "source_trace_top_1",
+        x: 0,
+        y: 5,
+      },
+      {
+        sourcePortId: "source_port_top_4",
+        sourceTraceId: "source_trace_top_2",
+        x: 1,
+        y: 5,
+      },
+      {
+        sourcePortId: "source_port_bottom_1",
+        sourceTraceId: "source_trace_bottom_1",
+        x: -0.5,
+        y: -5,
+      },
+      {
+        sourcePortId: "source_port_bottom_4",
+        sourceTraceId: "source_trace_bottom_2",
+        x: 0.5,
+        y: -5,
+      },
+    ],
+  })
+  expect(solver).toMatchSolverSnapshot(import.meta.path)
+})

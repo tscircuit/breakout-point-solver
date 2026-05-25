@@ -60,6 +60,10 @@ export class BreakoutPointSolver extends BaseSolver {
           boundary: this.input.boundary,
           usedBoundaryPoints,
           boundaryPointSpacing: this.input.boundaryPointSpacing ?? 0,
+          boundaryCandidateSearchStep: this.input.boundaryCandidateSearchStep,
+          routeFrom: insidePort.position,
+          obstacles: this.input.obstacles,
+          sourcePortId: insidePort.sourcePortId,
         })
         if (!boundaryPoint) continue
 
@@ -121,6 +125,15 @@ export class BreakoutPointSolver extends BaseSolver {
           fill: "rgba(170, 120, 40, 0.75)",
           stroke: "#4e342e",
           label: pad.label ?? "pad",
+        })),
+        ...(this.input.obstacles ?? []).map((obstacle) => ({
+          center: obstacle.center,
+          width: obstacle.width + (obstacle.clearance ?? 0) * 2,
+          height: obstacle.height + (obstacle.clearance ?? 0) * 2,
+          ccwRotationDegrees: obstacle.ccwRotationDegrees,
+          fill: "rgba(220, 38, 38, 0.22)",
+          stroke: "#b91c1c",
+          label: obstacle.label ?? obstacle.kind ?? "obstacle",
         })),
       ],
       lines: this.input.traces.flatMap((trace) =>
