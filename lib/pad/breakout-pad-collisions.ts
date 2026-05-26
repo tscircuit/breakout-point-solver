@@ -1,4 +1,8 @@
-import { doesSegmentIntersectRect, type Point } from "@tscircuit/math-utils"
+import {
+  doesSegmentIntersectRect,
+  getBoundFromCenteredRect,
+  type Point,
+} from "@tscircuit/math-utils"
 import type { BreakoutPad, PcbLayer } from "lib/types"
 
 const degreesToRadians = (degrees: number) => (degrees * Math.PI) / 180
@@ -27,15 +31,12 @@ const getLocalPadPoint = (point: Point, pad: BreakoutPad): Point => {
 
 const getInflatedPadRect = (pad: BreakoutPad) => {
   const clearance = pad.clearance ?? 0
-  const halfWidth = pad.width / 2 + clearance
-  const halfHeight = pad.height / 2 + clearance
 
-  return {
-    minX: -halfWidth,
-    maxX: halfWidth,
-    minY: -halfHeight,
-    maxY: halfHeight,
-  }
+  return getBoundFromCenteredRect({
+    center: { x: 0, y: 0 },
+    width: pad.width + clearance * 2,
+    height: pad.height + clearance * 2,
+  })
 }
 
 export const isBreakoutPadIgnoredForSourcePort = ({
