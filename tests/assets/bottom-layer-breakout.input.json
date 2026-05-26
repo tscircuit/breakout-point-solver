@@ -1,0 +1,64 @@
+{
+  "bounds": {
+    "minX": -5,
+    "maxX": 5,
+    "minY": -4,
+    "maxY": 4
+  },
+  "boundaryPointSpacing": 0.5,
+  "traces": [
+    {
+      "sourceTraceId": "source_trace_bottom",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_bottom_inside",
+          "position": {
+            "x": 1.2,
+            "y": 0
+          },
+          "width": 0.55,
+          "height": 0.35,
+          "layer": "bottom",
+          "label": "bottom QFN pad"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_bottom_outside",
+          "position": {
+            "x": 10,
+            "y": 0
+          },
+          "width": 1.2,
+          "height": 1.2,
+          "layer": "bottom",
+          "label": "bottom header pad"
+        }
+      ]
+    }
+  ],
+  "obstacles": [
+    {
+      "center": {
+        "x": 3,
+        "y": 0
+      },
+      "width": 3,
+      "height": 1.6,
+      "clearance": 0.1,
+      "layer": "top",
+      "label": "top obstacle ignored"
+    },
+    {
+      "center": {
+        "x": 3,
+        "y": 0
+      },
+      "width": 2,
+      "height": 0.8,
+      "clearance": 0.1,
+      "layer": "bottom",
+      "label": "bottom obstacle blocks"
+    }
+  ]
+}

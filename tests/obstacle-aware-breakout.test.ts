@@ -3,117 +3,11 @@ import { BreakoutPointSolver } from "lib/index"
 
 test("solves multiple breakout points around pads and keepout obstacles", () => {
   const solver = new BreakoutPointSolver({
-    boundary: { left: -5, right: 5, bottom: -4, top: 4 },
+    bounds: { minX: -5, maxX: 5, minY: -4, maxY: 4 },
     boundaryPointSpacing: 0.5,
     usedBoundaryPoints: [
       { x: 5, y: -0.5 },
       { x: 0.5, y: 4 },
-    ],
-    visualComponents: [
-      {
-        center: { x: 0, y: 0 },
-        width: 2.8,
-        height: 2.8,
-        label: "QFN body",
-      },
-    ],
-    visualPads: [
-      {
-        center: { x: 1.4, y: -1.05 },
-        width: 0.55,
-        height: 0.32,
-        label: "right pad 1",
-      },
-      {
-        center: { x: 1.4, y: -0.35 },
-        width: 0.55,
-        height: 0.32,
-        label: "right pad 2",
-      },
-      {
-        center: { x: 1.4, y: 0.35 },
-        width: 0.55,
-        height: 0.32,
-        label: "right pad 3",
-      },
-      {
-        center: { x: 1.4, y: 1.05 },
-        width: 0.55,
-        height: 0.32,
-        label: "right pad 4",
-      },
-      {
-        center: { x: -1.4, y: -1.05 },
-        width: 0.55,
-        height: 0.32,
-        label: "left pad 1",
-      },
-      {
-        center: { x: -1.4, y: -0.35 },
-        width: 0.55,
-        height: 0.32,
-        label: "left pad 2",
-      },
-      {
-        center: { x: -1.4, y: 0.35 },
-        width: 0.55,
-        height: 0.32,
-        label: "left pad 3",
-      },
-      {
-        center: { x: -1.4, y: 1.05 },
-        width: 0.55,
-        height: 0.32,
-        label: "left pad 4",
-      },
-      {
-        center: { x: -1.05, y: 1.4 },
-        width: 0.32,
-        height: 0.55,
-        label: "top pad 1",
-      },
-      {
-        center: { x: -0.35, y: 1.4 },
-        width: 0.32,
-        height: 0.55,
-        label: "top pad 2",
-      },
-      {
-        center: { x: 0.35, y: 1.4 },
-        width: 0.32,
-        height: 0.55,
-        label: "top pad 3",
-      },
-      {
-        center: { x: 1.05, y: 1.4 },
-        width: 0.32,
-        height: 0.55,
-        label: "top pad 4",
-      },
-      {
-        center: { x: -1.05, y: -1.4 },
-        width: 0.32,
-        height: 0.55,
-        label: "bottom pad 1",
-      },
-      {
-        center: { x: -0.35, y: -1.4 },
-        width: 0.32,
-        height: 0.55,
-        label: "bottom pad 2",
-      },
-      {
-        center: { x: 0.35, y: -1.4 },
-        width: 0.32,
-        height: 0.55,
-        label: "bottom pad 3",
-      },
-      {
-        center: { x: 1.05, y: -1.4 },
-        width: 0.32,
-        height: 0.55,
-        label: "bottom pad 4",
-      },
     ],
     traces: [
       {
@@ -122,6 +16,8 @@ test("solves multiple breakout points around pads and keepout obstacles", () => 
           {
             sourcePortId: "source_port_right_1",
             position: { x: 1.4, y: -1.05 },
+            width: 0.55,
+            height: 0.32,
           },
         ],
         outsidePorts: [
@@ -137,6 +33,8 @@ test("solves multiple breakout points around pads and keepout obstacles", () => 
           {
             sourcePortId: "source_port_right_2",
             position: { x: 1.4, y: 1.05 },
+            width: 0.55,
+            height: 0.32,
           },
         ],
         outsidePorts: [
@@ -152,6 +50,8 @@ test("solves multiple breakout points around pads and keepout obstacles", () => 
           {
             sourcePortId: "source_port_top",
             position: { x: -0.35, y: 1.4 },
+            width: 0.32,
+            height: 0.55,
           },
         ],
         outsidePorts: [
@@ -167,6 +67,8 @@ test("solves multiple breakout points around pads and keepout obstacles", () => 
           {
             sourcePortId: "source_port_bottom",
             position: { x: 0.35, y: -1.4 },
+            width: 0.32,
+            height: 0.55,
           },
         ],
         outsidePorts: [
@@ -183,7 +85,6 @@ test("solves multiple breakout points around pads and keepout obstacles", () => 
         width: 1,
         height: 0.9,
         clearance: 0.1,
-        kind: "keepout",
         label: "right keepout",
       },
       {
@@ -191,21 +92,18 @@ test("solves multiple breakout points around pads and keepout obstacles", () => 
         width: 0.8,
         height: 1.4,
         ccwRotationDegrees: 35,
-        kind: "component",
         label: "rotated component",
       },
       {
         center: { x: -0.7, y: 2.8 },
         width: 0.9,
         height: 1.2,
-        kind: "keepout",
         label: "top keepout",
       },
       {
         center: { x: 0.35, y: -1.4 },
         width: 0.8,
         height: 0.8,
-        kind: "pad",
         sourcePortIds: ["source_port_bottom"],
         label: "self pad",
       },
@@ -247,7 +145,7 @@ test("solves multiple breakout points around pads and keepout obstacles", () => 
 
 test("ignores obstacle connected to the inside source port", () => {
   const solver = new BreakoutPointSolver({
-    boundary: { left: -5, right: 5, bottom: -4, top: 4 },
+    bounds: { minX: -5, maxX: 5, minY: -4, maxY: 4 },
     boundaryPointSpacing: 0.5,
     traces: [
       {
@@ -256,6 +154,8 @@ test("ignores obstacle connected to the inside source port", () => {
           {
             sourcePortId: "source_port_inside_1",
             position: { x: 0, y: 0 },
+            width: 0.55,
+            height: 0.32,
           },
         ],
         outsidePorts: [
@@ -271,7 +171,6 @@ test("ignores obstacle connected to the inside source port", () => {
         center: { x: 0, y: 0 },
         width: 1,
         height: 1,
-        kind: "pad",
         sourcePortIds: ["source_port_inside_1"],
       },
     ],

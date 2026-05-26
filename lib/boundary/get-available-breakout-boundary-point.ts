@@ -1,8 +1,8 @@
-import { distance, type Point } from "@tscircuit/math-utils"
-import type { Boundary, BreakoutObstacleRect } from "lib/types"
+import { distance, type Bounds, type Point } from "@tscircuit/math-utils"
+import type { BreakoutObstacleRect, PcbLayer } from "lib/types"
 import { doesBreakoutSegmentIntersectObstacles } from "lib/obstacle/breakout-obstacle-collisions"
 
-type BoundaryEdge = "left" | "right" | "bottom" | "top"
+type BoundsEdge = "left" | "right" | "bottom" | "top"
 
 const BOUNDARY_POINT_DISTANCE_TOLERANCE = 1e-6
 
@@ -18,41 +18,38 @@ const isInsideRequiredSpacing = ({
   distance(usedPoint, candidate) <
   boundaryPointSpacing - BOUNDARY_POINT_DISTANCE_TOLERANCE
 
-const getBoundaryEdge = (
-  point: Point,
-  boundary: Boundary,
-): BoundaryEdge | null => {
-  if (Math.abs(point.x - boundary.left) < BOUNDARY_POINT_DISTANCE_TOLERANCE)
+const getBoundsEdge = (point: Point, bounds: Bounds): BoundsEdge | null => {
+  if (Math.abs(point.x - bounds.minX) < BOUNDARY_POINT_DISTANCE_TOLERANCE)
     return "left"
-  if (Math.abs(point.x - boundary.right) < BOUNDARY_POINT_DISTANCE_TOLERANCE)
+  if (Math.abs(point.x - bounds.maxX) < BOUNDARY_POINT_DISTANCE_TOLERANCE)
     return "right"
-  if (Math.abs(point.y - boundary.bottom) < BOUNDARY_POINT_DISTANCE_TOLERANCE)
+  if (Math.abs(point.y - bounds.minY) < BOUNDARY_POINT_DISTANCE_TOLERANCE)
     return "bottom"
-  if (Math.abs(point.y - boundary.top) < BOUNDARY_POINT_DISTANCE_TOLERANCE)
+  if (Math.abs(point.y - bounds.maxY) < BOUNDARY_POINT_DISTANCE_TOLERANCE)
     return "top"
   return null
 }
 
-const getBoundaryEdgeCandidates = ({
+const getBoundsEdgeCandidates = ({
   edge,
-  boundary,
+  bounds,
   step,
 }: {
-  edge: BoundaryEdge
-  boundary: Boundary
+  edge: BoundsEdge
+  bounds: Bounds
   step: number
 }) => {
   const candidates: Point[] = []
 
   if (edge === "left" || edge === "right") {
-    const x = edge === "left" ? boundary.left : boundary.right
-    for (let y = boundary.bottom; y <= boundary.top + step / 2; y += step) {
-      candidates.push({ x, y: Math.min(y, boundary.top) })
+    const x = edge === "left" ? bounds.minX : bounds.maxX
+    for (let y = bounds.minY; y <= bounds.maxY + step / 2; y += step) {
+      candidates.push({ x, y: Math.min(y, bounds.maxY) })
     }
   } else {
-    const y = edge === "bottom" ? boundary.bottom : boundary.top
-    for (let x = boundary.left; x <= boundary.right + step / 2; x += step) {
-      candidates.push({ x: Math.min(x, boundary.right), y })
+    const y = edge === "bottom" ? bounds.minY : bounds.maxY
+    for (let x = bounds.minX; x <= bounds.maxX + step / 2; x += step) {
+      candidates.push({ x: Math.min(x, bounds.maxX), y })
     }
   }
 
@@ -60,23 +57,15 @@ const getBoundaryEdgeCandidates = ({
 }
 
 const getBoundaryCandidateSearchStep = ({
-  boundary,
+  bounds,
   boundaryPointSpacing,
-  boundaryCandidateSearchStep,
 }: {
-  boundary: Boundary
+  bounds: Bounds
   boundaryPointSpacing: number
-  boundaryCandidateSearchStep?: number
 }) => {
-  if (boundaryCandidateSearchStep !== undefined) {
-    return boundaryCandidateSearchStep
-  }
   if (boundaryPointSpacing > 0) return boundaryPointSpacing
 
-  return (
-    Math.min(boundary.right - boundary.left, boundary.top - boundary.bottom) /
-    40
-  )
+  return Math.min(bounds.maxX - bounds.minX, bounds.maxY - bounds.minY) / 40
 }
 
 const hasBoundarySpacingConflict = ({
@@ -108,11 +97,13 @@ const isBoundaryCandidateBlocked = ({
   routeFrom,
   obstacles,
   sourcePortId,
+  layer,
 }: {
   candidate: Point
   routeFrom?: Point
   obstacles?: BreakoutObstacleRect[]
   sourcePortId?: string
+  layer?: PcbLayer
 }) => {
   if (!routeFrom || !obstacles || !sourcePortId) return false
 
@@ -121,6 +112,7 @@ const isBoundaryCandidateBlocked = ({
     to: candidate,
     obstacles,
     sourcePortId,
+    layer,
   })
 }
 
@@ -131,6 +123,7 @@ const isCandidateAvailable = ({
   routeFrom,
   obstacles,
   sourcePortId,
+  layer,
 }: {
   candidate: Point
   usedBoundaryPoints: Point[]
@@ -138,6 +131,7 @@ const isCandidateAvailable = ({
   routeFrom?: Point
   obstacles?: BreakoutObstacleRect[]
   sourcePortId?: string
+  layer?: PcbLayer
 }) => {
   if (
     hasBoundarySpacingConflict({
@@ -154,27 +148,28 @@ const isCandidateAvailable = ({
     routeFrom,
     obstacles,
     sourcePortId,
+    layer,
   })
 }
 
 export const getAvailableBreakoutBoundaryPoint = ({
   idealPoint,
-  boundary,
+  bounds,
   usedBoundaryPoints,
   boundaryPointSpacing,
-  boundaryCandidateSearchStep,
   routeFrom,
   obstacles,
   sourcePortId,
+  layer,
 }: {
   idealPoint: Point
-  boundary: Boundary
+  bounds: Bounds
   usedBoundaryPoints: Point[]
   boundaryPointSpacing: number
-  boundaryCandidateSearchStep?: number
   routeFrom?: Point
   obstacles?: BreakoutObstacleRect[]
   sourcePortId?: string
+  layer?: PcbLayer
 }): Point | null => {
   if (
     isCandidateAvailable({
@@ -184,24 +179,24 @@ export const getAvailableBreakoutBoundaryPoint = ({
       routeFrom,
       obstacles,
       sourcePortId,
+      layer,
     })
   ) {
     return idealPoint
   }
 
-  const edge = getBoundaryEdge(idealPoint, boundary)
+  const edge = getBoundsEdge(idealPoint, bounds)
   if (!edge) return null
 
   const step = getBoundaryCandidateSearchStep({
-    boundary,
+    bounds,
     boundaryPointSpacing,
-    boundaryCandidateSearchStep,
   })
   if (step <= 0) return null
 
-  const candidates = getBoundaryEdgeCandidates({
+  const candidates = getBoundsEdgeCandidates({
     edge,
-    boundary,
+    bounds,
     step,
   })
 
@@ -216,6 +211,7 @@ export const getAvailableBreakoutBoundaryPoint = ({
         routeFrom,
         obstacles,
         sourcePortId,
+        layer,
       })
     ) {
       return candidate

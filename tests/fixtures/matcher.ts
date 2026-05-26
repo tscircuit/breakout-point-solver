@@ -5,6 +5,12 @@ type VisualSolver = {
   visualize: () => GraphicsObject
 }
 
+interface SolverSnapshotOptions {
+  svgName?: string
+  svgWidth?: number
+  svgHeight?: number
+}
+
 const getAllGraphicsElements = (graphicsObject: GraphicsObject) => {
   return [
     ...(graphicsObject.lines ?? []),
@@ -19,8 +25,12 @@ async function toMatchSolverSnapshot(
   this: unknown,
   received: VisualSolver,
   testPath: string,
-  svgName?: string,
+  optionsOrSvgName?: SolverSnapshotOptions | string,
 ): Promise<MatcherResult> {
+  const options =
+    typeof optionsOrSvgName === "string"
+      ? { svgName: optionsOrSvgName }
+      : (optionsOrSvgName ?? {})
   const graphicsObject = received.visualize()
   const allElements = getAllGraphicsElements(graphicsObject)
   const lastStep = allElements.reduce(
@@ -48,9 +58,11 @@ async function toMatchSolverSnapshot(
 
   const svg = getSvgFromGraphicsObject(graphicsObject, {
     backgroundColor: "white",
+    svgWidth: options.svgWidth,
+    svgHeight: options.svgHeight,
   })
 
-  return expect(svg).toMatchSvgSnapshot(testPath, svgName)
+  return expect(svg).toMatchSvgSnapshot(testPath, options.svgName)
 }
 
 expect.extend({
@@ -61,7 +73,7 @@ declare module "bun:test" {
   interface Matchers<T = unknown> {
     toMatchSolverSnapshot(
       testPath: string,
-      svgName?: string,
+      optionsOrSvgName?: SolverSnapshotOptions | string,
     ): Promise<MatcherResult>
   }
 }

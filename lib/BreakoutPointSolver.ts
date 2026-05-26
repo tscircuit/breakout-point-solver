@@ -5,10 +5,81 @@ import type {
   BreakoutPointSolverInput,
   BreakoutPointSolverOutput,
   BreakoutPointSolverOutputPoint,
+  BreakoutPort,
   BreakoutTrace,
+  PcbLayer,
 } from "./types"
 import { getBreakoutBoundaryIntersection } from "./boundary/get-breakout-boundary-intersection"
 import { getAvailableBreakoutBoundaryPoint } from "./boundary/get-available-breakout-boundary-point"
+
+type GraphicsRect = NonNullable<GraphicsObject["rects"]>[number]
+
+type LayerVisualStyle = {
+  insidePadFill: string
+  insidePadStroke: string
+  insidePointColor: string
+  outsidePadFill: string
+  outsidePadStroke: string
+  outsidePointColor: string
+  obstacleFill: string
+  obstacleStroke: string
+  traceStroke: string
+  breakoutPointColor: string
+}
+
+const getLayerVisualStyle = (layer?: PcbLayer): LayerVisualStyle => {
+  if (layer === "bottom") {
+    return {
+      insidePadFill: "rgba(2, 132, 199, 0.28)",
+      insidePadStroke: "#0369a1",
+      insidePointColor: "#0369a1",
+      outsidePadFill: "rgba(30, 64, 175, 0.2)",
+      outsidePadStroke: "#1e40af",
+      outsidePointColor: "#1e40af",
+      obstacleFill: "rgba(37, 99, 235, 0.18)",
+      obstacleStroke: "#1d4ed8",
+      traceStroke: "#2563eb",
+      breakoutPointColor: "#0f766e",
+    }
+  }
+
+  return {
+    insidePadFill: "rgba(46, 125, 50, 0.28)",
+    insidePadStroke: "#1b5e20",
+    insidePointColor: "#1b5e20",
+    outsidePadFill: "rgba(106, 27, 154, 0.2)",
+    outsidePadStroke: "#6a1b9a",
+    outsidePointColor: "#6a1b9a",
+    obstacleFill: "rgba(220, 38, 38, 0.22)",
+    obstacleStroke: "#b91c1c",
+    traceStroke: "#7e8794",
+    breakoutPointColor: "#0d47a1",
+  }
+}
+
+const getPortPadRect = ({
+  port,
+  fill,
+  stroke,
+  fallbackLabel,
+}: {
+  port: BreakoutPort
+  fill: string
+  stroke: string
+  fallbackLabel: string
+}): GraphicsRect | null => {
+  if (port.width === undefined || port.height === undefined) return null
+
+  return {
+    center: port.position,
+    width: port.width,
+    height: port.height,
+    ccwRotationDegrees: port.ccwRotationDegrees,
+    fill,
+    stroke,
+    label: port.label ?? fallbackLabel,
+  }
+}
 
 const getOutsideTarget = (trace: BreakoutTrace): Point | null => {
   if (trace.outsidePorts.length === 0) return null
@@ -47,7 +118,7 @@ export class BreakoutPointSolver extends BaseSolver {
         const idealBoundaryPoint = getBreakoutBoundaryIntersection({
           from: insidePort.position,
           to: outsideTarget,
-          boundary: this.input.boundary,
+          bounds: this.input.bounds,
         })
         if (!idealBoundaryPoint) continue
 
@@ -57,13 +128,13 @@ export class BreakoutPointSolver extends BaseSolver {
         ]
         const boundaryPoint = getAvailableBreakoutBoundaryPoint({
           idealPoint: idealBoundaryPoint,
-          boundary: this.input.boundary,
+          bounds: this.input.bounds,
           usedBoundaryPoints,
           boundaryPointSpacing: this.input.boundaryPointSpacing ?? 0,
-          boundaryCandidateSearchStep: this.input.boundaryCandidateSearchStep,
           routeFrom: insidePort.position,
           obstacles: this.input.obstacles,
           sourcePortId: insidePort.sourcePortId,
+          layer: insidePort.layer,
         })
         if (!boundaryPoint) continue
 
@@ -72,6 +143,7 @@ export class BreakoutPointSolver extends BaseSolver {
           sourceTraceId: trace.sourceTraceId,
           x: boundaryPoint.x,
           y: boundaryPoint.y,
+          ...(insidePort.layer ? { layer: insidePort.layer } : {}),
         })
       }
     }
@@ -89,12 +161,12 @@ export class BreakoutPointSolver extends BaseSolver {
   }
 
   override visualize(): GraphicsObject {
-    const { boundary } = this.input
-    const width = boundary.right - boundary.left
-    const height = boundary.top - boundary.bottom
+    const { bounds } = this.input
+    const width = bounds.maxX - bounds.minX
+    const height = bounds.maxY - bounds.minY
     const center = {
-      x: boundary.left + width / 2,
-      y: boundary.bottom + height / 2,
+      x: bounds.minX + width / 2,
+      y: bounds.minY + height / 2,
     }
 
     return {
@@ -106,34 +178,38 @@ export class BreakoutPointSolver extends BaseSolver {
           height,
           fill: "rgba(210, 225, 255, 0.25)",
           stroke: "#315fba",
-          label: "breakout boundary",
+          label: "breakout bounds",
         },
-        ...(this.input.visualComponents ?? []).map((component) => ({
-          center: component.center,
-          width: component.width,
-          height: component.height,
-          ccwRotationDegrees: component.ccwRotationDegrees,
-          fill: "rgba(255, 245, 170, 0.65)",
-          stroke: "#7a5b00",
-          label: component.label ?? "component",
-        })),
-        ...(this.input.visualPads ?? []).map((pad) => ({
-          center: pad.center,
-          width: pad.width,
-          height: pad.height,
-          ccwRotationDegrees: pad.ccwRotationDegrees,
-          fill: "rgba(170, 120, 40, 0.75)",
-          stroke: "#4e342e",
-          label: pad.label ?? "pad",
-        })),
+        ...this.input.traces.flatMap((trace) =>
+          trace.insidePorts.flatMap((port) => {
+            const rect = getPortPadRect({
+              port,
+              fill: getLayerVisualStyle(port.layer).insidePadFill,
+              stroke: getLayerVisualStyle(port.layer).insidePadStroke,
+              fallbackLabel: `inside pad ${port.sourcePortId}`,
+            })
+            return rect ? [rect] : []
+          }),
+        ),
+        ...this.input.traces.flatMap((trace) =>
+          trace.outsidePorts.flatMap((port) => {
+            const rect = getPortPadRect({
+              port,
+              fill: getLayerVisualStyle(port.layer).outsidePadFill,
+              stroke: getLayerVisualStyle(port.layer).outsidePadStroke,
+              fallbackLabel: `outside pad ${port.sourcePortId}`,
+            })
+            return rect ? [rect] : []
+          }),
+        ),
         ...(this.input.obstacles ?? []).map((obstacle) => ({
           center: obstacle.center,
           width: obstacle.width + (obstacle.clearance ?? 0) * 2,
           height: obstacle.height + (obstacle.clearance ?? 0) * 2,
           ccwRotationDegrees: obstacle.ccwRotationDegrees,
-          fill: "rgba(220, 38, 38, 0.22)",
-          stroke: "#b91c1c",
-          label: obstacle.label ?? obstacle.kind ?? "obstacle",
+          fill: getLayerVisualStyle(obstacle.layer).obstacleFill,
+          stroke: getLayerVisualStyle(obstacle.layer).obstacleStroke,
+          label: obstacle.label ?? "obstacle",
         })),
       ],
       lines: this.input.traces.flatMap((trace) =>
@@ -154,7 +230,7 @@ export class BreakoutPointSolver extends BaseSolver {
                 insidePort.position,
                 { x: breakoutPoint.x, y: breakoutPoint.y },
               ],
-              strokeColor: "#7e8794",
+              strokeColor: getLayerVisualStyle(insidePort.layer).traceStroke,
               label: `breakout segment ${trace.sourceTraceId}`,
             },
             {
@@ -162,7 +238,7 @@ export class BreakoutPointSolver extends BaseSolver {
                 { x: breakoutPoint.x, y: breakoutPoint.y },
                 outsideTarget,
               ],
-              strokeColor: "#7e8794",
+              strokeColor: getLayerVisualStyle(insidePort.layer).traceStroke,
               strokeDash: "0.15 0.15",
               label: `target guide ${trace.sourceTraceId}`,
             },
@@ -173,21 +249,21 @@ export class BreakoutPointSolver extends BaseSolver {
         ...this.input.traces.flatMap((trace) =>
           trace.insidePorts.map((port) => ({
             ...port.position,
-            color: "#1b5e20",
+            color: getLayerVisualStyle(port.layer).insidePointColor,
             label: `inside pad ${port.sourcePortId}`,
           })),
         ),
         ...this.input.traces.flatMap((trace) =>
           trace.outsidePorts.map((port) => ({
             ...port.position,
-            color: "#6a1b9a",
+            color: getLayerVisualStyle(port.layer).outsidePointColor,
             label: `outside target ${port.sourcePortId}`,
           })),
         ),
         ...this.output.breakoutPoints.map((point) => ({
           x: point.x,
           y: point.y,
-          color: "#0d47a1",
+          color: getLayerVisualStyle(point.layer).breakoutPointColor,
           label: `selected breakout ${point.sourcePortId}`,
         })),
         ...(this.input.usedBoundaryPoints ?? []).map((point) => ({

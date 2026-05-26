@@ -1,0 +1,893 @@
+{
+  "bounds": {
+    "minX": 3.1,
+    "maxX": 17.5,
+    "minY": -7.1,
+    "maxY": 7.3
+  },
+  "boundaryPointSpacing": 0.65,
+  "traces": [
+    {
+      "sourceTraceId": "source_trace_98",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_109",
+          "position": {
+            "x": 5.913499999999992,
+            "y": -1.0999976000000036
+          },
+          "width": 1.6500093999999998,
+          "height": 0.45001179999999996,
+          "label": "PD0",
+          "layer": "top"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_14",
+          "position": {
+            "x": 11.43,
+            "y": 24.13
+          },
+          "width": 1.5,
+          "height": 1.5,
+          "label": "D0",
+          "layer": "top"
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_99",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_110",
+          "position": {
+            "x": 5.913499999999992,
+            "y": -1.899995999999982
+          },
+          "width": 1.6500093999999998,
+          "height": 0.45001179999999996,
+          "label": "PD1",
+          "layer": "top"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_15",
+          "position": {
+            "x": 13.969999999999999,
+            "y": 24.13
+          },
+          "width": 1.5,
+          "height": 1.5,
+          "label": "D1",
+          "layer": "top"
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_100",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_111",
+          "position": {
+            "x": 5.913499999999992,
+            "y": -2.699994399999989
+          },
+          "width": 1.6500093999999998,
+          "height": 0.45001179999999996,
+          "label": "PD2",
+          "layer": "top"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_16",
+          "position": {
+            "x": 16.509999999999998,
+            "y": 24.13
+          },
+          "width": 1.5,
+          "height": 1.5,
+          "label": "D2",
+          "layer": "top"
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_71",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_80",
+          "position": {
+            "x": 7.495005600000006,
+            "y": -4.2687999999999935
+          },
+          "width": 0.45001179999999996,
+          "height": 1.6500093999999998,
+          "label": "PD3",
+          "layer": "top"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_17",
+          "position": {
+            "x": 19.05,
+            "y": 24.13
+          },
+          "width": 1.5,
+          "height": 1.5,
+          "label": "D3",
+          "layer": "top"
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_72",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_81",
+          "position": {
+            "x": 8.295003999999999,
+            "y": -4.2687999999999935
+          },
+          "width": 0.45001179999999996,
+          "height": 1.6500093999999998,
+          "label": "PD4",
+          "layer": "top"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_18",
+          "position": {
+            "x": 21.59,
+            "y": 24.13
+          },
+          "width": 1.5,
+          "height": 1.5,
+          "label": "D4",
+          "layer": "top"
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_79",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_88",
+          "position": {
+            "x": 14.676499999999997,
+            "y": -2.699994399999989
+          },
+          "width": 1.6500093999999998,
+          "height": 0.45001179999999996,
+          "label": "PD5",
+          "layer": "top"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_19",
+          "position": {
+            "x": 24.13,
+            "y": 24.13
+          },
+          "width": 1.5,
+          "height": 1.5,
+          "label": "D5",
+          "layer": "top"
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_80",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_89",
+          "position": {
+            "x": 14.676499999999997,
+            "y": -1.899995999999982
+          },
+          "width": 1.6500093999999998,
+          "height": 0.45001179999999996,
+          "label": "PD6",
+          "layer": "top"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_20",
+          "position": {
+            "x": 26.67,
+            "y": 24.13
+          },
+          "width": 1.5,
+          "height": 1.5,
+          "label": "D6",
+          "layer": "top"
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_81",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_90",
+          "position": {
+            "x": 14.676499999999997,
+            "y": -1.0999976000000036
+          },
+          "width": 1.6500093999999998,
+          "height": 0.45001179999999996,
+          "label": "PD7",
+          "layer": "top"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_21",
+          "position": {
+            "x": 29.21,
+            "y": 24.13
+          },
+          "width": 1.5,
+          "height": 1.5,
+          "label": "D7",
+          "layer": "top"
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_82",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_91",
+          "position": {
+            "x": 14.676499999999997,
+            "y": -0.2999991999999825
+          },
+          "width": 1.6500093999999998,
+          "height": 0.45001179999999996,
+          "label": "PB0",
+          "layer": "top"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_31",
+          "position": {
+            "x": 7.37,
+            "y": 24.13
+          },
+          "width": 1.5,
+          "height": 1.5,
+          "label": "D8",
+          "layer": "top"
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_83",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_92",
+          "position": {
+            "x": 14.676499999999997,
+            "y": 0.4999992000000244
+          },
+          "width": 1.6500093999999998,
+          "height": 0.45001179999999996,
+          "label": "PB1",
+          "layer": "top"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_30",
+          "position": {
+            "x": 4.830000000000001,
+            "y": 24.13
+          },
+          "width": 1.5,
+          "height": 1.5,
+          "label": "D9",
+          "layer": "top"
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_84",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_93",
+          "position": {
+            "x": 14.676499999999997,
+            "y": 1.2999976000000029
+          },
+          "width": 1.6500093999999998,
+          "height": 0.45001179999999996,
+          "label": "PB2",
+          "layer": "top"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_29",
+          "position": {
+            "x": 2.290000000000002,
+            "y": 24.13
+          },
+          "width": 1.5,
+          "height": 1.5,
+          "label": "D10",
+          "layer": "top"
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_85",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_94",
+          "position": {
+            "x": 14.676499999999997,
+            "y": 2.0999960000000097
+          },
+          "width": 1.6500093999999998,
+          "height": 0.45001179999999996,
+          "label": "PB3",
+          "layer": "top"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_28",
+          "position": {
+            "x": -0.2499999999999991,
+            "y": 24.13
+          },
+          "width": 1.5,
+          "height": 1.5,
+          "label": "D11",
+          "layer": "top"
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_86",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_95",
+          "position": {
+            "x": 14.676499999999997,
+            "y": 2.8999944000000024
+          },
+          "width": 1.6500093999999998,
+          "height": 0.45001179999999996,
+          "label": "PB4",
+          "layer": "top"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_27",
+          "position": {
+            "x": -2.79,
+            "y": 24.13
+          },
+          "width": 1.5,
+          "height": 1.5,
+          "label": "D12",
+          "layer": "top"
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_87",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_96",
+          "position": {
+            "x": 13.094994399999997,
+            "y": 4.468800000000007
+          },
+          "width": 0.45001179999999996,
+          "height": 1.6500093999999998,
+          "label": "PB5",
+          "layer": "top"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_26",
+          "position": {
+            "x": -5.329999999999999,
+            "y": 24.13
+          },
+          "width": 1.5,
+          "height": 1.5,
+          "label": "D13",
+          "layer": "top"
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_91",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_102",
+          "position": {
+            "x": 8.295003999999999,
+            "y": 4.468800000000007
+          },
+          "width": 0.45001179999999996,
+          "height": 1.6500093999999998,
+          "label": "PC0",
+          "layer": "top"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_8",
+          "position": {
+            "x": 16.509999999999998,
+            "y": -24.13
+          },
+          "width": 1.5,
+          "height": 1.5,
+          "label": "A0",
+          "layer": "top"
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_92",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_103",
+          "position": {
+            "x": 7.495005600000006,
+            "y": 4.468800000000007
+          },
+          "width": 0.45001179999999996,
+          "height": 1.6500093999999998,
+          "label": "PC1",
+          "layer": "top"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_9",
+          "position": {
+            "x": 19.05,
+            "y": -24.13
+          },
+          "width": 1.5,
+          "height": 1.5,
+          "label": "A1",
+          "layer": "top"
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_93",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_104",
+          "position": {
+            "x": 5.913499999999992,
+            "y": 2.8999944000000024
+          },
+          "width": 1.6500093999999998,
+          "height": 0.45001179999999996,
+          "label": "PC2",
+          "layer": "top"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_10",
+          "position": {
+            "x": 21.59,
+            "y": -24.13
+          },
+          "width": 1.5,
+          "height": 1.5,
+          "label": "A2",
+          "layer": "top"
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_94",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_105",
+          "position": {
+            "x": 5.913499999999992,
+            "y": 2.0999960000000097
+          },
+          "width": 1.6500093999999998,
+          "height": 0.45001179999999996,
+          "label": "PC3",
+          "layer": "top"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_11",
+          "position": {
+            "x": 24.13,
+            "y": -24.13
+          },
+          "width": 1.5,
+          "height": 1.5,
+          "label": "A3",
+          "layer": "top"
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_95",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_106",
+          "position": {
+            "x": 5.913499999999992,
+            "y": 1.2999976000000029
+          },
+          "width": 1.6500093999999998,
+          "height": 0.45001179999999996,
+          "label": "PC4",
+          "layer": "top"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_12",
+          "position": {
+            "x": 26.67,
+            "y": -24.13
+          },
+          "width": 1.5,
+          "height": 1.5,
+          "label": "A4",
+          "layer": "top"
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_96",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_107",
+          "position": {
+            "x": 5.913499999999992,
+            "y": 0.4999992000000244
+          },
+          "width": 1.6500093999999998,
+          "height": 0.45001179999999996,
+          "label": "PC5",
+          "layer": "top"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_13",
+          "position": {
+            "x": 29.21,
+            "y": -24.13
+          },
+          "width": 1.5,
+          "height": 1.5,
+          "label": "A5",
+          "layer": "top"
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_97",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_108",
+          "position": {
+            "x": 5.913499999999992,
+            "y": -0.2999991999999825
+          },
+          "width": 1.6500093999999998,
+          "height": 0.45001179999999996,
+          "label": "PC6",
+          "layer": "top"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_1",
+          "position": {
+            "x": -3.8100000000000005,
+            "y": -24.13
+          },
+          "width": 1.5,
+          "height": 1.5,
+          "label": "RESET",
+          "layer": "top"
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_89",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_99",
+          "position": {
+            "x": 10.694999199999991,
+            "y": 4.468800000000007
+          },
+          "width": 0.45001179999999996,
+          "height": 1.6500093999999998,
+          "label": "AREF",
+          "layer": "top"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_24",
+          "position": {
+            "x": -10.41,
+            "y": 24.13
+          },
+          "width": 1.5,
+          "height": 1.5,
+          "label": "AREF",
+          "layer": "top"
+        }
+      ]
+    }
+  ],
+  "obstacles": [
+    {
+      "center": {
+        "x": -27.750000000000014,
+        "y": 10
+      },
+      "width": 6.959917500000007,
+      "height": 14.939848200000107,
+      "clearance": 0.15,
+      "label": "pcb_component_5",
+      "layer": "top"
+    },
+    {
+      "center": {
+        "x": -16.500000000000057,
+        "y": 11
+      },
+      "width": 9.449993799999987,
+      "height": 7.489977400000189,
+      "clearance": 0.15,
+      "label": "pcb_component_6",
+      "layer": "top"
+    },
+    {
+      "center": {
+        "x": -20,
+        "y": 0
+      },
+      "width": 5.449874800000117,
+      "height": 1.6800068,
+      "clearance": 0.15,
+      "label": "pcb_component_7",
+      "layer": "top"
+    },
+    {
+      "center": {
+        "x": -25,
+        "y": -11.999999999999943
+      },
+      "width": 8.397595599999967,
+      "height": 5.699937799999947,
+      "clearance": 0.15,
+      "label": "pcb_component_8",
+      "layer": "top"
+    },
+    {
+      "center": {
+        "x": -11.99999999999997,
+        "y": -12.000000000000057
+      },
+      "width": 8.359914699999923,
+      "height": 5.699937799999947,
+      "clearance": 0.15,
+      "label": "pcb_component_9",
+      "layer": "top"
+    },
+    {
+      "center": {
+        "x": -18,
+        "y": 4
+      },
+      "width": 1.5600000000000023,
+      "height": 0.6400000000000001,
+      "clearance": 0.15,
+      "label": "pcb_component_10",
+      "layer": "top"
+    },
+    {
+      "center": {
+        "x": -31,
+        "y": -18
+      },
+      "width": 2.850000000000005,
+      "height": 1.3999999999999986,
+      "clearance": 0.15,
+      "label": "pcb_component_11",
+      "layer": "top"
+    },
+    {
+      "center": {
+        "x": -24,
+        "y": -18
+      },
+      "width": 2.8500000000000014,
+      "height": 1.3999999999999986,
+      "clearance": 0.15,
+      "label": "pcb_component_12",
+      "layer": "top"
+    },
+    {
+      "center": {
+        "x": -12,
+        "y": -18
+      },
+      "width": 2.849999999999998,
+      "height": 1.3999999999999986,
+      "clearance": 0.15,
+      "label": "pcb_component_13",
+      "layer": "top"
+    },
+    {
+      "center": {
+        "x": -6,
+        "y": -18
+      },
+      "width": 2.8499999999999996,
+      "height": 1.3999999999999986,
+      "clearance": 0.15,
+      "label": "pcb_component_14",
+      "layer": "top"
+    },
+    {
+      "center": {
+        "x": 10.294999999999995,
+        "y": -11.899999999999942
+      },
+      "width": 3.6001451999999006,
+      "height": 2.9500575999999654,
+      "clearance": 0.15,
+      "label": "pcb_component_16",
+      "layer": "top"
+    },
+    {
+      "center": {
+        "x": 6.294999999999995,
+        "y": -13.899999999999999
+      },
+      "width": 1.5600000000000023,
+      "height": 0.6400000000000006,
+      "clearance": 0.15,
+      "label": "pcb_component_17",
+      "layer": "top"
+    },
+    {
+      "center": {
+        "x": 14.294999999999995,
+        "y": -13.899999999999999
+      },
+      "width": 1.5600000000000023,
+      "height": 0.6400000000000006,
+      "clearance": 0.15,
+      "label": "pcb_component_18",
+      "layer": "top"
+    },
+    {
+      "center": {
+        "x": 1.2949999999999946,
+        "y": 6.1
+      },
+      "width": 1.5600000000000023,
+      "height": 0.6399999999999999,
+      "clearance": 0.15,
+      "label": "pcb_component_19",
+      "layer": "top"
+    },
+    {
+      "center": {
+        "x": -3.7050000000000054,
+        "y": 6.1
+      },
+      "width": 1.5600000000000023,
+      "height": 0.6399999999999999,
+      "clearance": 0.15,
+      "label": "pcb_component_20",
+      "layer": "top"
+    },
+    {
+      "center": {
+        "x": 4.294999999999995,
+        "y": 11.1
+      },
+      "width": 1.5600000000000023,
+      "height": 0.6399999999999997,
+      "clearance": 0.15,
+      "label": "pcb_component_21",
+      "layer": "top"
+    },
+    {
+      "center": {
+        "x": 18.294999999999995,
+        "y": 11.1
+      },
+      "width": 1.5600000000000023,
+      "height": 0.6399999999999997,
+      "clearance": 0.15,
+      "label": "pcb_component_22",
+      "layer": "top"
+    },
+    {
+      "center": {
+        "x": 23.294999999999995,
+        "y": 2.0999999999999996
+      },
+      "width": 1.5600000000000023,
+      "height": 0.6400000000000006,
+      "clearance": 0.15,
+      "label": "pcb_component_23",
+      "layer": "top"
+    },
+    {
+      "center": {
+        "x": -3.7050000000000054,
+        "y": -6.9
+      },
+      "width": 1.5600000000000023,
+      "height": 0.6400000000000006,
+      "clearance": 0.15,
+      "label": "pcb_component_24",
+      "layer": "top"
+    },
+    {
+      "center": {
+        "x": -0.7050000000000054,
+        "y": -6.9
+      },
+      "width": 2.4499999999999957,
+      "height": 0.9499999999999993,
+      "clearance": 0.15,
+      "label": "pcb_component_25",
+      "layer": "top"
+    },
+    {
+      "center": {
+        "x": 22.294999999999995,
+        "y": -4.9
+      },
+      "width": 1.5600000000000023,
+      "height": 0.6400000000000006,
+      "clearance": 0.15,
+      "label": "pcb_component_26",
+      "layer": "top"
+    },
+    {
+      "center": {
+        "x": 26.294999999999995,
+        "y": -4.9
+      },
+      "width": 2.450000000000003,
+      "height": 0.9499999999999993,
+      "clearance": 0.15,
+      "label": "pcb_component_27",
+      "layer": "top"
+    }
+  ]
+}

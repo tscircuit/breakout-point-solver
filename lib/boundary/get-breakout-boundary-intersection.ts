@@ -1,37 +1,37 @@
 import {
   distance,
   getSegmentIntersection,
+  type Bounds,
   type Point,
 } from "@tscircuit/math-utils"
-import type { Boundary } from "lib/types"
 
 export const getBreakoutBoundaryIntersection = ({
   from,
   to,
-  boundary,
+  bounds,
 }: {
   from: Point
   to: Point
-  boundary: Boundary
+  bounds: Bounds
 }): Point | null => {
   if (from.x === to.x && from.y === to.y) return null
 
   const boundarySegments: Array<[Point, Point]> = [
     [
-      { x: boundary.left, y: boundary.bottom },
-      { x: boundary.right, y: boundary.bottom },
+      { x: bounds.minX, y: bounds.minY },
+      { x: bounds.maxX, y: bounds.minY },
     ],
     [
-      { x: boundary.right, y: boundary.bottom },
-      { x: boundary.right, y: boundary.top },
+      { x: bounds.maxX, y: bounds.minY },
+      { x: bounds.maxX, y: bounds.maxY },
     ],
     [
-      { x: boundary.right, y: boundary.top },
-      { x: boundary.left, y: boundary.top },
+      { x: bounds.maxX, y: bounds.maxY },
+      { x: bounds.minX, y: bounds.maxY },
     ],
     [
-      { x: boundary.left, y: boundary.top },
-      { x: boundary.left, y: boundary.bottom },
+      { x: bounds.minX, y: bounds.maxY },
+      { x: bounds.minX, y: bounds.minY },
     ],
   ]
 

@@ -1,63 +1,10 @@
 {
-  "boundary": {
-    "left": -5,
-    "right": 5,
-    "bottom": -4,
-    "top": 4
+  "bounds": {
+    "minX": -5,
+    "maxX": 5,
+    "minY": -4,
+    "maxY": 4
   },
-  "visualComponents": [
-    {
-      "center": {
-        "x": 0,
-        "y": 0
-      },
-      "width": 2.4,
-      "height": 2.4,
-      "label": "QFN chip body"
-    }
-  ],
-  "visualPads": [
-    {
-      "center": {
-        "x": 1.2,
-        "y": -0.9
-      },
-      "width": 0.55,
-      "height": 0.35,
-      "ccwRotationDegrees": 180,
-      "label": "QFN pad"
-    },
-    {
-      "center": {
-        "x": 1.2,
-        "y": -0.3
-      },
-      "width": 0.55,
-      "height": 0.35,
-      "ccwRotationDegrees": 180,
-      "label": "QFN pad"
-    },
-    {
-      "center": {
-        "x": 1.2,
-        "y": 0.3
-      },
-      "width": 0.55,
-      "height": 0.35,
-      "ccwRotationDegrees": 180,
-      "label": "QFN pad"
-    },
-    {
-      "center": {
-        "x": 1.2,
-        "y": 0.9
-      },
-      "width": 0.55,
-      "height": 0.35,
-      "ccwRotationDegrees": 180,
-      "label": "QFN pad"
-    }
-  ],
   "traces": [
     {
       "sourceTraceId": "source_trace_1",
@@ -67,7 +14,12 @@
           "position": {
             "x": 1.2,
             "y": -0.3
-          }
+          },
+          "width": 0.55,
+          "height": 0.35,
+          "ccwRotationDegrees": 180,
+          "label": "QFN pad",
+          "layer": "top"
         }
       ],
       "outsidePorts": [
@@ -76,7 +28,8 @@
           "position": {
             "x": 10,
             "y": 2
-          }
+          },
+          "layer": "top"
         }
       ]
     }

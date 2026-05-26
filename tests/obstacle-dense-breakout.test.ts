@@ -3,7 +3,7 @@ import { BreakoutPointSolver } from "lib/index"
 
 test("solves dense breakout points around many obstacles", () => {
   const solver = new BreakoutPointSolver({
-    boundary: { left: -6, right: 6, bottom: -5, top: 5 },
+    bounds: { minX: -6, maxX: 6, minY: -5, maxY: 5 },
     boundaryPointSpacing: 0.5,
     usedBoundaryPoints: [
       { x: 6, y: -1 },
@@ -12,112 +12,6 @@ test("solves dense breakout points around many obstacles", () => {
       { x: -1, y: 5 },
       { x: 1, y: -5 },
     ],
-    visualComponents: [
-      {
-        center: { x: 0, y: 0 },
-        width: 3.2,
-        height: 3.2,
-        label: "QFN body",
-      },
-    ],
-    visualPads: [
-      {
-        center: { x: 1.6, y: -1.2 },
-        width: 0.55,
-        height: 0.32,
-        label: "right pad 1",
-      },
-      {
-        center: { x: 1.6, y: -0.4 },
-        width: 0.55,
-        height: 0.32,
-        label: "right pad 2",
-      },
-      {
-        center: { x: 1.6, y: 0.4 },
-        width: 0.55,
-        height: 0.32,
-        label: "right pad 3",
-      },
-      {
-        center: { x: 1.6, y: 1.2 },
-        width: 0.55,
-        height: 0.32,
-        label: "right pad 4",
-      },
-      {
-        center: { x: -1.6, y: -1.2 },
-        width: 0.55,
-        height: 0.32,
-        label: "left pad 1",
-      },
-      {
-        center: { x: -1.6, y: -0.4 },
-        width: 0.55,
-        height: 0.32,
-        label: "left pad 2",
-      },
-      {
-        center: { x: -1.6, y: 0.4 },
-        width: 0.55,
-        height: 0.32,
-        label: "left pad 3",
-      },
-      {
-        center: { x: -1.6, y: 1.2 },
-        width: 0.55,
-        height: 0.32,
-        label: "left pad 4",
-      },
-      {
-        center: { x: -1.2, y: 1.6 },
-        width: 0.32,
-        height: 0.55,
-        label: "top pad 1",
-      },
-      {
-        center: { x: -0.4, y: 1.6 },
-        width: 0.32,
-        height: 0.55,
-        label: "top pad 2",
-      },
-      {
-        center: { x: 0.4, y: 1.6 },
-        width: 0.32,
-        height: 0.55,
-        label: "top pad 3",
-      },
-      {
-        center: { x: 1.2, y: 1.6 },
-        width: 0.32,
-        height: 0.55,
-        label: "top pad 4",
-      },
-      {
-        center: { x: -1.2, y: -1.6 },
-        width: 0.32,
-        height: 0.55,
-        label: "bottom pad 1",
-      },
-      {
-        center: { x: -0.4, y: -1.6 },
-        width: 0.32,
-        height: 0.55,
-        label: "bottom pad 2",
-      },
-      {
-        center: { x: 0.4, y: -1.6 },
-        width: 0.32,
-        height: 0.55,
-        label: "bottom pad 3",
-      },
-      {
-        center: { x: 1.2, y: -1.6 },
-        width: 0.32,
-        height: 0.55,
-        label: "bottom pad 4",
-      },
-    ],
     traces: [
       {
         sourceTraceId: "source_trace_right_1",
@@ -125,6 +19,8 @@ test("solves dense breakout points around many obstacles", () => {
           {
             sourcePortId: "source_port_right_1",
             position: { x: 1.6, y: -1.2 },
+            width: 0.55,
+            height: 0.32,
           },
         ],
         outsidePorts: [
@@ -137,7 +33,12 @@ test("solves dense breakout points around many obstacles", () => {
       {
         sourceTraceId: "source_trace_right_2",
         insidePorts: [
-          { sourcePortId: "source_port_right_3", position: { x: 1.6, y: 0.4 } },
+          {
+            sourcePortId: "source_port_right_3",
+            position: { x: 1.6, y: 0.4 },
+            width: 0.55,
+            height: 0.32,
+          },
         ],
         outsidePorts: [
           {
@@ -152,6 +53,8 @@ test("solves dense breakout points around many obstacles", () => {
           {
             sourcePortId: "source_port_left_1",
             position: { x: -1.6, y: -1.2 },
+            width: 0.55,
+            height: 0.32,
           },
         ],
         outsidePorts: [
@@ -164,7 +67,12 @@ test("solves dense breakout points around many obstacles", () => {
       {
         sourceTraceId: "source_trace_left_2",
         insidePorts: [
-          { sourcePortId: "source_port_left_4", position: { x: -1.6, y: 1.2 } },
+          {
+            sourcePortId: "source_port_left_4",
+            position: { x: -1.6, y: 1.2 },
+            width: 0.55,
+            height: 0.32,
+          },
         ],
         outsidePorts: [
           {
@@ -176,7 +84,12 @@ test("solves dense breakout points around many obstacles", () => {
       {
         sourceTraceId: "source_trace_top_1",
         insidePorts: [
-          { sourcePortId: "source_port_top_1", position: { x: -1.2, y: 1.6 } },
+          {
+            sourcePortId: "source_port_top_1",
+            position: { x: -1.2, y: 1.6 },
+            width: 0.32,
+            height: 0.55,
+          },
         ],
         outsidePorts: [
           {
@@ -188,7 +101,12 @@ test("solves dense breakout points around many obstacles", () => {
       {
         sourceTraceId: "source_trace_top_2",
         insidePorts: [
-          { sourcePortId: "source_port_top_4", position: { x: 1.2, y: 1.6 } },
+          {
+            sourcePortId: "source_port_top_4",
+            position: { x: 1.2, y: 1.6 },
+            width: 0.32,
+            height: 0.55,
+          },
         ],
         outsidePorts: [
           {
@@ -203,6 +121,8 @@ test("solves dense breakout points around many obstacles", () => {
           {
             sourcePortId: "source_port_bottom_1",
             position: { x: -1.2, y: -1.6 },
+            width: 0.32,
+            height: 0.55,
           },
         ],
         outsidePorts: [
@@ -218,6 +138,8 @@ test("solves dense breakout points around many obstacles", () => {
           {
             sourcePortId: "source_port_bottom_4",
             position: { x: 1.2, y: -1.6 },
+            width: 0.32,
+            height: 0.55,
           },
         ],
         outsidePorts: [
@@ -234,7 +156,6 @@ test("solves dense breakout points around many obstacles", () => {
         width: 1.1,
         height: 0.9,
         clearance: 0.1,
-        kind: "keepout",
         label: "right lower keepout",
       },
       {
@@ -242,14 +163,12 @@ test("solves dense breakout points around many obstacles", () => {
         width: 0.9,
         height: 1.7,
         ccwRotationDegrees: 30,
-        kind: "component",
         label: "right rotated body",
       },
       {
         center: { x: -3.2, y: -1.2 },
         width: 1.1,
         height: 1.1,
-        kind: "keepout",
         label: "left lower keepout",
       },
       {
@@ -257,21 +176,18 @@ test("solves dense breakout points around many obstacles", () => {
         width: 0.9,
         height: 1.5,
         ccwRotationDegrees: -25,
-        kind: "component",
         label: "left rotated body",
       },
       {
         center: { x: -1.6, y: 3.2 },
         width: 1.4,
         height: 1.1,
-        kind: "keepout",
         label: "top left keepout",
       },
       {
         center: { x: 1.8, y: 3.2 },
         width: 1.2,
         height: 1.2,
-        kind: "keepout",
         label: "top right keepout",
       },
       {
@@ -279,21 +195,18 @@ test("solves dense breakout points around many obstacles", () => {
         width: 1.2,
         height: 1.2,
         ccwRotationDegrees: 20,
-        kind: "component",
         label: "bottom left rotated body",
       },
       {
         center: { x: 1.8, y: -3.2 },
         width: 1.2,
         height: 1.2,
-        kind: "keepout",
         label: "bottom right keepout",
       },
       {
         center: { x: 1.6, y: 0.4 },
         width: 0.8,
         height: 0.8,
-        kind: "pad",
         sourcePortIds: ["source_port_right_3"],
         label: "right self pad",
       },
@@ -301,7 +214,6 @@ test("solves dense breakout points around many obstacles", () => {
         center: { x: -1.2, y: -1.6 },
         width: 0.8,
         height: 0.8,
-        kind: "pad",
         sourcePortIds: ["source_port_bottom_1"],
         label: "bottom self pad",
       },
