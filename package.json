@@ -1,9 +1,11 @@
 {
   "name": "@tscircuit/breakout-point-solver",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "main": "dist/index.js",
   "type": "module",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup lib/index.ts --format esm --dts",
     "build:site": "cosmos-export",
