@@ -3,11 +3,7 @@ import {
   getBoundFromCenteredRect,
   type Point,
 } from "@tscircuit/math-utils"
-<<<<<<< fix/multi
-import type { BreakoutPad, PcbLayer } from "lib/types"
-=======
 import type { BreakoutPad, PcbLayer } from "../types"
->>>>>>> main
 
 const degreesToRadians = (degrees: number) => (degrees * Math.PI) / 180
 
