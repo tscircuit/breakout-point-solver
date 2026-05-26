@@ -19,15 +19,15 @@ test("solves sot23 regulator breakout points to input and output headers", () =>
     {
       sourcePortId: "source_port_u1_gnd",
       sourceTraceId: "source_trace_jin_gnd_to_u1_gnd",
-      x: -4.2,
-      y: -1.9,
+      x: 4.2,
+      y: -2.4,
       layer: "top",
     },
     {
       sourcePortId: "source_port_u1_gnd",
       sourceTraceId: "source_trace_jout_gnd_to_u1_gnd",
       x: 4.2,
-      y: -1.9,
+      y: -2.4,
       layer: "top",
     },
     {
