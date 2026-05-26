@@ -1,0 +1,435 @@
+{
+  "bounds": {
+    "minX": -4.8,
+    "maxX": 3,
+    "minY": -3.5,
+    "maxY": 3.6
+  },
+  "boundaryPointSpacing": 0.5,
+  "traces": [
+    {
+      "sourceTraceId": "source_trace_j1_vcc_to_u1_vcc",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_u1_vcc",
+          "position": {
+            "x": -0.75,
+            "y": -2.4
+          },
+          "width": 0.25,
+          "height": 1,
+          "layer": "top",
+          "label": "U1.VCC"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_j1_vcc",
+          "position": {
+            "x": 6,
+            "y": -1.905
+          },
+          "width": 1.2,
+          "height": 1.2,
+          "layer": "top",
+          "label": "J1.VCC"
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_j1_gnd_to_u1_gnd",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_u1_gnd",
+          "position": {
+            "x": -0.25,
+            "y": -2.4
+          },
+          "width": 0.25,
+          "height": 1,
+          "layer": "top",
+          "label": "U1.GND"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_j1_gnd",
+          "position": {
+            "x": 6,
+            "y": -0.635
+          },
+          "width": 1.2,
+          "height": 1.2,
+          "layer": "top",
+          "label": "J1.GND"
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_j1_sda_to_u1_sda",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_u1_sda",
+          "position": {
+            "x": 0.25,
+            "y": -2.4
+          },
+          "width": 0.25,
+          "height": 1,
+          "layer": "top",
+          "label": "U1.SDA"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_j1_sda",
+          "position": {
+            "x": 6,
+            "y": 0.635
+          },
+          "width": 1.2,
+          "height": 1.2,
+          "layer": "top",
+          "label": "J1.SDA"
+        }
+      ]
+    },
+    {
+      "sourceTraceId": "source_trace_j1_scl_to_u1_scl",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_u1_scl",
+          "position": {
+            "x": 0.75,
+            "y": -2.4
+          },
+          "width": 0.25,
+          "height": 1,
+          "layer": "top",
+          "label": "U1.SCL"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_j1_scl",
+          "position": {
+            "x": 6,
+            "y": 1.905
+          },
+          "width": 1.2,
+          "height": 1.2,
+          "layer": "top",
+          "label": "J1.SCL"
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "center": {
+        "x": 0,
+        "y": 0
+      },
+      "width": 4.8,
+      "height": 4.8,
+      "layer": "top",
+      "label": "U1 qfp16"
+    },
+    {
+      "center": {
+        "x": -3.5,
+        "y": 2.4
+      },
+      "width": 1,
+      "height": 0.5,
+      "layer": "top",
+      "label": "C1 0402"
+    },
+    {
+      "center": {
+        "x": 6,
+        "y": 0
+      },
+      "width": 1.6,
+      "height": 5.1,
+      "layer": "top",
+      "label": "J1 pinrow4"
+    },
+    {
+      "center": {
+        "x": -5,
+        "y": -2.4
+      },
+      "width": 1,
+      "height": 0.5,
+      "layer": "top",
+      "label": "R1 0402"
+    }
+  ],
+  "pads": [
+    {
+      "center": {
+        "x": -2.4,
+        "y": 0.75
+      },
+      "width": 1,
+      "height": 0.25,
+      "layer": "top",
+      "label": "U1.GPIO1",
+      "sourcePortIds": ["source_port_u1_gpio1"]
+    },
+    {
+      "center": {
+        "x": -2.4,
+        "y": 0.25
+      },
+      "width": 1,
+      "height": 0.25,
+      "layer": "top",
+      "label": "U1.GPIO2",
+      "sourcePortIds": ["source_port_u1_gpio2"]
+    },
+    {
+      "center": {
+        "x": -2.4,
+        "y": -0.25
+      },
+      "width": 1,
+      "height": 0.25,
+      "layer": "top",
+      "label": "U1.GPIO3",
+      "sourcePortIds": ["source_port_u1_gpio3"]
+    },
+    {
+      "center": {
+        "x": -2.4,
+        "y": -0.75
+      },
+      "width": 1,
+      "height": 0.25,
+      "layer": "top",
+      "label": "U1.GPIO4",
+      "sourcePortIds": ["source_port_u1_gpio4"]
+    },
+    {
+      "center": {
+        "x": -0.75,
+        "y": -2.4
+      },
+      "width": 0.25,
+      "height": 1,
+      "layer": "top",
+      "label": "U1.VCC",
+      "sourcePortIds": ["source_port_u1_vcc"]
+    },
+    {
+      "center": {
+        "x": -0.25,
+        "y": -2.4
+      },
+      "width": 0.25,
+      "height": 1,
+      "layer": "top",
+      "label": "U1.GND",
+      "sourcePortIds": ["source_port_u1_gnd"]
+    },
+    {
+      "center": {
+        "x": 0.25,
+        "y": -2.4
+      },
+      "width": 0.25,
+      "height": 1,
+      "layer": "top",
+      "label": "U1.SDA",
+      "sourcePortIds": ["source_port_u1_sda"]
+    },
+    {
+      "center": {
+        "x": 0.75,
+        "y": -2.4
+      },
+      "width": 0.25,
+      "height": 1,
+      "layer": "top",
+      "label": "U1.SCL",
+      "sourcePortIds": ["source_port_u1_scl"]
+    },
+    {
+      "center": {
+        "x": 2.4,
+        "y": -0.75
+      },
+      "width": 1,
+      "height": 0.25,
+      "layer": "top",
+      "label": "U1.RESET",
+      "sourcePortIds": ["source_port_u1_reset"]
+    },
+    {
+      "center": {
+        "x": 2.4,
+        "y": -0.25
+      },
+      "width": 1,
+      "height": 0.25,
+      "layer": "top",
+      "label": "U1.BOOT",
+      "sourcePortIds": ["source_port_u1_boot"]
+    },
+    {
+      "center": {
+        "x": 2.4,
+        "y": 0.25
+      },
+      "width": 1,
+      "height": 0.25,
+      "layer": "top",
+      "label": "U1.GPIO5",
+      "sourcePortIds": ["source_port_u1_gpio5"]
+    },
+    {
+      "center": {
+        "x": 2.4,
+        "y": 0.75
+      },
+      "width": 1,
+      "height": 0.25,
+      "layer": "top",
+      "label": "U1.GPIO6",
+      "sourcePortIds": ["source_port_u1_gpio6"]
+    },
+    {
+      "center": {
+        "x": 0.75,
+        "y": 2.4
+      },
+      "width": 0.25,
+      "height": 1,
+      "layer": "top",
+      "label": "U1.GPIO7",
+      "sourcePortIds": ["source_port_u1_gpio7"]
+    },
+    {
+      "center": {
+        "x": 0.25,
+        "y": 2.4
+      },
+      "width": 0.25,
+      "height": 1,
+      "layer": "top",
+      "label": "U1.GPIO8",
+      "sourcePortIds": ["source_port_u1_gpio8"]
+    },
+    {
+      "center": {
+        "x": -0.25,
+        "y": 2.4
+      },
+      "width": 0.25,
+      "height": 1,
+      "layer": "top",
+      "label": "U1.GPIO9",
+      "sourcePortIds": ["source_port_u1_gpio9"]
+    },
+    {
+      "center": {
+        "x": -0.75,
+        "y": 2.4
+      },
+      "width": 0.25,
+      "height": 1,
+      "layer": "top",
+      "label": "U1.GPIO10",
+      "sourcePortIds": ["source_port_u1_gpio10"]
+    },
+    {
+      "center": {
+        "x": -3.75,
+        "y": 2.4
+      },
+      "width": 0.45,
+      "height": 0.55,
+      "layer": "top",
+      "label": "C1.1",
+      "sourcePortIds": ["source_port_c1_1"]
+    },
+    {
+      "center": {
+        "x": -3.25,
+        "y": 2.4
+      },
+      "width": 0.45,
+      "height": 0.55,
+      "layer": "top",
+      "label": "C1.2",
+      "sourcePortIds": ["source_port_c1_2"]
+    },
+    {
+      "center": {
+        "x": 6,
+        "y": -1.905
+      },
+      "width": 1.2,
+      "height": 1.2,
+      "layer": "top",
+      "label": "J1.VCC",
+      "sourcePortIds": ["source_port_j1_vcc"]
+    },
+    {
+      "center": {
+        "x": 6,
+        "y": -0.635
+      },
+      "width": 1.2,
+      "height": 1.2,
+      "layer": "top",
+      "label": "J1.GND",
+      "sourcePortIds": ["source_port_j1_gnd"]
+    },
+    {
+      "center": {
+        "x": 6,
+        "y": 0.635
+      },
+      "width": 1.2,
+      "height": 1.2,
+      "layer": "top",
+      "label": "J1.SDA",
+      "sourcePortIds": ["source_port_j1_sda"]
+    },
+    {
+      "center": {
+        "x": 6,
+        "y": 1.905
+      },
+      "width": 1.2,
+      "height": 1.2,
+      "layer": "top",
+      "label": "J1.SCL",
+      "sourcePortIds": ["source_port_j1_scl"]
+    },
+    {
+      "center": {
+        "x": -5.25,
+        "y": -2.4
+      },
+      "width": 0.45,
+      "height": 0.55,
+      "layer": "top",
+      "label": "R1.1",
+      "sourcePortIds": ["source_port_r1_1"]
+    },
+    {
+      "center": {
+        "x": -4.75,
+        "y": -2.4
+      },
+      "width": 0.45,
+      "height": 0.55,
+      "layer": "top",
+      "label": "R1.2",
+      "sourcePortIds": ["source_port_r1_2"]
+    }
+  ]
+}
