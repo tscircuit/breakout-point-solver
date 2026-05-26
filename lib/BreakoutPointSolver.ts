@@ -10,7 +10,10 @@ import type {
   PcbLayer,
 } from "./types"
 import { getBreakoutBoundaryIntersection } from "./boundary/get-breakout-boundary-intersection"
-import { getAvailableBreakoutBoundaryPoint } from "./boundary/get-available-breakout-boundary-point"
+import {
+  getAvailableBreakoutBoundaryPoint,
+  getAvailableBreakoutBoundaryPointForOutsidePorts,
+} from "./boundary/get-available-breakout-boundary-point"
 
 type GraphicsRect = NonNullable<GraphicsObject["rects"]>[number]
 
@@ -87,10 +90,10 @@ const getPortPadRect = ({
   }
 }
 
-const getOutsideTarget = (trace: BreakoutTrace): Point | null => {
-  if (trace.outsidePorts.length === 0) return null
+const getAveragePortPosition = (ports: BreakoutPort[]): Point | null => {
+  if (ports.length === 0) return null
 
-  const total = trace.outsidePorts.reduce(
+  const total = ports.reduce(
     (sum, port) => ({
       x: sum.x + port.position.x,
       y: sum.y + port.position.y,
@@ -99,9 +102,60 @@ const getOutsideTarget = (trace: BreakoutTrace): Point | null => {
   )
 
   return {
-    x: total.x / trace.outsidePorts.length,
-    y: total.y / trace.outsidePorts.length,
+    x: total.x / ports.length,
+    y: total.y / ports.length,
   }
+}
+
+const getOutsideTarget = (trace: BreakoutTrace): Point | null =>
+  getAveragePortPosition(trace.outsidePorts)
+
+const getInsidePortKey = (port: BreakoutPort) =>
+  `${port.sourcePortId}:${port.layer ?? "top"}`
+
+const getOutsidePortsForInsidePort = ({
+  traces,
+  insidePort,
+}: {
+  traces: BreakoutTrace[]
+  insidePort: BreakoutPort
+}) => {
+  const outsidePorts: BreakoutPort[] = []
+  const insidePortKey = getInsidePortKey(insidePort)
+
+  for (const trace of traces) {
+    const hasMatchingInsidePort = trace.insidePorts.some(
+      (port) => getInsidePortKey(port) === insidePortKey,
+    )
+    if (!hasMatchingInsidePort) continue
+
+    outsidePorts.push(...trace.outsidePorts)
+  }
+
+  return outsidePorts
+}
+
+const getIdealBoundaryPoints = ({
+  insidePort,
+  outsidePorts,
+  bounds,
+}: {
+  insidePort: BreakoutPort
+  outsidePorts: BreakoutPort[]
+  bounds: BreakoutPointSolverInput["bounds"]
+}) => {
+  const idealBoundaryPoints: Point[] = []
+
+  for (const outsidePort of outsidePorts) {
+    const idealBoundaryPoint = getBreakoutBoundaryIntersection({
+      from: insidePort.position,
+      to: outsidePort.position,
+      bounds,
+    })
+    if (idealBoundaryPoint) idealBoundaryPoints.push(idealBoundaryPoint)
+  }
+
+  return idealBoundaryPoints
 }
 
 export class BreakoutPointSolver extends BaseSolver {
@@ -115,34 +169,58 @@ export class BreakoutPointSolver extends BaseSolver {
 
   override _step() {
     const breakoutPoints: BreakoutPointSolverOutputPoint[] = []
+    const boundaryPointsByInsidePort = new Map<string, Point>()
 
     for (const trace of this.input.traces) {
-      const outsideTarget = getOutsideTarget(trace)
-      if (!outsideTarget) continue
-
       for (const insidePort of trace.insidePorts) {
-        const idealBoundaryPoint = getBreakoutBoundaryIntersection({
-          from: insidePort.position,
-          to: outsideTarget,
-          bounds: this.input.bounds,
-        })
-        if (!idealBoundaryPoint) continue
+        const insidePortKey = getInsidePortKey(insidePort)
+        let boundaryPoint: Point | null =
+          boundaryPointsByInsidePort.get(insidePortKey) ?? null
 
-        const usedBoundaryPoints = [
-          ...(this.input.usedBoundaryPoints ?? []),
-          ...breakoutPoints,
-        ]
-        const boundaryPoint = getAvailableBreakoutBoundaryPoint({
-          idealPoint: idealBoundaryPoint,
-          bounds: this.input.bounds,
-          usedBoundaryPoints,
-          boundaryPointSpacing: this.input.boundaryPointSpacing ?? 0,
-          routeFrom: insidePort.position,
-          pads: this.input.pads,
-          sourcePortId: insidePort.sourcePortId,
-          layer: insidePort.layer,
-        })
-        if (!boundaryPoint) continue
+        if (!boundaryPoint) {
+          const outsidePorts = getOutsidePortsForInsidePort({
+            traces: this.input.traces,
+            insidePort,
+          })
+          const idealBoundaryPoints = getIdealBoundaryPoints({
+            insidePort,
+            outsidePorts,
+            bounds: this.input.bounds,
+          })
+          if (idealBoundaryPoints.length === 0) continue
+
+          const usedBoundaryPoints = [
+            ...(this.input.usedBoundaryPoints ?? []),
+            ...boundaryPointsByInsidePort.values(),
+          ]
+          if (outsidePorts.length > 1) {
+            boundaryPoint = getAvailableBreakoutBoundaryPointForOutsidePorts({
+              idealPoints: idealBoundaryPoints,
+              bounds: this.input.bounds,
+              usedBoundaryPoints,
+              boundaryPointSpacing: this.input.boundaryPointSpacing ?? 0,
+              routeFrom: insidePort.position,
+              pads: this.input.pads,
+              sourcePortId: insidePort.sourcePortId,
+              outsidePorts,
+              layer: insidePort.layer,
+            })
+          }
+
+          boundaryPoint ??= getAvailableBreakoutBoundaryPoint({
+            idealPoint: idealBoundaryPoints[0]!,
+            bounds: this.input.bounds,
+            usedBoundaryPoints,
+            boundaryPointSpacing: this.input.boundaryPointSpacing ?? 0,
+            routeFrom: insidePort.position,
+            pads: this.input.pads,
+            sourcePortId: insidePort.sourcePortId,
+            layer: insidePort.layer,
+          })
+          if (!boundaryPoint) continue
+
+          boundaryPointsByInsidePort.set(insidePortKey, boundaryPoint)
+        }
 
         breakoutPoints.push({
           sourcePortId: insidePort.sourcePortId,

@@ -1,6 +1,9 @@
 import { distance, type Bounds, type Point } from "@tscircuit/math-utils"
-import type { BreakoutPad, PcbLayer } from "../types"
-import { doesBreakoutSegmentIntersectPads } from "../pad/breakout-pad-collisions"
+import type { BreakoutPad, BreakoutPort, PcbLayer } from "../types"
+import {
+  doesBreakoutSegmentIntersectNonIgnoredPads,
+  doesBreakoutSegmentIntersectPads,
+} from "../pad/breakout-pad-collisions"
 
 type BoundsEdge = "left" | "right" | "bottom" | "top"
 
@@ -169,6 +172,82 @@ const isCandidateAvailable = ({
   })
 }
 
+const hasOutsideAccessConflict = ({
+  candidate,
+  outsidePorts,
+  pads,
+  sourcePortId,
+  layer,
+}: {
+  candidate: Point
+  outsidePorts?: BreakoutPort[]
+  pads?: BreakoutPad[]
+  sourcePortId?: string
+  layer?: PcbLayer
+}) => {
+  if (!outsidePorts || !pads || !sourcePortId) return false
+
+  for (const outsidePort of outsidePorts) {
+    if (
+      doesBreakoutSegmentIntersectNonIgnoredPads({
+        from: candidate,
+        to: outsidePort.position,
+        pads,
+        ignoredSourcePortIds: [sourcePortId, outsidePort.sourcePortId],
+        layer,
+      })
+    ) {
+      return true
+    }
+  }
+
+  return false
+}
+
+const isCandidateAvailableForOutsidePorts = ({
+  candidate,
+  bounds,
+  usedBoundaryPoints,
+  boundaryPointSpacing,
+  routeFrom,
+  pads,
+  sourcePortId,
+  outsidePorts,
+  layer,
+}: {
+  candidate: Point
+  bounds: Bounds
+  usedBoundaryPoints: Point[]
+  boundaryPointSpacing: number
+  routeFrom?: Point
+  pads?: BreakoutPad[]
+  sourcePortId?: string
+  outsidePorts?: BreakoutPort[]
+  layer?: PcbLayer
+}) => {
+  if (
+    !isCandidateAvailable({
+      candidate,
+      usedBoundaryPoints,
+      boundaryPointSpacing,
+      routeFrom,
+      pads,
+      sourcePortId,
+      layer,
+    })
+  ) {
+    return false
+  }
+
+  return !hasOutsideAccessConflict({
+    candidate,
+    outsidePorts,
+    pads,
+    sourcePortId,
+    layer,
+  })
+}
+
 export const getAvailableBreakoutBoundaryPoint = ({
   idealPoint,
   bounds,
@@ -253,6 +332,103 @@ export const getAvailableBreakoutBoundaryPoint = ({
       })
     ) {
       return candidate
+    }
+  }
+
+  return null
+}
+
+export const getAvailableBreakoutBoundaryPointForOutsidePorts = ({
+  idealPoints,
+  bounds,
+  usedBoundaryPoints,
+  boundaryPointSpacing,
+  routeFrom,
+  pads,
+  sourcePortId,
+  outsidePorts,
+  layer,
+}: {
+  idealPoints: Point[]
+  bounds: Bounds
+  usedBoundaryPoints: Point[]
+  boundaryPointSpacing: number
+  routeFrom?: Point
+  pads?: BreakoutPad[]
+  sourcePortId?: string
+  outsidePorts?: BreakoutPort[]
+  layer?: PcbLayer
+}): Point | null => {
+  const step = getBoundaryCandidateSearchStep({
+    bounds,
+    boundaryPointSpacing,
+  })
+  if (step <= 0) return null
+
+  for (const idealPoint of idealPoints) {
+    if (
+      isCandidateAvailableForOutsidePorts({
+        candidate: idealPoint,
+        bounds,
+        usedBoundaryPoints,
+        boundaryPointSpacing,
+        routeFrom,
+        pads,
+        sourcePortId,
+        outsidePorts,
+        layer,
+      })
+    ) {
+      return idealPoint
+    }
+
+    const edge = getBoundsEdge(idealPoint, bounds)
+    if (!edge) continue
+
+    const edgeCandidates = getBoundsEdgeCandidates({ edge, bounds, step })
+    edgeCandidates.sort(
+      (a, b) => distance(a, idealPoint) - distance(b, idealPoint),
+    )
+
+    for (const candidate of edgeCandidates) {
+      if (
+        isCandidateAvailableForOutsidePorts({
+          candidate,
+          bounds,
+          usedBoundaryPoints,
+          boundaryPointSpacing,
+          routeFrom,
+          pads,
+          sourcePortId,
+          outsidePorts,
+          layer,
+        })
+      ) {
+        return candidate
+      }
+    }
+  }
+
+  for (const idealPoint of idealPoints) {
+    const candidates = getAllBoundsCandidates({ bounds, step })
+    candidates.sort((a, b) => distance(a, idealPoint) - distance(b, idealPoint))
+
+    for (const candidate of candidates) {
+      if (
+        isCandidateAvailableForOutsidePorts({
+          candidate,
+          bounds,
+          usedBoundaryPoints,
+          boundaryPointSpacing,
+          routeFrom,
+          pads,
+          sourcePortId,
+          outsidePorts,
+          layer,
+        })
+      ) {
+        return candidate
+      }
     }
   }
 

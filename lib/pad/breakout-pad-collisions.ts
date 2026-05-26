@@ -76,25 +76,27 @@ export const doesBreakoutSegmentIntersectPad = ({
     getInflatedPadRect(pad),
   )
 
-export const doesBreakoutSegmentIntersectPads = ({
+export const doesBreakoutSegmentIntersectNonIgnoredPads = ({
   from,
   to,
   pads,
-  sourcePortId,
+  ignoredSourcePortIds,
   layer,
 }: {
   from: Point
   to: Point
   pads: BreakoutPad[]
-  sourcePortId: string
+  ignoredSourcePortIds: string[]
   layer?: PcbLayer
 }) => {
   for (const pad of pads) {
     if (
-      isBreakoutPadIgnoredForSourcePort({
-        pad,
-        sourcePortId,
-      }) ||
+      ignoredSourcePortIds.some((sourcePortId) =>
+        isBreakoutPadIgnoredForSourcePort({
+          pad,
+          sourcePortId,
+        }),
+      ) ||
       isBreakoutPadIgnoredForLayer({
         pad,
         layer,
@@ -110,3 +112,24 @@ export const doesBreakoutSegmentIntersectPads = ({
 
   return false
 }
+
+export const doesBreakoutSegmentIntersectPads = ({
+  from,
+  to,
+  pads,
+  sourcePortId,
+  layer,
+}: {
+  from: Point
+  to: Point
+  pads: BreakoutPad[]
+  sourcePortId: string
+  layer?: PcbLayer
+}) =>
+  doesBreakoutSegmentIntersectNonIgnoredPads({
+    from,
+    to,
+    pads,
+    ignoredSourcePortIds: [sourcePortId],
+    layer,
+  })
