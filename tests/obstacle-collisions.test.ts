@@ -40,7 +40,7 @@ test("ignores pad on a different PCB layer", () => {
       from: { x: -2, y: 0 },
       to: { x: 2, y: 0 },
       layer: "top",
-      sourcePortId: "source_port_1",
+      sourcePortIds: ["source_port_1"],
       pads: [
         {
           center: { x: 0, y: 0 },

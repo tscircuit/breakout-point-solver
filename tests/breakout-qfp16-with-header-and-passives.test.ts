@@ -8,26 +8,28 @@ test("solves qfp16 breakout points to header pins with nearby passives", () => {
 
   solver.solve()
 
-  expect(solver.getOutput().breakoutPoints).toEqual([
+  const breakoutPoints = solver.getOutput().breakoutPoints
+
+  expect(breakoutPoints).toEqual([
     {
       sourcePortId: "source_port_u1_vcc",
       sourceTraceId: "source_trace_j1_vcc_to_u1_vcc",
-      x: 3,
-      y: 3,
+      x: -0.2999999999999998,
+      y: -3.5,
       layer: "top",
     },
     {
       sourcePortId: "source_port_u1_gnd",
       sourceTraceId: "source_trace_j1_gnd_to_u1_gnd",
-      x: 3,
-      y: 3.5,
+      x: 0.20000000000000018,
+      y: -3.5,
       layer: "top",
     },
     {
       sourcePortId: "source_port_u1_sda",
       sourceTraceId: "source_trace_j1_sda_to_u1_sda",
-      x: 0.7000000000000002,
-      y: -3.5,
+      x: 3,
+      y: 3.5,
       layer: "top",
     },
     {

@@ -49,6 +49,19 @@ export const isBreakoutPadIgnoredForSourcePort = ({
   return pad.sourcePortIds.includes(sourcePortId)
 }
 
+const isBreakoutPadIgnoredForSourcePorts = ({
+  pad,
+  sourcePortIds,
+}: {
+  pad: BreakoutPad
+  sourcePortIds: string[]
+}) => {
+  if (!pad.sourcePortIds) return false
+  return pad.sourcePortIds.some((sourcePortId) =>
+    sourcePortIds.includes(sourcePortId),
+  )
+}
+
 export const isBreakoutPadIgnoredForLayer = ({
   pad,
   layer,
@@ -79,20 +92,20 @@ export const doesBreakoutSegmentIntersectPads = ({
   from,
   to,
   pads,
-  sourcePortId,
+  sourcePortIds,
   layer,
 }: {
   from: Point
   to: Point
   pads: BreakoutPad[]
-  sourcePortId: string
+  sourcePortIds: string[]
   layer?: PcbLayer
 }) => {
   for (const pad of pads) {
     if (
-      isBreakoutPadIgnoredForSourcePort({
+      isBreakoutPadIgnoredForSourcePorts({
         pad,
-        sourcePortId,
+        sourcePortIds,
       }) ||
       isBreakoutPadIgnoredForLayer({
         pad,

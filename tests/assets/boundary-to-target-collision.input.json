@@ -1,0 +1,96 @@
+{
+  "bounds": {
+    "minX": -5,
+    "maxX": 5,
+    "minY": -3,
+    "maxY": 3
+  },
+  "boundaryPointSpacing": 0.5,
+  "traces": [
+    {
+      "sourceTraceId": "source_trace_boundary_to_target_collision",
+      "insidePorts": [
+        {
+          "sourcePortId": "source_port_inside",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "width": 0.6,
+          "height": 0.6,
+          "layer": "top",
+          "label": "inside pad"
+        }
+      ],
+      "outsidePorts": [
+        {
+          "sourcePortId": "source_port_outside",
+          "position": {
+            "x": 10,
+            "y": 0
+          },
+          "width": 1.2,
+          "height": 1.2,
+          "layer": "top",
+          "label": "outside target"
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "center": {
+        "x": 0,
+        "y": 0
+      },
+      "width": 1.6,
+      "height": 1.6,
+      "layer": "top",
+      "label": "breakout source"
+    },
+    {
+      "center": {
+        "x": 7,
+        "y": 0
+      },
+      "width": 1.4,
+      "height": 2.4,
+      "layer": "top",
+      "label": "outside obstacle"
+    }
+  ],
+  "pads": [
+    {
+      "center": {
+        "x": 0,
+        "y": 0
+      },
+      "width": 0.6,
+      "height": 0.6,
+      "layer": "top",
+      "sourcePortIds": ["source_port_inside"],
+      "label": "inside pad"
+    },
+    {
+      "center": {
+        "x": 7,
+        "y": 0
+      },
+      "width": 1.4,
+      "height": 2.4,
+      "layer": "top",
+      "label": "blocking pad after boundary"
+    },
+    {
+      "center": {
+        "x": 10,
+        "y": 0
+      },
+      "width": 1.2,
+      "height": 1.2,
+      "layer": "top",
+      "sourcePortIds": ["source_port_outside"],
+      "label": "outside target"
+    }
+  ]
+}

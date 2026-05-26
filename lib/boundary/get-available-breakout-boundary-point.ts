@@ -112,23 +112,42 @@ const hasBoundarySpacingConflict = ({
 const isBoundaryCandidateBlocked = ({
   candidate,
   routeFrom,
+  routeTo,
   pads,
   sourcePortId,
+  targetSourcePortIds,
   layer,
 }: {
   candidate: Point
   routeFrom?: Point
+  routeTo?: Point
   pads?: BreakoutPad[]
   sourcePortId?: string
+  targetSourcePortIds?: string[]
   layer?: PcbLayer
 }) => {
-  if (!routeFrom || !pads || !sourcePortId) return false
+  if (!pads || !sourcePortId) return false
+
+  if (
+    routeFrom &&
+    doesBreakoutSegmentIntersectPads({
+      from: routeFrom,
+      to: candidate,
+      pads,
+      sourcePortIds: [sourcePortId],
+      layer,
+    })
+  ) {
+    return true
+  }
+
+  if (!routeTo) return false
 
   return doesBreakoutSegmentIntersectPads({
-    from: routeFrom,
-    to: candidate,
+    from: candidate,
+    to: routeTo,
     pads,
-    sourcePortId,
+    sourcePortIds: [sourcePortId, ...(targetSourcePortIds ?? [])],
     layer,
   })
 }
@@ -138,16 +157,20 @@ const isCandidateAvailable = ({
   usedBoundaryPoints,
   boundaryPointSpacing,
   routeFrom,
+  routeTo,
   pads,
   sourcePortId,
+  targetSourcePortIds,
   layer,
 }: {
   candidate: Point
   usedBoundaryPoints: Point[]
   boundaryPointSpacing: number
   routeFrom?: Point
+  routeTo?: Point
   pads?: BreakoutPad[]
   sourcePortId?: string
+  targetSourcePortIds?: string[]
   layer?: PcbLayer
 }) => {
   if (
@@ -163,8 +186,10 @@ const isCandidateAvailable = ({
   return !isBoundaryCandidateBlocked({
     candidate,
     routeFrom,
+    routeTo,
     pads,
     sourcePortId,
+    targetSourcePortIds,
     layer,
   })
 }
@@ -175,8 +200,10 @@ export const getAvailableBreakoutBoundaryPoint = ({
   usedBoundaryPoints,
   boundaryPointSpacing,
   routeFrom,
+  routeTo,
   pads,
   sourcePortId,
+  targetSourcePortIds,
   layer,
 }: {
   idealPoint: Point
@@ -184,8 +211,10 @@ export const getAvailableBreakoutBoundaryPoint = ({
   usedBoundaryPoints: Point[]
   boundaryPointSpacing: number
   routeFrom?: Point
+  routeTo?: Point
   pads?: BreakoutPad[]
   sourcePortId?: string
+  targetSourcePortIds?: string[]
   layer?: PcbLayer
 }): Point | null => {
   if (
@@ -194,8 +223,10 @@ export const getAvailableBreakoutBoundaryPoint = ({
       usedBoundaryPoints,
       boundaryPointSpacing,
       routeFrom,
+      routeTo,
       pads,
       sourcePortId,
+      targetSourcePortIds,
       layer,
     })
   ) {
@@ -228,8 +259,10 @@ export const getAvailableBreakoutBoundaryPoint = ({
         usedBoundaryPoints,
         boundaryPointSpacing,
         routeFrom,
+        routeTo,
         pads,
         sourcePortId,
+        targetSourcePortIds,
         layer,
       })
     ) {
@@ -247,8 +280,10 @@ export const getAvailableBreakoutBoundaryPoint = ({
         usedBoundaryPoints,
         boundaryPointSpacing,
         routeFrom,
+        routeTo,
         pads,
         sourcePortId,
+        targetSourcePortIds,
         layer,
       })
     ) {

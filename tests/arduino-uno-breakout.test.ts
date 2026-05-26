@@ -31,8 +31,8 @@ test("solves breakout points from real Arduino Uno circuit-json pads", () => {
     {
       sourcePortId: "source_port_111",
       sourceTraceId: "source_trace_100",
-      x: 3.1,
-      y: -1.2499999999999987,
+      x: 17.5,
+      y: -3.1999999999999984,
       layer: "top",
     },
     {
@@ -115,14 +115,7 @@ test("solves breakout points from real Arduino Uno circuit-json pads", () => {
     {
       sourcePortId: "source_port_102",
       sourceTraceId: "source_trace_91",
-      x: 8.950000000000003,
-      y: -7.1,
-      layer: "top",
-    },
-    {
-      sourcePortId: "source_port_103",
-      sourceTraceId: "source_trace_92",
-      x: 7.000000000000002,
+      x: 16.100000000000005,
       y: -7.1,
       layer: "top",
     },
@@ -164,7 +157,7 @@ test("solves breakout points from real Arduino Uno circuit-json pads", () => {
     {
       sourcePortId: "source_port_99",
       sourceTraceId: "source_trace_89",
-      x: 8.950000000000003,
+      x: 10.250000000000004,
       y: 7.3,
       layer: "top",
     },

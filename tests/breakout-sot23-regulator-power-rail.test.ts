@@ -8,12 +8,14 @@ test("solves sot23 regulator breakout points to input and output headers", () =>
 
   solver.solve()
 
-  expect(solver.getOutput().breakoutPoints).toEqual([
+  const breakoutPoints = solver.getOutput().breakoutPoints
+
+  expect(breakoutPoints).toEqual([
     {
       sourcePortId: "source_port_u1_vin",
       sourceTraceId: "source_trace_jin_vin_to_u1_vin",
       x: -4.2,
-      y: -0.023807582551977347,
+      y: 0.6000000000000001,
       layer: "top",
     },
     {
@@ -27,7 +29,7 @@ test("solves sot23 regulator breakout points to input and output headers", () =>
       sourcePortId: "source_port_u1_gnd",
       sourceTraceId: "source_trace_jout_gnd_to_u1_gnd",
       x: 4.2,
-      y: -1.9,
+      y: -2.4,
       layer: "top",
     },
     {

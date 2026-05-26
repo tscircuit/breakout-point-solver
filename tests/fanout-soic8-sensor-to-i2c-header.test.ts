@@ -8,12 +8,14 @@ test("solves soic8 fanout points to i2c header pins with pullups nearby", () => 
 
   solver.solve()
 
-  expect(solver.getOutput().breakoutPoints).toEqual([
+  const breakoutPoints = solver.getOutput().breakoutPoints
+
+  expect(breakoutPoints).toEqual([
     {
       sourcePortId: "source_port_u1_vcc",
       sourceTraceId: "source_trace_j1_vcc_to_u1_vcc",
-      x: -4.4,
-      y: 0.7999999999999998,
+      x: -2.4000000000000004,
+      y: -3.2,
       layer: "top",
     },
     {

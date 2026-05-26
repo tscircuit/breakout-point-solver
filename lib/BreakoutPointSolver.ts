@@ -14,6 +14,11 @@ import { getAvailableBreakoutBoundaryPoint } from "./boundary/get-available-brea
 
 type GraphicsRect = NonNullable<GraphicsObject["rects"]>[number]
 
+type OutsideTarget = {
+  position: Point
+  sourcePortIds: string[]
+}
+
 type LayerVisualStyle = {
   insidePadFill: string
   insidePadStroke: string
@@ -87,7 +92,7 @@ const getPortPadRect = ({
   }
 }
 
-const getOutsideTarget = (trace: BreakoutTrace): Point | null => {
+const getOutsideTarget = (trace: BreakoutTrace): OutsideTarget | null => {
   if (trace.outsidePorts.length === 0) return null
 
   const total = trace.outsidePorts.reduce(
@@ -99,8 +104,11 @@ const getOutsideTarget = (trace: BreakoutTrace): Point | null => {
   )
 
   return {
-    x: total.x / trace.outsidePorts.length,
-    y: total.y / trace.outsidePorts.length,
+    position: {
+      x: total.x / trace.outsidePorts.length,
+      y: total.y / trace.outsidePorts.length,
+    },
+    sourcePortIds: trace.outsidePorts.map((port) => port.sourcePortId),
   }
 }
 
@@ -123,7 +131,7 @@ export class BreakoutPointSolver extends BaseSolver {
       for (const insidePort of trace.insidePorts) {
         const idealBoundaryPoint = getBreakoutBoundaryIntersection({
           from: insidePort.position,
-          to: outsideTarget,
+          to: outsideTarget.position,
           bounds: this.input.bounds,
         })
         if (!idealBoundaryPoint) continue
@@ -138,8 +146,10 @@ export class BreakoutPointSolver extends BaseSolver {
           usedBoundaryPoints,
           boundaryPointSpacing: this.input.boundaryPointSpacing ?? 0,
           routeFrom: insidePort.position,
+          routeTo: outsideTarget.position,
           pads: this.input.pads,
           sourcePortId: insidePort.sourcePortId,
+          targetSourcePortIds: outsideTarget.sourcePortIds,
           layer: insidePort.layer,
         })
         if (!boundaryPoint) continue
@@ -251,7 +261,7 @@ export class BreakoutPointSolver extends BaseSolver {
             {
               points: [
                 { x: breakoutPoint.x, y: breakoutPoint.y },
-                outsideTarget,
+                outsideTarget.position,
               ],
               strokeColor: getLayerVisualStyle(insidePort.layer).traceStroke,
               strokeDash: "0.15 0.15",
