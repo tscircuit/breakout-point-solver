@@ -56,6 +56,23 @@ const getBoundsEdgeCandidates = ({
   return candidates
 }
 
+const getAllBoundsCandidates = ({
+  bounds,
+  step,
+}: {
+  bounds: Bounds
+  step: number
+}) => {
+  const candidatesByCoordinate = new Map<string, Point>()
+
+  for (const edge of ["left", "right", "bottom", "top"] as const) {
+    for (const candidate of getBoundsEdgeCandidates({ edge, bounds, step })) {
+      candidatesByCoordinate.set(`${candidate.x}:${candidate.y}`, candidate)
+    }
+  }
+
+  return [...candidatesByCoordinate.values()]
+}
 const getBoundaryCandidateSearchStep = ({
   bounds,
   boundaryPointSpacing,
@@ -194,12 +211,33 @@ export const getAvailableBreakoutBoundaryPoint = ({
   })
   if (step <= 0) return null
 
-  const candidates = getBoundsEdgeCandidates({
+  const edgeCandidates = getBoundsEdgeCandidates({
     edge,
     bounds,
     step,
   })
 
+  edgeCandidates.sort(
+    (a, b) => distance(a, idealPoint) - distance(b, idealPoint),
+  )
+
+  for (const candidate of edgeCandidates) {
+    if (
+      isCandidateAvailable({
+        candidate,
+        usedBoundaryPoints,
+        boundaryPointSpacing,
+        routeFrom,
+        pads,
+        sourcePortId,
+        layer,
+      })
+    ) {
+      return candidate
+    }
+  }
+
+  const candidates = getAllBoundsCandidates({ bounds, step })
   candidates.sort((a, b) => distance(a, idealPoint) - distance(b, idealPoint))
 
   for (const candidate of candidates) {
