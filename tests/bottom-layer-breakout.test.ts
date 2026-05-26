@@ -3,7 +3,7 @@ import { BreakoutPointSolver } from "lib/index"
 import type { BreakoutPointSolverInput } from "lib/types"
 import fixture from "./assets/bottom-layer-breakout.input.json"
 
-test("solves bottom-layer breakout while ignoring top-layer obstacles", () => {
+test("solves bottom-layer breakout while ignoring top-layer pads", () => {
   const solver = new BreakoutPointSolver(fixture as BreakoutPointSolverInput)
 
   solver.solve()

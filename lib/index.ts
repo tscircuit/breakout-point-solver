@@ -2,14 +2,15 @@ export { BreakoutPointSolver } from "./BreakoutPointSolver"
 export { getAvailableBreakoutBoundaryPoint } from "./boundary/get-available-breakout-boundary-point"
 export { getBreakoutBoundaryIntersection } from "./boundary/get-breakout-boundary-intersection"
 export {
-  doesBreakoutSegmentIntersectObstacle,
-  doesBreakoutSegmentIntersectObstacles,
-  isBreakoutObstacleIgnoredForLayer,
-  isBreakoutObstacleIgnoredForSourcePort,
-} from "./obstacle/breakout-obstacle-collisions"
+  doesBreakoutSegmentIntersectPad,
+  doesBreakoutSegmentIntersectPads,
+  isBreakoutPadIgnoredForLayer,
+  isBreakoutPadIgnoredForSourcePort,
+} from "./pad/breakout-pad-collisions"
 
 export type {
-  BreakoutObstacleRect,
+  BreakoutComponent,
+  BreakoutPad,
   BreakoutPort,
   BreakoutPointSolverInput,
   BreakoutPointSolverOutput,

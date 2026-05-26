@@ -37,7 +37,19 @@
       ]
     }
   ],
-  "obstacles": [
+  "components": [
+    {
+      "center": {
+        "x": 0,
+        "y": 0
+      },
+      "width": 2.4,
+      "height": 2.4,
+      "layer": "bottom",
+      "label": "bottom QFN package body"
+    }
+  ],
+  "pads": [
     {
       "center": {
         "x": 3,
@@ -47,7 +59,7 @@
       "height": 1.6,
       "clearance": 0.1,
       "layer": "top",
-      "label": "top obstacle ignored"
+      "label": "top pad ignored"
     },
     {
       "center": {
@@ -58,7 +70,29 @@
       "height": 0.8,
       "clearance": 0.1,
       "layer": "bottom",
-      "label": "bottom obstacle blocks"
+      "label": "bottom pad blocks"
+    },
+    {
+      "center": {
+        "x": 1.2,
+        "y": 0
+      },
+      "width": 0.55,
+      "height": 0.35,
+      "layer": "bottom",
+      "sourcePortIds": ["source_port_bottom_inside"],
+      "label": "bottom QFN pad"
+    },
+    {
+      "center": {
+        "x": 10,
+        "y": 0
+      },
+      "width": 1.2,
+      "height": 1.2,
+      "layer": "bottom",
+      "sourcePortIds": ["source_port_bottom_outside"],
+      "label": "bottom header pad"
     }
   ]
 }

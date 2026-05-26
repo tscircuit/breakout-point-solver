@@ -1,6 +1,6 @@
 import { distance, type Bounds, type Point } from "@tscircuit/math-utils"
-import type { BreakoutObstacleRect, PcbLayer } from "lib/types"
-import { doesBreakoutSegmentIntersectObstacles } from "lib/obstacle/breakout-obstacle-collisions"
+import type { BreakoutPad, PcbLayer } from "lib/types"
+import { doesBreakoutSegmentIntersectPads } from "lib/pad/breakout-pad-collisions"
 
 type BoundsEdge = "left" | "right" | "bottom" | "top"
 
@@ -95,22 +95,22 @@ const hasBoundarySpacingConflict = ({
 const isBoundaryCandidateBlocked = ({
   candidate,
   routeFrom,
-  obstacles,
+  pads,
   sourcePortId,
   layer,
 }: {
   candidate: Point
   routeFrom?: Point
-  obstacles?: BreakoutObstacleRect[]
+  pads?: BreakoutPad[]
   sourcePortId?: string
   layer?: PcbLayer
 }) => {
-  if (!routeFrom || !obstacles || !sourcePortId) return false
+  if (!routeFrom || !pads || !sourcePortId) return false
 
-  return doesBreakoutSegmentIntersectObstacles({
+  return doesBreakoutSegmentIntersectPads({
     from: routeFrom,
     to: candidate,
-    obstacles,
+    pads,
     sourcePortId,
     layer,
   })
@@ -121,7 +121,7 @@ const isCandidateAvailable = ({
   usedBoundaryPoints,
   boundaryPointSpacing,
   routeFrom,
-  obstacles,
+  pads,
   sourcePortId,
   layer,
 }: {
@@ -129,7 +129,7 @@ const isCandidateAvailable = ({
   usedBoundaryPoints: Point[]
   boundaryPointSpacing: number
   routeFrom?: Point
-  obstacles?: BreakoutObstacleRect[]
+  pads?: BreakoutPad[]
   sourcePortId?: string
   layer?: PcbLayer
 }) => {
@@ -146,7 +146,7 @@ const isCandidateAvailable = ({
   return !isBoundaryCandidateBlocked({
     candidate,
     routeFrom,
-    obstacles,
+    pads,
     sourcePortId,
     layer,
   })
@@ -158,7 +158,7 @@ export const getAvailableBreakoutBoundaryPoint = ({
   usedBoundaryPoints,
   boundaryPointSpacing,
   routeFrom,
-  obstacles,
+  pads,
   sourcePortId,
   layer,
 }: {
@@ -167,7 +167,7 @@ export const getAvailableBreakoutBoundaryPoint = ({
   usedBoundaryPoints: Point[]
   boundaryPointSpacing: number
   routeFrom?: Point
-  obstacles?: BreakoutObstacleRect[]
+  pads?: BreakoutPad[]
   sourcePortId?: string
   layer?: PcbLayer
 }): Point | null => {
@@ -177,7 +177,7 @@ export const getAvailableBreakoutBoundaryPoint = ({
       usedBoundaryPoints,
       boundaryPointSpacing,
       routeFrom,
-      obstacles,
+      pads,
       sourcePortId,
       layer,
     })
@@ -209,7 +209,7 @@ export const getAvailableBreakoutBoundaryPoint = ({
         usedBoundaryPoints,
         boundaryPointSpacing,
         routeFrom,
-        obstacles,
+        pads,
         sourcePortId,
         layer,
       })

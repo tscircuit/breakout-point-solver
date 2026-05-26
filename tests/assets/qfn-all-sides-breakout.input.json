@@ -445,5 +445,199 @@
         }
       ]
     }
+  ],
+  "components": [
+    {
+      "center": {
+        "x": 0,
+        "y": 0
+      },
+      "width": 3.2,
+      "height": 3.2,
+      "layer": "top",
+      "label": "QFN package body"
+    }
+  ],
+  "pads": [
+    {
+      "center": {
+        "x": 1.6,
+        "y": -1.2
+      },
+      "width": 0.65,
+      "height": 0.32,
+      "ccwRotationDegrees": 180,
+      "layer": "top",
+      "sourcePortIds": ["source_port_right_1"],
+      "label": "QFN pad"
+    },
+    {
+      "center": {
+        "x": 1.6,
+        "y": -0.4
+      },
+      "width": 0.65,
+      "height": 0.32,
+      "ccwRotationDegrees": 180,
+      "layer": "top",
+      "sourcePortIds": ["source_port_right_2"],
+      "label": "QFN pad"
+    },
+    {
+      "center": {
+        "x": 1.6,
+        "y": 0.4
+      },
+      "width": 0.65,
+      "height": 0.32,
+      "ccwRotationDegrees": 180,
+      "layer": "top",
+      "sourcePortIds": ["source_port_right_3"],
+      "label": "QFN pad"
+    },
+    {
+      "center": {
+        "x": 1.6,
+        "y": 1.2
+      },
+      "width": 0.65,
+      "height": 0.32,
+      "ccwRotationDegrees": 180,
+      "layer": "top",
+      "sourcePortIds": ["source_port_right_4"],
+      "label": "QFN pad"
+    },
+    {
+      "center": {
+        "x": -1.6,
+        "y": -1.2
+      },
+      "width": 0.65,
+      "height": 0.32,
+      "layer": "top",
+      "sourcePortIds": ["source_port_left_1"],
+      "label": "QFN pad"
+    },
+    {
+      "center": {
+        "x": -1.6,
+        "y": -0.4
+      },
+      "width": 0.65,
+      "height": 0.32,
+      "layer": "top",
+      "sourcePortIds": ["source_port_left_2"],
+      "label": "QFN pad"
+    },
+    {
+      "center": {
+        "x": -1.6,
+        "y": 0.4
+      },
+      "width": 0.65,
+      "height": 0.32,
+      "layer": "top",
+      "sourcePortIds": ["source_port_left_3"],
+      "label": "QFN pad"
+    },
+    {
+      "center": {
+        "x": -1.6,
+        "y": 1.2
+      },
+      "width": 0.65,
+      "height": 0.32,
+      "layer": "top",
+      "sourcePortIds": ["source_port_left_4"],
+      "label": "QFN pad"
+    },
+    {
+      "center": {
+        "x": -1.2,
+        "y": 1.6
+      },
+      "width": 0.32,
+      "height": 0.65,
+      "layer": "top",
+      "sourcePortIds": ["source_port_top_1"],
+      "label": "QFN pad"
+    },
+    {
+      "center": {
+        "x": -0.4,
+        "y": 1.6
+      },
+      "width": 0.32,
+      "height": 0.65,
+      "layer": "top",
+      "sourcePortIds": ["source_port_top_2"],
+      "label": "QFN pad"
+    },
+    {
+      "center": {
+        "x": 0.4,
+        "y": 1.6
+      },
+      "width": 0.32,
+      "height": 0.65,
+      "layer": "top",
+      "sourcePortIds": ["source_port_top_3"],
+      "label": "QFN pad"
+    },
+    {
+      "center": {
+        "x": 1.2,
+        "y": 1.6
+      },
+      "width": 0.32,
+      "height": 0.65,
+      "layer": "top",
+      "sourcePortIds": ["source_port_top_4"],
+      "label": "QFN pad"
+    },
+    {
+      "center": {
+        "x": -1.2,
+        "y": -1.6
+      },
+      "width": 0.32,
+      "height": 0.65,
+      "layer": "top",
+      "sourcePortIds": ["source_port_bottom_1"],
+      "label": "QFN pad"
+    },
+    {
+      "center": {
+        "x": -0.4,
+        "y": -1.6
+      },
+      "width": 0.32,
+      "height": 0.65,
+      "layer": "top",
+      "sourcePortIds": ["source_port_bottom_2"],
+      "label": "QFN pad"
+    },
+    {
+      "center": {
+        "x": 0.4,
+        "y": -1.6
+      },
+      "width": 0.32,
+      "height": 0.65,
+      "layer": "top",
+      "sourcePortIds": ["source_port_bottom_3"],
+      "label": "QFN pad"
+    },
+    {
+      "center": {
+        "x": 1.2,
+        "y": -1.6
+      },
+      "width": 0.32,
+      "height": 0.65,
+      "layer": "top",
+      "sourcePortIds": ["source_port_bottom_4"],
+      "label": "QFN pad"
+    }
   ]
 }
