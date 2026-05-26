@@ -1,6 +1,6 @@
 import { distance, type Bounds, type Point } from "@tscircuit/math-utils"
-import type { BreakoutPad, PcbLayer } from "lib/types"
-import { doesBreakoutSegmentIntersectPads } from "lib/pad/breakout-pad-collisions"
+import type { BreakoutPad, PcbLayer } from "../types"
+import { doesBreakoutSegmentIntersectPads } from "../pad/breakout-pad-collisions"
 
 type BoundsEdge = "left" | "right" | "bottom" | "top"
 
