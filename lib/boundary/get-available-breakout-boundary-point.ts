@@ -1,5 +1,5 @@
 import { distance, type Bounds, type Point } from "@tscircuit/math-utils"
-import type { BreakoutPad, PcbLayer, PcbLayer } from "../types"
+import type { BreakoutPad, BreakoutPort, PcbLayer } from "../types"
 import {
   doesBreakoutSegmentIntersectNonIgnoredPads,
   doesBreakoutSegmentIntersectPads,
