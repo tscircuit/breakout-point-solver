@@ -32,5 +32,30 @@
         }
       ]
     }
+  ],
+  "components": [
+    {
+      "center": {
+        "x": 0,
+        "y": 0
+      },
+      "width": 2.4,
+      "height": 2.4,
+      "layer": "top",
+      "label": "QFN package body"
+    }
+  ],
+  "pads": [
+    {
+      "center": {
+        "x": 0.3,
+        "y": 1.2
+      },
+      "width": 0.35,
+      "height": 0.55,
+      "layer": "top",
+      "sourcePortIds": ["source_port_inside_top"],
+      "label": "QFN pad"
+    }
   ]
 }

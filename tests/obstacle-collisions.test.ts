@@ -1,15 +1,15 @@
 import { expect, test } from "bun:test"
 import {
-  doesBreakoutSegmentIntersectObstacle,
-  doesBreakoutSegmentIntersectObstacles,
+  doesBreakoutSegmentIntersectPad,
+  doesBreakoutSegmentIntersectPads,
 } from "lib/index"
 
-test("detects segment collision with rotated obstacle rectangle", () => {
+test("detects segment collision with rotated pad rectangle", () => {
   expect(
-    doesBreakoutSegmentIntersectObstacle({
+    doesBreakoutSegmentIntersectPad({
       from: { x: -2, y: 0 },
       to: { x: 2, y: 0 },
-      obstacle: {
+      pad: {
         center: { x: 0, y: 0 },
         width: 0.5,
         height: 3,
@@ -19,12 +19,12 @@ test("detects segment collision with rotated obstacle rectangle", () => {
   ).toBe(true)
 })
 
-test("ignores segment outside rotated obstacle rectangle", () => {
+test("ignores segment outside rotated pad rectangle", () => {
   expect(
-    doesBreakoutSegmentIntersectObstacle({
+    doesBreakoutSegmentIntersectPad({
       from: { x: -2, y: 2 },
       to: { x: 2, y: 2 },
-      obstacle: {
+      pad: {
         center: { x: 0, y: 0 },
         width: 0.5,
         height: 3,
@@ -34,14 +34,14 @@ test("ignores segment outside rotated obstacle rectangle", () => {
   ).toBe(false)
 })
 
-test("ignores obstacle on a different PCB layer", () => {
+test("ignores pad on a different PCB layer", () => {
   expect(
-    doesBreakoutSegmentIntersectObstacles({
+    doesBreakoutSegmentIntersectPads({
       from: { x: -2, y: 0 },
       to: { x: 2, y: 0 },
       layer: "top",
       sourcePortId: "source_port_1",
-      obstacles: [
+      pads: [
         {
           center: { x: 0, y: 0 },
           width: 0.5,

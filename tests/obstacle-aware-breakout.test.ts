@@ -1,7 +1,7 @@
 import { expect, test } from "bun:test"
 import { BreakoutPointSolver } from "lib/index"
 
-test("solves multiple breakout points around pads and keepout obstacles", () => {
+test("solves multiple breakout points around blocking pads", () => {
   const solver = new BreakoutPointSolver({
     bounds: { minX: -5, maxX: 5, minY: -4, maxY: 4 },
     boundaryPointSpacing: 0.5,
@@ -79,26 +79,26 @@ test("solves multiple breakout points around pads and keepout obstacles", () => 
         ],
       },
     ],
-    obstacles: [
+    pads: [
       {
         center: { x: 3.1, y: -0.7 },
         width: 1,
         height: 0.9,
         clearance: 0.1,
-        label: "right keepout",
+        label: "right blocking pad",
       },
       {
         center: { x: 3.1, y: 0.7 },
         width: 0.8,
         height: 1.4,
         ccwRotationDegrees: 35,
-        label: "rotated component",
+        label: "rotated blocking pad",
       },
       {
         center: { x: -0.7, y: 2.8 },
         width: 0.9,
         height: 1.2,
-        label: "top keepout",
+        label: "top blocking pad",
       },
       {
         center: { x: 0.35, y: -1.4 },
@@ -143,7 +143,7 @@ test("solves multiple breakout points around pads and keepout obstacles", () => 
   expect(solver).toMatchSolverSnapshot(import.meta.path)
 })
 
-test("ignores obstacle connected to the inside source port", () => {
+test("ignores pad connected to the inside source port", () => {
   const solver = new BreakoutPointSolver({
     bounds: { minX: -5, maxX: 5, minY: -4, maxY: 4 },
     boundaryPointSpacing: 0.5,
@@ -166,7 +166,7 @@ test("ignores obstacle connected to the inside source port", () => {
         ],
       },
     ],
-    obstacles: [
+    pads: [
       {
         center: { x: 0, y: 0 },
         width: 1,

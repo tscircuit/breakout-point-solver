@@ -18,7 +18,7 @@ export interface BreakoutTrace {
   outsidePorts: BreakoutPort[]
 }
 
-export interface BreakoutObstacleRect {
+export interface BreakoutPad {
   center: Point
   width: number
   height: number
@@ -29,12 +29,22 @@ export interface BreakoutObstacleRect {
   label?: string
 }
 
+export interface BreakoutComponent {
+  center: Point
+  width: number
+  height: number
+  ccwRotationDegrees?: number
+  layer?: PcbLayer
+  label?: string
+}
+
 export interface BreakoutPointSolverInput {
   bounds: Bounds
   traces: BreakoutTrace[]
   usedBoundaryPoints?: Point[]
   boundaryPointSpacing?: number
-  obstacles?: BreakoutObstacleRect[]
+  pads?: BreakoutPad[]
+  components?: BreakoutComponent[]
 }
 
 export interface BreakoutPointSolverOutputPoint {

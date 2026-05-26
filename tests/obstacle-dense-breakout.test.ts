@@ -1,7 +1,7 @@
 import { expect, test } from "bun:test"
 import { BreakoutPointSolver } from "lib/index"
 
-test("solves dense breakout points around many obstacles", () => {
+test("solves dense breakout points around many blocking pads", () => {
   const solver = new BreakoutPointSolver({
     bounds: { minX: -6, maxX: 6, minY: -5, maxY: 5 },
     boundaryPointSpacing: 0.5,
@@ -150,58 +150,58 @@ test("solves dense breakout points around many obstacles", () => {
         ],
       },
     ],
-    obstacles: [
+    pads: [
       {
         center: { x: 3.2, y: -0.35 },
         width: 1.1,
         height: 0.9,
         clearance: 0.1,
-        label: "right lower keepout",
+        label: "right lower blocking pad",
       },
       {
         center: { x: 3.5, y: 0.9 },
         width: 0.9,
         height: 1.7,
         ccwRotationDegrees: 30,
-        label: "right rotated body",
+        label: "right rotated blocking pad",
       },
       {
         center: { x: -3.2, y: -1.2 },
         width: 1.1,
         height: 1.1,
-        label: "left lower keepout",
+        label: "left lower blocking pad",
       },
       {
         center: { x: -3.4, y: 1.3 },
         width: 0.9,
         height: 1.5,
         ccwRotationDegrees: -25,
-        label: "left rotated body",
+        label: "left rotated blocking pad",
       },
       {
         center: { x: -1.6, y: 3.2 },
         width: 1.4,
         height: 1.1,
-        label: "top left keepout",
+        label: "top left blocking pad",
       },
       {
         center: { x: 1.8, y: 3.2 },
         width: 1.2,
         height: 1.2,
-        label: "top right keepout",
+        label: "top right blocking pad",
       },
       {
         center: { x: -1.8, y: -3.2 },
         width: 1.2,
         height: 1.2,
         ccwRotationDegrees: 20,
-        label: "bottom left rotated body",
+        label: "bottom left rotated blocking pad",
       },
       {
         center: { x: 1.8, y: -3.2 },
         width: 1.2,
         height: 1.2,
-        label: "bottom right keepout",
+        label: "bottom right blocking pad",
       },
       {
         center: { x: 1.6, y: 0.4 },

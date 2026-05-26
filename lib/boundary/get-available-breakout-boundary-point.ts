@@ -1,6 +1,6 @@
 import { distance, type Bounds, type Point } from "@tscircuit/math-utils"
-import type { BreakoutObstacleRect, PcbLayer } from "lib/types"
-import { doesBreakoutSegmentIntersectObstacles } from "lib/obstacle/breakout-obstacle-collisions"
+import type { BreakoutPad, PcbLayer } from "lib/types"
+import { doesBreakoutSegmentIntersectPads } from "lib/pad/breakout-pad-collisions"
 
 type BoundsEdge = "left" | "right" | "bottom" | "top"
 
@@ -56,6 +56,23 @@ const getBoundsEdgeCandidates = ({
   return candidates
 }
 
+const getAllBoundsCandidates = ({
+  bounds,
+  step,
+}: {
+  bounds: Bounds
+  step: number
+}) => {
+  const candidatesByCoordinate = new Map<string, Point>()
+
+  for (const edge of ["left", "right", "bottom", "top"] as const) {
+    for (const candidate of getBoundsEdgeCandidates({ edge, bounds, step })) {
+      candidatesByCoordinate.set(`${candidate.x}:${candidate.y}`, candidate)
+    }
+  }
+
+  return [...candidatesByCoordinate.values()]
+}
 const getBoundaryCandidateSearchStep = ({
   bounds,
   boundaryPointSpacing,
@@ -95,22 +112,22 @@ const hasBoundarySpacingConflict = ({
 const isBoundaryCandidateBlocked = ({
   candidate,
   routeFrom,
-  obstacles,
+  pads,
   sourcePortId,
   layer,
 }: {
   candidate: Point
   routeFrom?: Point
-  obstacles?: BreakoutObstacleRect[]
+  pads?: BreakoutPad[]
   sourcePortId?: string
   layer?: PcbLayer
 }) => {
-  if (!routeFrom || !obstacles || !sourcePortId) return false
+  if (!routeFrom || !pads || !sourcePortId) return false
 
-  return doesBreakoutSegmentIntersectObstacles({
+  return doesBreakoutSegmentIntersectPads({
     from: routeFrom,
     to: candidate,
-    obstacles,
+    pads,
     sourcePortId,
     layer,
   })
@@ -121,7 +138,7 @@ const isCandidateAvailable = ({
   usedBoundaryPoints,
   boundaryPointSpacing,
   routeFrom,
-  obstacles,
+  pads,
   sourcePortId,
   layer,
 }: {
@@ -129,7 +146,7 @@ const isCandidateAvailable = ({
   usedBoundaryPoints: Point[]
   boundaryPointSpacing: number
   routeFrom?: Point
-  obstacles?: BreakoutObstacleRect[]
+  pads?: BreakoutPad[]
   sourcePortId?: string
   layer?: PcbLayer
 }) => {
@@ -146,7 +163,7 @@ const isCandidateAvailable = ({
   return !isBoundaryCandidateBlocked({
     candidate,
     routeFrom,
-    obstacles,
+    pads,
     sourcePortId,
     layer,
   })
@@ -158,7 +175,7 @@ export const getAvailableBreakoutBoundaryPoint = ({
   usedBoundaryPoints,
   boundaryPointSpacing,
   routeFrom,
-  obstacles,
+  pads,
   sourcePortId,
   layer,
 }: {
@@ -167,7 +184,7 @@ export const getAvailableBreakoutBoundaryPoint = ({
   usedBoundaryPoints: Point[]
   boundaryPointSpacing: number
   routeFrom?: Point
-  obstacles?: BreakoutObstacleRect[]
+  pads?: BreakoutPad[]
   sourcePortId?: string
   layer?: PcbLayer
 }): Point | null => {
@@ -177,7 +194,7 @@ export const getAvailableBreakoutBoundaryPoint = ({
       usedBoundaryPoints,
       boundaryPointSpacing,
       routeFrom,
-      obstacles,
+      pads,
       sourcePortId,
       layer,
     })
@@ -194,12 +211,33 @@ export const getAvailableBreakoutBoundaryPoint = ({
   })
   if (step <= 0) return null
 
-  const candidates = getBoundsEdgeCandidates({
+  const edgeCandidates = getBoundsEdgeCandidates({
     edge,
     bounds,
     step,
   })
 
+  edgeCandidates.sort(
+    (a, b) => distance(a, idealPoint) - distance(b, idealPoint),
+  )
+
+  for (const candidate of edgeCandidates) {
+    if (
+      isCandidateAvailable({
+        candidate,
+        usedBoundaryPoints,
+        boundaryPointSpacing,
+        routeFrom,
+        pads,
+        sourcePortId,
+        layer,
+      })
+    ) {
+      return candidate
+    }
+  }
+
+  const candidates = getAllBoundsCandidates({ bounds, step })
   candidates.sort((a, b) => distance(a, idealPoint) - distance(b, idealPoint))
 
   for (const candidate of candidates) {
@@ -209,7 +247,7 @@ export const getAvailableBreakoutBoundaryPoint = ({
         usedBoundaryPoints,
         boundaryPointSpacing,
         routeFrom,
-        obstacles,
+        pads,
         sourcePortId,
         layer,
       })
